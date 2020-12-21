@@ -6,11 +6,9 @@ public class MoveRoam : MonoBehaviour
 {
 
     [SerializeField] private Rect _moveArea = new Rect(-14.0f, -8.0f, 14.0f, 6.0f);
-    [SerializeField] private float _waypointTime = 5f;
 
     public UnityEvent OnMovingFinished;
 
-    private float _waypointTimer;
     private Vector3 _targetMovePosition;
     private int _currentQuadrant;
     private IMovePosition _movePosition;
@@ -76,23 +74,12 @@ public class MoveRoam : MonoBehaviour
             // Reached position
             OnMovingFinished?.Invoke();
             _onMovingFinishedInvonked = true;
-            _waypointTimer = _waypointTime;
         }
         else
         {
             SetMovePosition(_targetMovePosition);
         }
 
-
-        if (_onMovingFinishedInvonked)
-        {
-            _waypointTimer -= Time.deltaTime;
-
-            if (_waypointTimer <= 0f)
-            {
-                MoveToNewPosition();
-            }
-        }
     }
 
     public void MoveToNewPosition()
