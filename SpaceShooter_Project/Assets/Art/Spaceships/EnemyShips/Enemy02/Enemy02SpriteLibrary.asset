@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: Enemy02SpriteLibrary
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Head
+    m_Hash: 130111906
+    m_CategoryList:
+    - m_Name: Purple
+      m_Hash: -316049456
+      m_Sprite: {fileID: -186382652543893260, guid: fb2b61b61ab2c4e5998e7467b93f2fba,
+        type: 3}
+    - m_Name: Yellow
+      m_Hash: -676795991
+      m_Sprite: {fileID: -3394747494765747712, guid: 54e210cc961ae47b99cd140064046415,
+        type: 3}
+  - m_Name: L_Leg
+    m_Hash: 2056471068
+    m_CategoryList:
+    - m_Name: Purple
+      m_Hash: -316049456
+      m_Sprite: {fileID: 624957393459309296, guid: fb2b61b61ab2c4e5998e7467b93f2fba,
+        type: 3}
+    - m_Name: Yellow
+      m_Hash: -676795991
+      m_Sprite: {fileID: -5289312228685923456, guid: 54e210cc961ae47b99cd140064046415,
+        type: 3}
+  - m_Name: M_Leg
+    m_Hash: 1207135148
+    m_CategoryList:
+    - m_Name: Purple
+      m_Hash: -316049456
+      m_Sprite: {fileID: 4455659112898935460, guid: fb2b61b61ab2c4e5998e7467b93f2fba,
+        type: 3}
+    - m_Name: Yellow
+      m_Hash: -676795991
+      m_Sprite: {fileID: -5595925433930315395, guid: 54e210cc961ae47b99cd140064046415,
+        type: 3}
+  - m_Name: R_Leg
+    m_Hash: -1522308097
+    m_CategoryList:
+    - m_Name: Purple
+      m_Hash: -316049456
+      m_Sprite: {fileID: -7248252042072448626, guid: fb2b61b61ab2c4e5998e7467b93f2fba,
+        type: 3}
+    - m_Name: Yellow
+      m_Hash: -676795991
+      m_Sprite: {fileID: -1119592051443230572, guid: 54e210cc961ae47b99cd140064046415,
+        type: 3}

@@ -1,0 +1,14 @@
+{
+    "name": "Unity.2D.IK.EditorTests",
+    "references": [
+        "Unity.2D.IK.Editor"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
