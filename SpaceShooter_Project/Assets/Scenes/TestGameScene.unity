@@ -415,7 +415,7 @@ MonoBehaviour:
   _lowHealthPct: 0.2
   _lowHealthEffect: {fileID: 0}
   _shieldCollider: {fileID: 29489728}
-  _shieldScaleFactor: 1
+  _shieldScaleFactor: 0.006
   _deathEffectPrefab: {fileID: 0}
   _hitShakeDuration: 0.2
   _hitShakeIntensity: 0.2
@@ -666,6 +666,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &177994810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177994812}
+  - component: {fileID: 177994811}
+  m_Layer: 0
+  m_Name: GameAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &177994811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177994810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf0a4e0f5f4d43c48b5355af91b3dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotHitEffectPrefab: {fileID: 1156606666835066363, guid: 5be3346da0e0b47f7976c691aef4e32c,
+    type: 3}
+  shieldHitEffectPrefab: {fileID: 7105138687359679967, guid: 8eff362f8d52042d08233fee32a8a6a8,
+    type: 3}
+  shieldEffectPrefab: {fileID: 7341806575460018586, guid: d23f0e72d3c324dc1a13106f5065845f,
+    type: 3}
+--- !u!4 &177994812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177994810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212031655
 GameObject:
   m_ObjectHideFlags: 0
@@ -7083,6 +7132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1625283893}
   - component: {fileID: 1625283892}
+  - component: {fileID: 1625283894}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7120,6 +7170,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1625283894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625283891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a52240e147d14ce9a8274ac0ea47ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1701263637
 GameObject:
   m_ObjectHideFlags: 0

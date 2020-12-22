@@ -57,7 +57,7 @@ MonoBehaviour:
   targetTagName: Player
   targetTransform: {fileID: 0}
   aiming: 1
-  BulletColor: {r: 0, g: 0.83468914, b: 1, a: 1}
+  bulletColor: {r: 0, g: 0.6974547, b: 1, a: 1}
   _muzzles:
   - {fileID: 1599347384262339381}
   _burstDelay: 0
