@@ -217,9 +217,10 @@ GameObject:
   - component: {fileID: 29489722}
   - component: {fileID: 29489721}
   - component: {fileID: 29489725}
+  - component: {fileID: 29489726}
   m_Layer: 0
   m_Name: Enemy02
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,6 +373,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &29489726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29489718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ff0c3de7dec40b298e09acc242851d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackDamage: 5
+  _meleeAttackDelay: 1
+  _targetTag: Player
+  _attackSpeed: 2.5
+  _attackDistanceThreshold: 2.5
+  _timeBetweenAttacks: 1
 --- !u!1 &35138824
 GameObject:
   m_ObjectHideFlags: 0
@@ -5844,6 +5863,7 @@ GameObject:
   - component: {fileID: 800805354}
   - component: {fileID: 800805353}
   - component: {fileID: 800805355}
+  - component: {fileID: 800805356}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -5904,6 +5924,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &800805356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800805352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a29cedd3aef4b498dbadc7dfcf5986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapons:
+  - {fileID: 4215873866634098460, guid: aadbf92111f6c44dcb90935d39a3c6e2, type: 3}
+  _weaponIndex: 0
+  _bulletColor: {r: 0, g: 0.8565588, b: 1, a: 1}
+  targetTag: Enemy
+  _findClosestTargetDelay: 1.5
+  _findTargetArea:
+    serializedVersion: 2
+    x: -19
+    y: -11
+    width: 19
+    height: 11
 --- !u!1 &806345359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5921,7 +5965,7 @@ GameObject:
   - component: {fileID: 806345366}
   m_Layer: 0
   m_Name: Enemy01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
