@@ -10,6 +10,9 @@ public class Bullet : ExtendedCustomMonoBehavior
     {
         public Color bulletColor;
         public Transform objectTransform;
+        public bool hasShield;
+        public float shieldScaleFactor = 0.0f;
+        public Color shieldColor;
     }
 
     public string targetTag = "Player";
@@ -63,12 +66,14 @@ public class Bullet : ExtendedCustomMonoBehavior
 
             if (damageableObject != null)
             {
-                OnBulletHitObject(this, new OnBulletHitObjectEventArgs
+                OnBulletHitObject?.Invoke(this, new OnBulletHitObjectEventArgs
                 {
                     bulletColor = color,
                     objectTransform = collision.transform,
+                    hasShield = damageableObject.HasShield(damage),
+                    shieldScaleFactor = damageableObject.GetShieldScaleFactor(),
+                    shieldColor = damageableObject.GetShieldColor()
                 });
-
                 damageableObject.Damage(damage);
             }
             ObjectPool.Instance.ReleaseGameObject(gameObject);

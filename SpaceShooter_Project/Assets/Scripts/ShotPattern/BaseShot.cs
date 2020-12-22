@@ -21,8 +21,7 @@ public abstract class BaseShot : ExtendedCustomMonoBehavior
 
     public bool aiming;
 
-    [ColorUsage(true, true)]
-    public Color BulletColor = Color.magenta;
+    public Color bulletColor = Color.magenta;
 
     protected ShotController _shotController
     {
@@ -106,7 +105,7 @@ public abstract class BaseShot : ExtendedCustomMonoBehavior
             bullet = goBullet.AddComponent<Bullet>();
         }
 
-        bullet.SetColor(BulletColor);
+        bullet.SetColor(bulletColor);
         bullet.SetTargetTag(targetTagName);
         return bullet;
     }
