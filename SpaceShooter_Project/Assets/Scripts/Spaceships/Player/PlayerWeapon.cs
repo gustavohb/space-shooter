@@ -13,6 +13,8 @@ public class PlayerWeapon : BaseShot
 
     [SerializeField] private float betweenDelay = 0.1f;
 
+    [SerializeField] private SoundLibrary.Sound shotSFX;
+
     public string targetTag = "Enemy";
 
     [HideInInspector]
@@ -64,6 +66,8 @@ public class PlayerWeapon : BaseShot
                         bullet.targetTag = targetTag;
 
                         angle = Util.GetAngleFromTwoPosition(transform, _currentTarget);
+
+                        AudioManager.Instance.PlaySound(shotSFX, transform.position);
 
                         ShotBullet(bullet, bulletSpeed, angle);
 

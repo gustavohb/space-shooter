@@ -64,6 +64,7 @@ MonoBehaviour:
   _burstShots: 1
   _shotRate: 0.3
   betweenDelay: 0.1
+  shotSFX: 1
   targetTag: Enemy
 --- !u!1 &1130127639157179665
 GameObject:

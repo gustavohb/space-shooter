@@ -12,8 +12,6 @@ public class PlayerShooting : ExtendedCustomMonoBehavior
 
     private Transform _currentTarget;
 
-    [SerializeField] private Color _bulletColor = Color.magenta;
-
     public string targetTag = "Enemy";
 
     [SerializeField] private float _findClosestTargetDelay = 1.5f;
