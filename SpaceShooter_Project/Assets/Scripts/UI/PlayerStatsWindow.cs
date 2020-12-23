@@ -2,11 +2,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatsWindow : MonoBehaviour
+public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 {
     private const float DAMAGED_HEALTH_FADE_TIMER_MAX = 1.0f;
+    private const float DAMAGED_SHIELD_FADE_TIMER_MAX = 1.0f;
     private const int LOW_HEALTH_INDICATOR = 10;
     private const int HEALTH_SEGMENT_COUNT = 4;
+    private const int SHIELD_SEGMENT_COUNT = 4;
 
     private PlayerHealthShield _playerHealthShield;
 
@@ -23,6 +25,8 @@ public class PlayerStatsWindow : MonoBehaviour
     public Color healthDamageBarColor = new Color32(255, 189, 211, 255);
 
     public Color flashingHealhtBarColor = new Color32(200, 0, 78, 255);
+
+    public Color shieldDamageBarColor = Color.white;
 
     private Slider _health1Slider;
     private Slider _health2Slider;
@@ -62,14 +66,40 @@ public class PlayerStatsWindow : MonoBehaviour
     private float _lowHealthAlphaChange;
     private float _damageHealthFadeTimer;
 
+    private Slider _shield1Slider;
+    private Slider _shield2Slider;
+    private Slider _shield3Slider;
+    private Slider _shield4Slider;
+
+    private Slider[] _shieldSliderArray;
+
+    private Slider _damageShield1Slider;
+    private Slider _damageShield2Slider;
+    private Slider _damageShield3Slider;
+    private Slider _damageShield4Slider;
+
+    private Slider[] _damageShieldSliderArray;
+
+    private CanvasGroup _damageShield1CanvasGroup;
+    private CanvasGroup _damageShield2CanvasGroup;
+    private CanvasGroup _damageShield3CanvasGroup;
+    private CanvasGroup _damageShield4CanvasGroup;
+
+    private CanvasGroup[] _damageShieldCanvasGroupArray;
+
+    private float _damageShieldFadeTimer;
+
     [SerializeField] private Animator _healthIconAnimator;
 
     private float[] damageHealthPreviousHealthAmountArray = new float[HEALTH_SEGMENT_COUNT];
+
+    private float[] damageShieldPreviousShieldAmountArray = new float[SHIELD_SEGMENT_COUNT];
 
     [SerializeField] private Animator _healthIconAnimated;
 
     private float _preChangeHealth;
 
+    private float preChangeShield;
 
     [SerializeField]
     private float _updateSpeedSeconds = 0.3f;
@@ -78,6 +108,94 @@ public class PlayerStatsWindow : MonoBehaviour
     {
         _lowHealthAlphaChange = +4f;
 
+        SetUpHealthBars();
+        SetUpShieldBars();
+    }
+
+
+    private void Start()
+    {
+        _playerHealthShield = FindObjectOfType<PlayerHealthShield>();
+        if (_playerHealthShield != null)
+        {
+            SetPlayerHealthShield(_playerHealthShield);
+            UpdateHealthSegment();
+            UpdateShieldSegment();
+        }
+    }
+
+
+
+    private void Update()
+    {
+
+
+        // Is the damage health slider visible
+        if (_damageHealth1CanvasGroup.alpha > 0)
+        {
+            // Count down fade timer
+            _damageHealthFadeTimer -= Time.deltaTime;
+            if (_damageHealthFadeTimer < 0)
+            {
+                // Fade timer over, lower alpha
+                float newAlpha = _damageHealth1CanvasGroup.alpha;
+                newAlpha -= Time.deltaTime * 4f;
+
+                // Damage health bar not visible, set size 
+                for (int i = 0; i < HEALTH_SEGMENT_COUNT; i++)
+                {
+                    _damageHealthCanvasGroupArray[i].alpha = newAlpha;
+                }
+            }
+        }
+
+        // Is the damage shield slider visible
+        if (_damageShield1CanvasGroup.alpha > 0)
+        {
+            // Count down fade timer
+            _damageShieldFadeTimer -= Time.deltaTime;
+            if (_damageShieldFadeTimer < 0)
+            {
+                // Fade timer over, lower alpha
+                float newAlpha = _damageShield1CanvasGroup.alpha;
+                newAlpha -= Time.deltaTime * 4f;
+
+                // Damage health bar not visible, set size 
+                for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
+                {
+                    _damageShieldCanvasGroupArray[i].alpha = newAlpha;
+                }
+            }
+        }
+
+
+        // Flashing health image;
+        if (_flashingHealth1CanvasGroup.gameObject.activeSelf)
+        {
+            float lowHealthAlpha = _flashingHealth1CanvasGroup.alpha;
+            lowHealthAlpha += _lowHealthAlphaChange * Time.deltaTime * 1.0f;
+
+            if (lowHealthAlpha > 1f)
+            {
+                _lowHealthAlphaChange *= -1f;
+                lowHealthAlpha = 1f;
+            }
+            if (lowHealthAlpha < 0f)
+            {
+                _lowHealthAlphaChange *= -1f;
+                lowHealthAlpha = 0f;
+            }
+
+            for (int i = 0; i < HEALTH_SEGMENT_COUNT; i++)
+            {
+                _flashingHealthCanvasGroupArray[i].alpha = lowHealthAlpha;
+            }
+        }
+
+    }
+
+    private void SetUpHealthBars()
+    {
         var healthBars = transform.Find("HealthBars");
 
         var healthBar01 = healthBars.Find("Health01");
@@ -174,69 +292,63 @@ public class PlayerStatsWindow : MonoBehaviour
             _damageHealth4CanvasGroup
         };
 
-
-
-
-
     }
 
-    private void Start()
+    private void SetUpShieldBars()
     {
-        _playerHealthShield = FindObjectOfType<PlayerHealthShield>();
-        if (_playerHealthShield != null)
+        var shieldBars = transform.Find("ShieldBars");
+
+        var shieldBar01 = shieldBars.Find("Shield01");
+        _shield1Slider = shieldBar01.Find("BarSlider").GetComponent<Slider>();
+
+        var shieldBar02 = shieldBars.Find("Shield02");
+        _shield2Slider = shieldBar02.Find("BarSlider").GetComponent<Slider>();
+
+        var shieldBar03 = shieldBars.Find("Shield03");
+        _shield3Slider = shieldBar03.Find("BarSlider").GetComponent<Slider>();
+
+        var shieldBar04 = shieldBars.Find("Shield04");
+        _shield4Slider = shieldBar04.Find("BarSlider").GetComponent<Slider>();
+
+        _shieldSliderArray = new Slider[]
         {
-            SetPlayerHealthShield(_playerHealthShield);
-            UpdateHealthSegment();
-        }
+            _shield1Slider,
+            _shield2Slider,
+            _shield3Slider,
+            _shield4Slider
+        };
 
-    }
+        var damageBar01 = shieldBar01.Find("DamageSlider");
+        _damageShield1Slider = damageBar01.GetComponent<Slider>();
+        _damageShield1CanvasGroup = damageBar01.GetComponent<CanvasGroup>();
 
-    private void Update()
-    {
+        var damageBar02 = shieldBar02.Find("DamageSlider");
+        _damageShield2Slider = damageBar02.GetComponent<Slider>();
+        _damageShield2CanvasGroup = damageBar02.GetComponent<CanvasGroup>();
 
+        var damageBar03 = shieldBar03.Find("DamageSlider");
+        _damageShield3Slider = damageBar03.GetComponent<Slider>();
+        _damageShield3CanvasGroup = damageBar03.GetComponent<CanvasGroup>();
 
-        // Is the damage health slider visible
-        if (_damageHealth1CanvasGroup.alpha > 0)
+        var damageBar04 = shieldBar04.Find("DamageSlider");
+        _damageShield4Slider = damageBar04.GetComponent<Slider>();
+        _damageShield4CanvasGroup = damageBar04.GetComponent<CanvasGroup>();
+
+        _damageShieldSliderArray = new Slider[]
         {
-            // Count down fade timer
-            _damageHealthFadeTimer -= Time.deltaTime;
-            if (_damageHealthFadeTimer < 0)
-            {
-                // Fade timer over, lower alpha
-                float newAlpha = _damageHealth1CanvasGroup.alpha;
-                newAlpha -= Time.deltaTime * 4f;
+            _damageShield1Slider,
+            _damageShield2Slider,
+            _damageShield3Slider,
+            _damageShield4Slider
+        };
 
-                // Damage health bar not visible, set size 
-                for (int i = 0; i < HEALTH_SEGMENT_COUNT; i++)
-                {
-                    _damageHealthCanvasGroupArray[i].alpha = newAlpha;
-                }
-            }
-        }
-
-
-        // Flashing health image;
-        if (_flashingHealth1CanvasGroup.gameObject.activeSelf)
+        _damageShieldCanvasGroupArray = new CanvasGroup[]
         {
-            float lowHealthAlpha = _flashingHealth1CanvasGroup.alpha;
-            lowHealthAlpha += _lowHealthAlphaChange * Time.deltaTime * 1.0f;
-
-            if (lowHealthAlpha > 1f)
-            {
-                _lowHealthAlphaChange *= -1f;
-                lowHealthAlpha = 1f;
-            }
-            if (lowHealthAlpha < 0f)
-            {
-                _lowHealthAlphaChange *= -1f;
-                lowHealthAlpha = 0f;
-            }
-
-            for (int i = 0; i < HEALTH_SEGMENT_COUNT; i++)
-            {
-                _flashingHealthCanvasGroupArray[i].alpha = lowHealthAlpha;
-            }
-        }
+            _damageShield1CanvasGroup,
+            _damageShield2CanvasGroup,
+            _damageShield3CanvasGroup,
+            _damageShield4CanvasGroup
+        };
 
     }
 
@@ -245,9 +357,10 @@ public class PlayerStatsWindow : MonoBehaviour
         _playerHealthShield = playerHealthShield;
 
         UpdateDamageHealthPreviousHealthAmounts();
+        UpdateDamageShieldPreviousShieldAmounts();
 
-        playerHealthShield.OnHealthShieldChanged += PlayerHealthShield_OnHealthShieldChanged;
-        playerHealthShield.OnRepair += PlayerHealthShield_OnRepair;
+        _playerHealthShield.OnHealthShieldChanged += PlayerHealthShield_OnHealthShieldChanged;
+        _playerHealthShield.OnRepair += PlayerHealthShield_OnRepair;
     }
 
     private void PlayerHealthShield_OnRepair(object sender, System.EventArgs e)
@@ -292,6 +405,41 @@ public class PlayerStatsWindow : MonoBehaviour
         }
     }
 
+    private void UpdateDamageShieldPreviousShieldAmounts()
+    {
+
+        float shield = _playerHealthShield.GetShield();
+
+        preChangeShield = shield;
+
+        for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
+        {
+            int shieldSegmentMin = i * PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+            int shieldSegmentMax = (i + 1) * PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+
+            if (shield < shieldSegmentMin)
+            {
+                // Health amount under minimum for this segment
+                damageShieldPreviousShieldAmountArray[i] = 0;
+            }
+            else
+            {
+                if (shield >= shieldSegmentMax)
+                {
+                    // Health amount above max
+                    damageShieldPreviousShieldAmountArray[i] = PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+                }
+                else
+                {
+                    // Health amount somewhere in between this segment
+                    damageShieldPreviousShieldAmountArray[i] = shield - shieldSegmentMin;
+                }
+            }
+
+        }
+    }
+
+
     private void PlayerHealthShield_OnHealthShieldChanged(object sender, bool isDamage)
     {
         if (_healthIconAnimator != null)
@@ -322,6 +470,32 @@ public class PlayerStatsWindow : MonoBehaviour
             }
         }
 
+        // Make damage health bar visible
+
+        _damageShieldFadeTimer = DAMAGED_SHIELD_FADE_TIMER_MAX;
+
+        // Damage health bar not visible, set size
+        if (_damageShield1CanvasGroup.alpha <= 0)
+        {
+            for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
+            {
+                _damageShieldSliderArray[i].value = (float)damageShieldPreviousShieldAmountArray[i] / PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+                _damageShieldCanvasGroupArray[i].alpha = 1f;
+            }
+        }
+
+        if (!isDamage)
+        {
+            for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
+            {
+                if (_damageShieldSliderArray[i].value <= _shieldSliderArray[i].value)
+                {
+                    _damageShieldCanvasGroupArray[i].alpha = 0f;
+                }
+            }
+        }
+
+
         if (_playerHealthShield.GetHealth() <= LOW_HEALTH_INDICATOR)
         {
 
@@ -345,12 +519,63 @@ public class PlayerStatsWindow : MonoBehaviour
             }
         }
 
+
+
     }
 
 
     IEnumerator UpdateHealthShield()
     {
         float elapsed = 0f;
+
+
+        // Update shield bars
+        float currentShield = _playerHealthShield.GetShield();
+
+
+        while (elapsed < _updateSpeedSeconds)
+        {
+            elapsed += Time.deltaTime;
+            float tempShield = Mathf.Lerp(preChangeShield, currentShield, elapsed / _updateSpeedSeconds);
+
+            for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
+            {
+                int shieldSegmentMin = i * PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+                int shieldSegmentMax = (i + 1) * PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+
+                if (currentShield < shieldSegmentMin)
+                {
+                    // Health amount under minimum for this segment
+                    _shieldSliderArray[i].value = 0f;
+                }
+                else
+                {
+                    if (currentShield > shieldSegmentMax)
+                    {
+                        // Health amount above max
+                        _shieldSliderArray[i].value = 1f;
+                    }
+                    else
+                    {
+                        // Health amount somewhere in between this segment
+                        float fillAmount = (float)(tempShield - shieldSegmentMin) / PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+                        _shieldSliderArray[i].value = fillAmount;
+                    }
+                }
+
+            }
+
+            yield return null;
+        }
+
+
+        UpdateDamageShieldPreviousShieldAmounts();
+
+
+        // Update health bars
+
+        elapsed = 0;
+
 
         float currentHealth = _playerHealthShield.GetHealth();
 
@@ -404,31 +629,83 @@ public class PlayerStatsWindow : MonoBehaviour
             _flashingHealthSliderArray[i].transform.Find("FillArea").Find("Fill").GetComponent<Image>().color = flashingHealhtBarColor;
         }
 
+        var healthBars = transform.Find("HealthBars");
 
-        transform.Find("HealthBars").Find("Health01").gameObject.SetActive(true);
-        transform.Find("HealthBars").Find("Health02").gameObject.SetActive(false);
-        transform.Find("HealthBars").Find("Health03").gameObject.SetActive(false);
-        transform.Find("HealthBars").Find("Health04").gameObject.SetActive(false);
+        healthBars.Find("Health01").gameObject.SetActive(true);
+        healthBars.Find("Health02").gameObject.SetActive(false);
+        healthBars.Find("Health03").gameObject.SetActive(false);
+        healthBars.Find("Health04").gameObject.SetActive(false);
 
         switch (healthLevel)
         {
             default:
                 break;
             case PlayerHealthShield.HealthLevel.Level_2:
-                transform.Find("HealthBars").Find("Health02").gameObject.SetActive(true);
+                healthBars.Find("Health02").gameObject.SetActive(true);
                 break;
             case PlayerHealthShield.HealthLevel.Level_3:
-                transform.Find("HealthBars").Find("Health02").gameObject.SetActive(true);
-                transform.Find("HealthBars").Find("Health03").gameObject.SetActive(true);
+                healthBars.Find("Health02").gameObject.SetActive(true);
+                healthBars.Find("Health03").gameObject.SetActive(true);
                 break;
             case PlayerHealthShield.HealthLevel.Level_4:
-                transform.Find("HealthBars").Find("Health02").gameObject.SetActive(true);
-                transform.Find("HealthBars").Find("Health03").gameObject.SetActive(true);
-                transform.Find("HealthBars").Find("Health04").gameObject.SetActive(true);
+                healthBars.Find("Health02").gameObject.SetActive(true);
+                healthBars.Find("Health03").gameObject.SetActive(true);
+                healthBars.Find("Health04").gameObject.SetActive(true);
                 break;
         }
 
 
     }
+
+
+    private void UpdateShieldSegment()
+    {
+        PlayerHealthShield.ShieldArmor shieldArmor = _playerHealthShield.GetEquippedShieldArmor();
+
+        var shieldBars = transform.Find("ShieldBars");
+
+        shieldBars.Find("Shield01").gameObject.SetActive(false);
+        shieldBars.Find("Shield02").gameObject.SetActive(false);
+        shieldBars.Find("Shield03").gameObject.SetActive(false);
+        shieldBars.Find("Shield04").gameObject.SetActive(false);
+
+        Color shieldArmorColor = Color.white;
+
+        switch (shieldArmor)
+        {
+            default:
+            case PlayerHealthShield.ShieldArmor.None:
+                break;
+            case PlayerHealthShield.ShieldArmor.Tier_1:
+                shieldBars.Find("Shield01").gameObject.SetActive(true);
+                shieldArmorColor = tier1Color;
+                break;
+            case PlayerHealthShield.ShieldArmor.Tier_2:
+                shieldBars.Find("Shield01").gameObject.SetActive(true);
+                shieldBars.Find("Shield02").gameObject.SetActive(true);
+                shieldArmorColor = tier2Color;
+                break;
+            case PlayerHealthShield.ShieldArmor.Tier_3:
+                shieldBars.Find("Shield01").gameObject.SetActive(true);
+                shieldBars.Find("Shield02").gameObject.SetActive(true);
+                shieldBars.Find("Shield03").gameObject.SetActive(true);
+                shieldArmorColor = tier3Color;
+                break;
+            case PlayerHealthShield.ShieldArmor.Tier_4:
+                shieldBars.Find("Shield01").gameObject.SetActive(true);
+                shieldBars.Find("Shield02").gameObject.SetActive(true);
+                shieldBars.Find("Shield03").gameObject.SetActive(true);
+                shieldBars.Find("Shield04").gameObject.SetActive(true);
+                shieldArmorColor = tier4Color;
+                break;
+        }
+
+        for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
+        {
+            _shieldSliderArray[i].transform.Find("FillArea").Find("Fill").GetComponent<Image>().color = shieldArmorColor;
+            _damageShieldSliderArray[i].transform.Find("FillArea").Find("Fill").GetComponent<Image>().color = shieldDamageBarColor;
+        }
+    }
+
 
 }
