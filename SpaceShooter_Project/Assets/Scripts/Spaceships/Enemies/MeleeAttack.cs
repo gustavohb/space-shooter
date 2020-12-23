@@ -66,7 +66,10 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
 
         while (percent <= 1)
         {
-
+            if (_target == null)
+            {
+                break;
+            }
             percent += Time.deltaTime * _attackSpeed;
 
             float interpolation = (-Mathf.Pow(percent, 2) + percent) * 4;

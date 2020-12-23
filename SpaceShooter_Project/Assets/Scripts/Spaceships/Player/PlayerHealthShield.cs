@@ -91,12 +91,10 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
     private void Start()
     {
-        OnHealthShieldChanged?.Invoke(this, false);
-
         _rechargeShieldDelayCount = 0;
-
         SetHealthLevel(_healthLevel);
         SetEquippedShieldArmor(_shieldArmor);
+        OnHealthShieldChanged?.Invoke(this, false);
     }
 
     private void Update()
