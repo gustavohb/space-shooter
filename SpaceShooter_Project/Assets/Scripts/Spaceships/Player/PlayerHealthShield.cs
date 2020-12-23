@@ -32,7 +32,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     public event EventHandler OnDeath;
 
     [SerializeField] float _shieldScaleFactor = 0.0f;
-    [SerializeField] private GameObject _deathEffect;
+    [SerializeField] private GameObject _explosionEffect;
     [SerializeField] private ShieldArmor _shieldArmor;
     [SerializeField] private HealthLevel _healthLevel;
 
@@ -187,9 +187,9 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     {
         _isDead = true;
 
-        if (_deathEffect != null)
+        if (_explosionEffect != null)
         {
-            Instantiate(_deathEffect, GetPosition(), Quaternion.identity);
+            Instantiate(_explosionEffect, GetPosition(), Quaternion.identity);
         }
 
         OnPlayerDie?.Invoke(this, EventArgs.Empty);

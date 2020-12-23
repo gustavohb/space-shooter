@@ -43,7 +43,7 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
     [Header("Death")]
 
-    [SerializeField] private GameObject _deathEffectPrefab;
+    [SerializeField] private GameObject _explosionEffectPrefab;
 
     public static event Action<EnemyHealthShield> OnHealthShieldAdded = delegate { };
 
@@ -280,9 +280,9 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
             OnDeath?.Invoke(this, EventArgs.Empty);
 
-            if (_deathEffectPrefab != null)
+            if (_explosionEffectPrefab != null)
             {
-                Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
+                Instantiate(_explosionEffectPrefab, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }

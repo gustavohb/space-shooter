@@ -132,7 +132,6 @@ public class ShotController : ExtendedCustomMonoBehavior
 
         while (true)
         {
-
             if (atRandom)
             {
                 _nowIndex = UnityEngine.Random.Range(0, _tmpShotInfoList.Count);

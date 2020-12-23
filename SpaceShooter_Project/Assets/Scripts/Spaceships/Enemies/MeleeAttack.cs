@@ -19,9 +19,7 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
 
     private float _meleeAttackDelayTimer;
 
-    private float _nextAttackTime;
-
-    private IMoveVelocity _moveVelocity;
+    private float _meleeAttackTimer;
 
     private Transform _target;
 
@@ -32,9 +30,6 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
     private void Start()
     {
         _target = GameObject.FindGameObjectWithTag(_targetTag)?.transform;
-
-        _moveVelocity = GetComponent<IMoveVelocity>();
-
     }
 
     private void Update()
@@ -42,13 +37,15 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
 
         _meleeAttackDelayTimer -= Time.deltaTime;
 
-        if (_target != null && Time.time > _nextAttackTime && _isMeleeAttackEnable)
+        _meleeAttackTimer -= Time.deltaTime;
+
+        if (_target != null && _meleeAttackTimer <= 0 && _isMeleeAttackEnable)
         {
             float sqrDistToTarget = (_target.position - transform.position).sqrMagnitude;
 
             if (sqrDistToTarget < Mathf.Pow(_attackDistanceThreshold, 2))
             {
-                _nextAttackTime = Time.time + _timeBetweenAttacks;
+                _meleeAttackTimer = _timeBetweenAttacks;
                 StartCoroutine(Attack());
             }
         }

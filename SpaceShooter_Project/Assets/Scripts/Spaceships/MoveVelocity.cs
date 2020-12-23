@@ -40,7 +40,7 @@ public class MoveVelocity : ExtendedCustomMonoBehavior, IMoveVelocity
         }
         else
         {
-            //rigidbody2D.velocity = Vector2.zero;
+            rigidbody2D.velocity = Vector2.zero;
         }
     }
 }
