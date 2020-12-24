@@ -6,6 +6,7 @@ public class PauseScreen : ExtendedCustomMonoBehavior
     private void OnEnable()
     {
         Time.timeScale = 0.0f;
+        GameTime.isPaused = true;
     }
 
     private void Update()
@@ -19,5 +20,6 @@ public class PauseScreen : ExtendedCustomMonoBehavior
     private void OnDisable()
     {
         Time.timeScale = 1.0f;
+        GameTime.isPaused = false;
     }
 }

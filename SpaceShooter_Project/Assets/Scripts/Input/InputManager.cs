@@ -38,6 +38,17 @@ public class InputManager : ExtendedCustomMonoBehavior
 
     private void Update()
     {
+        if (GameTime.isPaused)
+        {
+            _joystickInnerCircle.GetComponent<SpriteRenderer>().enabled = false;
+            _joystickOuterCircle.GetComponent<SpriteRenderer>().enabled = false;
+
+            _joystickDisable?.SetActive(false);
+
+            return;
+        }
+
+
 #if UNITY_EDITOR || UNITY_WEBGL
         if (Input.GetMouseButtonDown(0))
         {
@@ -151,6 +162,12 @@ public class InputManager : ExtendedCustomMonoBehavior
 
     private void FixedUpdate()
     {
+        if (GameTime.isPaused)
+        {
+            return;
+        }
+
+
 #if UNITY_EDITOR || UNITY_ANDROID || UNITY_WEBGL
         if (_touchStart)
         {

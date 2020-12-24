@@ -11,6 +11,8 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
 
     public float musicVolumePercent { get; private set; }
 
+    public float sfxVolumePercent { get; private set; }
+
     [SerializeField] private float _lowPitchRange = 0.95f;
 
     [SerializeField] private float _highPitchRange = 1.05f;
@@ -39,6 +41,8 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
 
         musicVolumePercent = PlayerPrefs.GetFloat("MusicVolume", 1);
 
+        sfxVolumePercent = PlayerPrefs.GetFloat("SfxVolume", 1);
+
         _audioListenerTransform = FindObjectOfType<AudioListener>().transform;
 
         _musicSources = new AudioSource[2];
@@ -62,21 +66,21 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
 
         if (musicOn)
         {
-            SetMusicVolume(musicVolumePercent, AudioChannel.Music);
+            SetVolume(musicVolumePercent, AudioChannel.Music);
         }
         else
         {
-            SetMusicVolume(0.0f, AudioChannel.Music);
+            SetVolume(0.0f, AudioChannel.Music);
         }
 
 
         if (sfxOn)
         {
-            SetMusicVolume(1.0f, AudioChannel.Sfx);
+            SetVolume(1.0f, AudioChannel.Sfx);
         }
         else
         {
-            SetMusicVolume(0.0f, AudioChannel.Sfx);
+            SetVolume(0.0f, AudioChannel.Sfx);
         }
 
         DontDestroyOnLoad(gameObject);
@@ -141,7 +145,7 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
             _musicSources[0].Stop();
             _musicSources[1].Stop();
 
-            SetMusicVolume(0.0f, AudioChannel.Music);
+            SetVolume(0.0f, AudioChannel.Music);
 
             PlayerPrefs.SetInt("MusicOn", 0);
         }
@@ -150,6 +154,8 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
             musicOn = true;
 
             _musicSources[_activeMusicSourceIndex].Play();
+
+            SetVolume(1.0f, AudioChannel.Music);
 
             PlayerPrefs.SetInt("MusicOn", 1);
 
@@ -164,7 +170,7 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
         {
             sfxOn = false;
 
-            SetMusicVolume(0.0f, AudioChannel.Sfx);
+            SetVolume(0.0f, AudioChannel.Sfx);
 
             PlayerPrefs.SetInt("SfxOn", 0);
         }
@@ -172,23 +178,38 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
         {
             sfxOn = true;
 
+            SetVolume(1.0f, AudioChannel.Sfx);
+
             PlayerPrefs.SetInt("SfxOn", 1);
         }
 
         PlayerPrefs.Save();
     }
 
-    public void SetMusicVolume(float volumePercent, AudioChannel channel)
+    public void SetVolume(float volumePercent, AudioChannel channel)
     {
-        musicOn = volumePercent > 0;
-        musicVolumePercent = volumePercent;
+        switch (channel)
+        {
+            case AudioChannel.Sfx:
+                sfxOn = volumePercent > 0;
+                sfxVolumePercent = volumePercent;
+                break;
+            case AudioChannel.Music:
+                musicOn = volumePercent > 0;
+                musicVolumePercent = volumePercent;
+                break;
+        }
 
         _musicSources[0].volume = musicVolumePercent;
         _musicSources[1].volume = musicVolumePercent;
 
+        _sfx2DSource.volume = sfxVolumePercent;
+
         PlayerPrefs.SetInt("MusicOn", musicOn ? 1 : 0);
         PlayerPrefs.SetInt("SfxOn", sfxOn ? 1 : 0);
 
+        PlayerPrefs.SetFloat("MusicVolume", musicVolumePercent);
+        PlayerPrefs.SetFloat("SfxVolume", sfxVolumePercent);
         PlayerPrefs.Save();
     }
 
@@ -243,7 +264,7 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
         float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
         audioSource.pitch = randomPitch;
 
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip, sfxVolumePercent);
 
         StartCoroutine(ReleaseAudioSource(audioSource, audioClip.length));
 
