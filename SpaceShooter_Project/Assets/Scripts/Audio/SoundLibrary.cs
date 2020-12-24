@@ -15,6 +15,8 @@ public class SoundLibrary : MonoBehaviour
         EnemyBuzzsawAttack,
         WaveBannerAppear,
         WaveBannerDisappear,
+        Victory,
+        ClickButton01,
     };
 
     [System.Serializable]
