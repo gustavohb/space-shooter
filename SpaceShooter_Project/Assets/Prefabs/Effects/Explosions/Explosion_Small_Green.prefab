@@ -55,7 +55,7 @@ MonoBehaviour:
   _randomness: 45
   _snapping: 0
   _fadeOut: 1
-  _vibratesHandheld: 1
+  _vibratesHandheld: 0
   _startDelay: 0
 --- !u!114 &7765258572509658583
 MonoBehaviour:

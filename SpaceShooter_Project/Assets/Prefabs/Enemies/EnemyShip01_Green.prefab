@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941415568542219187}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.16000001, z: 0}
+  m_LocalPosition: {x: 0, y: -0.059, z: 0}
   m_LocalScale: {x: 1.2943898, y: 1.2943898, z: 1.2943898}
   m_Children: []
   m_Father: {fileID: 1941415568854171613}
@@ -424,7 +424,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.09019608, g: 0.8980393, b: 0.09411766, a: 1}
+      maxColor: {r: 0.09019608, g: 0.8980393, b: 0.09411766, a: 0.38431373}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -486,7 +486,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.58
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5005,7 +5005,7 @@ GameObject:
   - component: {fileID: 1941415568804092981}
   - component: {fileID: 1941415568804092977}
   m_Layer: 0
-  m_Name: EnemyShip01
+  m_Name: EnemyShip01_Green
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5116,7 +5116,8 @@ MonoBehaviour:
   _maxShield: 0
   _shieldColor: {r: 0, g: 0.735849, b: 0.16736966, a: 1}
   _lowHealthPct: 0.2
-  _lowHealthEffect: {fileID: 0}
+  _lowHealthEffect: {fileID: 3728366331290072407, guid: 49a80424f95e44b4f9fcb0fab7e025d8,
+    type: 3}
   _shieldCollider: {fileID: 0}
   _shieldScaleFactor: 1
   _explosionEffectPrefab: {fileID: 624479047453642232, guid: f531398f75cd7409891c4681204a12b4,
