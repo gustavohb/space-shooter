@@ -48,13 +48,13 @@ public class PlayerWeapon : BaseShot
 
         transform.eulerAngles = newEulerAngles;
 
-        _burstDelayCount += Time.deltaTime;
+        _burstDelayCount += GameTime.deltaTime;
 
         if (_burstDelayCount >= _burstDelay)
         {
             if (_burstShotsCount < _burstShots)
             {
-                _shotRateCount += Time.deltaTime;
+                _shotRateCount += GameTime.deltaTime;
 
                 if (_shotRateCount >= _shotRate)
                 {

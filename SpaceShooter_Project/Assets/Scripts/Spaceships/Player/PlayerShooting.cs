@@ -92,7 +92,7 @@ public class PlayerShooting : ExtendedCustomMonoBehavior
     private void HandleShootBlasterProjectile()
     {
 
-        _findClosestTargetTimer += Time.deltaTime;
+        _findClosestTargetTimer += GameTime.deltaTime;
 
         if (_findClosestTargetTimer > _findClosestTargetDelay || _currentTarget == null)
         {

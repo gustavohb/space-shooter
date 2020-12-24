@@ -149,7 +149,7 @@ public abstract class BaseShot : ExtendedCustomMonoBehavior
 
             yield return 0;
 
-            countUpTime += Time.deltaTime;
+            countUpTime += GameTime.deltaTime;
         }
 
         ObjectPool.Instance.ReleaseGameObject(goBullet);

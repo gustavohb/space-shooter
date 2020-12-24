@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private string _enemyTag = "Enemy";
 
-    [SerializeField] private float _atartDelay = 1f;
+    [SerializeField] private float _startDelay = 1f;
 
     [SerializeField] private Rect _spawnArea = new Rect(-21, -12, 21, 12);
 
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
         _waves[_currentWaveNumber + 1].waveStartDelay = 0;
 
-        yield return new WaitForSeconds(_atartDelay);
+        yield return new WaitForSeconds(_startDelay);
 
         WaveCleared();
 
@@ -79,12 +79,12 @@ public class EnemySpawner : MonoBehaviour
                 {
                     if (spawn.spawnDelayTimer > 0)
                     {
-                        spawn.spawnDelayTimer -= Time.deltaTime;
+                        spawn.spawnDelayTimer -= GameTime.deltaTime;
                     }
                     else
                     {
                         // Count spawn time
-                        spawn.spawnTimer += Time.deltaTime;
+                        spawn.spawnTimer += GameTime.deltaTime;
 
                         // Immediately spawn the first enemy
                         if (spawn.enemiesRemainingToSpawn == spawn.count)
@@ -108,7 +108,7 @@ public class EnemySpawner : MonoBehaviour
                 }
 
                 // Count down the total spawn time
-                _waves[_currentWaveNumber].spawnTimeTemp -= Time.deltaTime;
+                _waves[_currentWaveNumber].spawnTimeTemp -= GameTime.deltaTime;
             }
         }
     }

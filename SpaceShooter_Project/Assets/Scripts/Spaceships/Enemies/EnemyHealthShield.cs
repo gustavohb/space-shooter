@@ -304,7 +304,7 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
             _baseTransform.localPosition = new Vector3(x, y, originalPos.z);
 
-            elapsed += Time.deltaTime;
+            elapsed += GameTime.deltaTime;
 
             yield return null;
         }
@@ -336,7 +336,7 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
         while (_isFlashing && _flashDelayTimer >= 0)
         {
-            _flashDelayTimer -= Time.deltaTime;
+            _flashDelayTimer -= GameTime.deltaTime;
 
 
             foreach (Material material in _tintMaterials)
@@ -351,7 +351,7 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
         while (_isFlashing && flash >= 0)
         {
-            flash -= Time.deltaTime * _flashSpeed;
+            flash -= GameTime.deltaTime * _flashSpeed;
  
             foreach (Material material in _tintMaterials)
             {

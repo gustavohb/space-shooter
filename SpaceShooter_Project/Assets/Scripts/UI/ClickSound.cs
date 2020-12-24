@@ -6,11 +6,11 @@ public class ClickSound : MonoBehaviour
 {
     [SerializeField] SoundLibrary.Sound sound;
 
-    private Button button { get { return GetComponent<Button>(); } }
+    private Button _button { get { return GetComponent<Button>(); } }
 
     private void Start()
     {
-        button.onClick.AddListener(() => PlaySoud());
+        _button.onClick.AddListener(() => PlaySoud());
     }
 
 

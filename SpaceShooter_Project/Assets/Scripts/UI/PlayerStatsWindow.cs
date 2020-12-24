@@ -134,12 +134,12 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         if (_damageHealth1CanvasGroup.alpha > 0)
         {
             // Count down fade timer
-            _damageHealthFadeTimer -= Time.deltaTime;
+            _damageHealthFadeTimer -= GameTime.deltaTime;
             if (_damageHealthFadeTimer < 0)
             {
                 // Fade timer over, lower alpha
                 float newAlpha = _damageHealth1CanvasGroup.alpha;
-                newAlpha -= Time.deltaTime * 4f;
+                newAlpha -= GameTime.deltaTime * 4f;
 
                 // Damage health bar not visible, set size 
                 for (int i = 0; i < HEALTH_SEGMENT_COUNT; i++)
@@ -153,12 +153,12 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         if (_damageShield1CanvasGroup.alpha > 0)
         {
             // Count down fade timer
-            _damageShieldFadeTimer -= Time.deltaTime;
+            _damageShieldFadeTimer -= GameTime.deltaTime;
             if (_damageShieldFadeTimer < 0)
             {
                 // Fade timer over, lower alpha
                 float newAlpha = _damageShield1CanvasGroup.alpha;
-                newAlpha -= Time.deltaTime * 4f;
+                newAlpha -= GameTime.deltaTime * 4f;
 
                 // Damage health bar not visible, set size 
                 for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
@@ -173,7 +173,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         if (_flashingHealth1CanvasGroup.gameObject.activeSelf)
         {
             float lowHealthAlpha = _flashingHealth1CanvasGroup.alpha;
-            lowHealthAlpha += _lowHealthAlphaChange * Time.deltaTime * 1.0f;
+            lowHealthAlpha += _lowHealthAlphaChange * GameTime.deltaTime * 1.0f;
 
             if (lowHealthAlpha > 1f)
             {
@@ -535,7 +535,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
         while (elapsed < _updateSpeedSeconds)
         {
-            elapsed += Time.deltaTime;
+            elapsed += GameTime.deltaTime;
             float tempShield = Mathf.Lerp(preChangeShield, currentShield, elapsed / _updateSpeedSeconds);
 
             for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
@@ -581,7 +581,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
         while (elapsed < _updateSpeedSeconds)
         {
-            elapsed += Time.deltaTime;
+            elapsed += GameTime.deltaTime;
             float tempHealth = Mathf.Lerp(_preChangeHealth, currentHealth, elapsed / _updateSpeedSeconds);
 
 

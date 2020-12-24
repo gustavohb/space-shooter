@@ -98,7 +98,7 @@ public class EnemyHealthShieldBars : MonoBehaviour
 
         while (elapsed < _updateSpeedSeconds)
         {
-            elapsed += Time.deltaTime;
+            elapsed += GameTime.deltaTime;
             _shieldBarImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / _updateSpeedSeconds);
             yield return null;
         }
@@ -136,7 +136,7 @@ public class EnemyHealthShieldBars : MonoBehaviour
 
         while (elapsed < _updateSpeedSeconds)
         {
-            elapsed += Time.deltaTime;
+            elapsed += GameTime.deltaTime;
             _healthBarImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / _updateSpeedSeconds);
             yield return null;
         }
@@ -146,7 +146,7 @@ public class EnemyHealthShieldBars : MonoBehaviour
 
     private void Update()
     {
-        _displayTimer += Time.deltaTime;
+        _displayTimer += GameTime.deltaTime;
         if (_displayTimer >= _displayTime && !_isFadingOut)
         {
             _isFadingOut = true;

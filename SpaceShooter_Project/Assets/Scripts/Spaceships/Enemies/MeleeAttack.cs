@@ -37,9 +37,9 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
     private void Update()
     {
 
-        _meleeAttackDelayTimer -= Time.deltaTime;
+        _meleeAttackDelayTimer -= GameTime.deltaTime;
 
-        _meleeAttackTimer -= Time.deltaTime;
+        _meleeAttackTimer -= GameTime.deltaTime;
 
         if (_target != null && _meleeAttackTimer <= 0 && _isMeleeAttackEnable)
         {
@@ -71,7 +71,7 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
             {
                 break;
             }
-            percent += Time.deltaTime * _attackSpeed;
+            percent += GameTime.deltaTime * _attackSpeed;
 
             float interpolation = (-Mathf.Pow(percent, 2) + percent) * 4;
 

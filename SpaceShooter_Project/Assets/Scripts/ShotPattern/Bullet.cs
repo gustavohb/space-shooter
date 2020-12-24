@@ -116,7 +116,7 @@ public class Bullet : ExtendedCustomMonoBehavior
 
                     myAngle = transform.eulerAngles.z;
 
-                    float toAngle = Mathf.MoveTowardsAngle(myAngle, rotAngle, Time.deltaTime * homingAngleSpeed);
+                    float toAngle = Mathf.MoveTowardsAngle(myAngle, rotAngle, GameTime.deltaTime * homingAngleSpeed);
 
                     transform.SetEulerAnglesZ(toAngle);
                 }
@@ -125,7 +125,7 @@ public class Bullet : ExtendedCustomMonoBehavior
             else if (wave)
             {
                 // acceleration turning.
-                angle += (accelTurn * Time.deltaTime);
+                angle += (accelTurn * GameTime.deltaTime);
                 // wave.
                 if (0f < waveSpeed && 0f < waveRangeSize)
                 {
@@ -139,16 +139,16 @@ public class Bullet : ExtendedCustomMonoBehavior
             else
             {
                 // acceleration turning.
-                float addAngle = accelTurn * Time.deltaTime;
+                float addAngle = accelTurn * GameTime.deltaTime;
 
                 transform.AddEulerAnglesZ(addAngle);
             }
 
             // acceleration speed.
-            speed += (accelSpeed * Time.deltaTime);
+            speed += (accelSpeed * GameTime.deltaTime);
 
 
-            transform.position += transform.up.normalized * speed * Time.deltaTime;
+            transform.position += transform.up.normalized * speed * GameTime.deltaTime;
 
             yield return new WaitForEndOfFrame();
         }

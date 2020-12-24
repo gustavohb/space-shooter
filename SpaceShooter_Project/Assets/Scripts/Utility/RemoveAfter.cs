@@ -7,7 +7,7 @@ public class RemoveAfter : MonoBehaviour
 
     private void Update()
     {
-        _removeAfter -= Time.deltaTime;
+        _removeAfter -= GameTime.deltaTime;
 
         if (_removeAfter <= 0)
         {

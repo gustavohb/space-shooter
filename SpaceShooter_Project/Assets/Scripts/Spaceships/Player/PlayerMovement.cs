@@ -18,7 +18,7 @@ public class PlayerMovement : ExtendedCustomMonoBehavior
     public void Move(Vector2 direction)
     {
 
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * speed * GameTime.deltaTime);
 
 
         if (animator != null)

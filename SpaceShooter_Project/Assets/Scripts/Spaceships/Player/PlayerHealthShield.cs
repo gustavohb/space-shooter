@@ -101,11 +101,11 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     {
         if (_rechargeShieldDelayCount < _rechargeShieldDelay)
         {
-            _rechargeShieldDelayCount += Time.deltaTime;
+            _rechargeShieldDelayCount += GameTime.deltaTime;
         }
         else
         {
-            HealShield(_rechargeShieldSpeed * Time.deltaTime);
+            HealShield(_rechargeShieldSpeed * GameTime.deltaTime);
         }
     }
 
@@ -340,7 +340,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
             _baseTransform.localPosition = new Vector3(x, y, originalPos.z);
 
-            elapsed += Time.deltaTime;
+            elapsed += GameTime.deltaTime;
 
             yield return null;
         }
@@ -378,7 +378,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
         while (_isFlashing && _flashDelayTimer >= 0)
         {
-            _flashDelayTimer -= Time.deltaTime;
+            _flashDelayTimer -= GameTime.deltaTime;
 
             _tintMaterial.SetFloat("_FlashAmount", 1.0f);
 
@@ -389,7 +389,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
         while (_isFlashing && flash >= 0)
         {
-            flash -= Time.deltaTime * _flashSpeed;
+            flash -= GameTime.deltaTime * _flashSpeed;
 
             _tintMaterial.SetFloat("_FlashAmount", flash);
 

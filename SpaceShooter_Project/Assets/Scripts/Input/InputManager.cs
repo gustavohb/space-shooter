@@ -166,7 +166,7 @@ public class InputManager : ExtendedCustomMonoBehavior
 
             if (offset.magnitude > 3.0f)
             {
-                _touchPointA += 5.0f * direction * Time.deltaTime;
+                _touchPointA += 5.0f * direction * GameTime.deltaTime;
                 _joystickOuterCircle.position = _touchPointA;
             }
 
