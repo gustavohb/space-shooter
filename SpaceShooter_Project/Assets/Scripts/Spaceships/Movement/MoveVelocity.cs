@@ -3,12 +3,18 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class MoveVelocity : ExtendedCustomMonoBehavior, IMoveVelocity
 {
-    [SerializeField]
-    private float _moveSpeed = 10f;
+    [SerializeField] private float _moveSpeed = 10f;
 
     private Vector3 _velocityVector;
 
     private bool _isMovementEnable = true;
+
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void DisableMovement()
     {
@@ -30,6 +36,13 @@ public class MoveVelocity : ExtendedCustomMonoBehavior, IMoveVelocity
     public void SetVelocity(Vector3 velocityVector)
     {
         _velocityVector = velocityVector;
+
+        if (_animator != null)
+        {
+            _animator.SetFloat("DirX", _velocityVector.x);
+            _animator.SetFloat("DirY", _velocityVector.y);
+        }
+
     }
 
     private void FixedUpdate()
