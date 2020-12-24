@@ -13,6 +13,8 @@ public class SoundLibrary : MonoBehaviour
         BigExplosion,
         MeleeAttack,
         EnemyBuzzsawAttack,
+        WaveBannerAppear,
+        WaveBannerDisappear,
     };
 
     [System.Serializable]
