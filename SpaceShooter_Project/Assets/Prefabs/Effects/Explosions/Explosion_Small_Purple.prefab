@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eaa0becc4ec743ac99ddabf6b0ac94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.6
-  _strength: 0.5
+  _duration: 0.5
+  _strength: 0.3
   _vibrato: 20
   _randomness: 45
   _snapping: 0
