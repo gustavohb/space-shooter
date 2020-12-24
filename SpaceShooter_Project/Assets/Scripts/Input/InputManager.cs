@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.EventSystems;
 
 public class InputManager : ExtendedCustomMonoBehavior
 {
@@ -133,7 +133,7 @@ public class InputManager : ExtendedCustomMonoBehavior
             i++;
         }
 
-        if ((_touchId != 99 && Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(m_TouchId).fingerId)) || EventSystem.current.IsPointerOverGameObject())
+        if ((_touchId != 99 && Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(_touchId).fingerId)) || EventSystem.current.IsPointerOverGameObject())
         {
             _joystickInnerCircle.GetComponent<SpriteRenderer>().enabled = false;
             _joystickOuterCircle.GetComponent<SpriteRenderer>().enabled = false;
@@ -175,6 +175,10 @@ public class InputManager : ExtendedCustomMonoBehavior
         }
         else
         {
+            if (_player != null)
+            {
+                _player.Move(Vector2.zero);
+            }
             _joystickInnerCircle.GetComponent<SpriteRenderer>().enabled = false;
             _joystickOuterCircle.GetComponent<SpriteRenderer>().enabled = false;
 
