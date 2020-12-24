@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92591e97eb68045a88eacce79e510f14, type: 3}
+  m_Name: Wave03
+  m_EditorClassIdentifier: 
+  waveMessage: WAVE 3
+  spawns:
+  - spawnObject: {fileID: 8589986534183618154, guid: b0602a0e126ed4f21aa8f853adfd003c,
+      type: 3}
+    count: 10
+    spawnTime: 4
+    enemiesRemainingToSpawn: 9
+    spawnDelay: 5
+    spawnTimer: 3.5192032
+    maxEnemiesAlive: 5
+    spawnDelayTimer: 0
+  spawnTime: 40
+  spawnInSequence: 0
+  waveStartDelay: 0

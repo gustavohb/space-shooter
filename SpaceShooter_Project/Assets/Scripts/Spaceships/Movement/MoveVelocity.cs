@@ -9,18 +9,10 @@ public class MoveVelocity : ExtendedCustomMonoBehavior, IMoveVelocity
 
     private bool _isMovementEnable = true;
 
-    private Animator _animator;
-
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
     public void DisableMovement()
     {
         _isMovementEnable = false;
     }
-
 
     public void DisableMovement(float time)
     {
@@ -36,13 +28,6 @@ public class MoveVelocity : ExtendedCustomMonoBehavior, IMoveVelocity
     public void SetVelocity(Vector3 velocityVector)
     {
         _velocityVector = velocityVector;
-
-        if (_animator != null)
-        {
-            _animator.SetFloat("DirX", _velocityVector.x);
-            _animator.SetFloat("DirY", _velocityVector.y);
-        }
-
     }
 
     private void FixedUpdate()
