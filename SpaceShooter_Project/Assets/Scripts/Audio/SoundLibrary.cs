@@ -12,7 +12,7 @@ public class SoundLibrary : MonoBehaviour
         NormalExplosion,
         BigExplosion,
         MeleeAttack,
-        EnemyBuzzSawAttack,
+        EnemyBuzzsawAttack,
     };
 
     [System.Serializable]

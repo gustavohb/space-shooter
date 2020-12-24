@@ -17,6 +17,8 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
 
     [SerializeField] private float _timeBetweenAttacks = 1f;
 
+    [SerializeField] private SoundLibrary.Sound _attackSFX;
+
     private float _meleeAttackDelayTimer;
 
     private float _meleeAttackTimer;
@@ -60,6 +62,8 @@ public class MeleeAttack : ExtendedCustomMonoBehavior
         float percent = 0f;
 
         _isAttacking = true;
+
+        AudioManager.Instance.PlaySound(_attackSFX, transform.position);
 
         while (percent <= 1)
         {
