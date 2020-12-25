@@ -75,6 +75,7 @@ public class NwayShot : BaseShot
 
                 if (0f < nextLineDelay)
                 {
+                    AudioManager.Instance.PlaySound(shotSFX, transform.position);
                     yield return new WaitForSeconds(nextLineDelay);
                 }
             }
@@ -90,7 +91,6 @@ public class NwayShot : BaseShot
             float baseAngle = wayNum % 2 == 0 ? centerAngle - (betweenAngle / 2f) : centerAngle;
 
             float angle = Util.GetShiftedAngle(wayIndex, baseAngle, betweenAngle);
-
 
             ShotBullet(bullet, bulletSpeed, angle);
 

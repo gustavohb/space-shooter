@@ -16,6 +16,8 @@ public abstract class BaseShot : ExtendedCustomMonoBehavior
     public bool setTargetFromTag = true;
     public string targetTagName = "Player";
 
+    public SoundLibrary.Sound shotSFX = SoundLibrary.Sound.Shot;
+
     public Transform targetTransform;
 
     public bool aiming;

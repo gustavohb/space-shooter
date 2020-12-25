@@ -4963,7 +4963,7 @@ MonoBehaviour:
   _maxShield: 12
   _shieldColor: {r: 1, g: 0, b: 0.25063038, a: 1}
   _lowHealthPct: 0.2
-  _lowHealthEffect: {fileID: 3728366331290072407, guid: 73348e1e8fed84093b3791012666c66d,
+  _lowHealthEffect: {fileID: 3082642472357112535, guid: 275465266efa945c69063d6fdcfdbe3f,
     type: 3}
   _shieldCollider: {fileID: 8589986534183618076}
   _shieldScaleFactor: 0.95
