@@ -2219,7 +2219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff824c7be07b4057a6c7c17116f8535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shieldScaleFactor: 0.025
+  _shieldScaleFactor: 1
   _explosionEffect: {fileID: 624479047453642232, guid: b9801cf95fb51435a9d3e1d5cb62fcb4,
     type: 3}
   _shieldArmor: 1

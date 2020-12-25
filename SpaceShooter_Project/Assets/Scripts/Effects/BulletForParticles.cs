@@ -30,7 +30,7 @@ public static class BulletForParticles
             forceFieldShieldTransform = Object.Instantiate(GameAssets.Instance.shieldEffectPrefab, e.objectTransform.position, Quaternion.identity);
             forceFieldShieldTransform.transform.parent = e.objectTransform;
             forceFieldShieldTransform.eulerAngles = new Vector3(0, 0, angle);
-            forceFieldShieldTransform.AddLocalScale(e.shieldScaleFactor, e.shieldScaleFactor, e.shieldScaleFactor);
+            forceFieldShieldTransform.localScale = new Vector3(e.shieldScaleFactor, e.shieldScaleFactor, e.shieldScaleFactor);
             IShotEffect forceFieldShieldEffect = forceFieldShieldTransform.GetComponent<IShotEffect>();
             forceFieldShieldEffect.Setup(e.shieldColor);
         }

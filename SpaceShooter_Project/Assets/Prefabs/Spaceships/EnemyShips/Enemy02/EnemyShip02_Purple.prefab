@@ -5298,7 +5298,7 @@ MonoBehaviour:
   _lowHealthEffect: {fileID: 3728366331290072407, guid: 73348e1e8fed84093b3791012666c66d,
     type: 3}
   _shieldCollider: {fileID: 7232941099748797369}
-  _shieldScaleFactor: 0.004
+  _shieldScaleFactor: 0.8
   _explosionEffectPrefab: {fileID: 624479047453642232, guid: 95c62d0696c894f9a9c57f6db8e12333,
     type: 3}
   _hitShakeDuration: 0.2
