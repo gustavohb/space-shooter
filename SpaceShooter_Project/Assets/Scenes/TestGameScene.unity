@@ -2198,6 +2198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapons:
   - {fileID: 4215873866634098460, guid: aadbf92111f6c44dcb90935d39a3c6e2, type: 3}
+  - {fileID: 4215873866634098460, guid: 1fd6b08a3d90b477f9d5db969a056907, type: 3}
+  - {fileID: 4215873866634098460, guid: dd90fad5a852c4f9a96eadbb3323c236, type: 3}
   _weaponIndex: 0
   targetTag: Enemy
   _findClosestTargetDelay: 1

@@ -13,8 +13,6 @@ public class PlayerWeapon : BaseShot
 
     [SerializeField] private float betweenDelay = 0.1f;
 
-    [SerializeField] private SoundLibrary.Sound shotSFX;
-
     public string targetTag = "Enemy";
 
     [HideInInspector]

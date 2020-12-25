@@ -21,7 +21,7 @@ public class PlayerShooting : ExtendedCustomMonoBehavior
 
     private void Awake()
     {
-        SetWeapon(0);
+        SetWeapon(_weaponIndex);
     }
 
     private void Update()
