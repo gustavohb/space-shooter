@@ -68,8 +68,6 @@ public class PlayerWeapon : BaseShot
                         AudioManager.Instance.PlaySound(shotSFX, transform.position);
 
                         ShotBullet(bullet, bulletSpeed, angle);
-
-                        AutoReleaseBulletGameObject(bullet.gameObject);
                     }
 
                     _shotRateCount = 0;

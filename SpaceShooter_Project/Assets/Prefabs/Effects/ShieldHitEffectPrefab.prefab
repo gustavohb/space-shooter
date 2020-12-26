@@ -91,9 +91,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7105138687359679967}
   - component: {fileID: 7105138687359679964}
-  - component: {fileID: 7105138687359679937}
   - component: {fileID: 7105138687359679966}
   - component: {fileID: 8817849294271945137}
+  - component: {fileID: 7391831642848476538}
   m_Layer: 0
   m_Name: ShieldHitEffectPrefab
   m_TagString: Untagged
@@ -135,19 +135,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7105138687359679937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7105138687359679965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55166e93ddc914d2f8c335b9c48db868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _removeAfter: 1
 --- !u!114 &7105138687359679966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +160,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sfx: 3
+--- !u!114 &7391831642848476538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7105138687359679965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0d8398505c54163b3bfbfc944ce849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _releaseAfter: 0.5
 --- !u!1 &7105138688078666161
 GameObject:
   m_ObjectHideFlags: 0

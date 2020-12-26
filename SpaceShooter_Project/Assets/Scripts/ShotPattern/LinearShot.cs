@@ -70,7 +70,6 @@ public class LinearShot : BaseShot
 
             ShotBullet(bullet, bulletSpeed, angle);
 
-            AutoReleaseBulletGameObject(bullet.gameObject);
         }
         FinishedShot();
     }

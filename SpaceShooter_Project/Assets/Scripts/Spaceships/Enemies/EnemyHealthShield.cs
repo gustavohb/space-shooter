@@ -282,7 +282,7 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
             if (_explosionEffectPrefab != null)
             {
-                Instantiate(_explosionEffectPrefab, transform.position, Quaternion.identity);
+                ObjectPool.Instance.GetGameObject(_explosionEffectPrefab, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }

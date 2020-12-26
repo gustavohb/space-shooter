@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3536864383401804240, guid: eb3fc46fdc2874958b498a0707ab322b,
     type: 3}
-  bulletNum: 20
-  bulletSpeed: 9
+  bulletNum: 18
+  bulletSpeed: 10
   accelerationSpeed: 0
   accelerationTurn: 0
   initialPooling: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   aiming: 0
   bulletColor: {r: 0.63616323, g: 0, b: 1, a: 1}
-  WayNum: 4
+  WayNum: 5
   CenterAngle: 0
-  BetweenAngle: 10
-  DiffSpeed: 0.8
+  BetweenAngle: 6
+  DiffSpeed: 0.5

@@ -100,8 +100,6 @@ public class WavingNwayShot : BaseShot
 
             AudioManager.Instance.PlaySound(shotSFX, transform.position);
 
-            AutoReleaseBulletGameObject(bullet.gameObject);
-
             wayIndex++;
         }
 

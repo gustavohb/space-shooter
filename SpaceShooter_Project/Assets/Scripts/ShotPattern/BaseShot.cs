@@ -10,8 +10,6 @@ public abstract class BaseShot : ExtendedCustomMonoBehavior
     public float accelerationSpeed = 0f;
     public float accelerationTurn = 0f;
     public bool initialPooling = false;
-    public bool useAutoRelease = false;
-    public float autoReleaseTime = 10f;
 
     public bool setTargetFromTag = true;
     public string targetTagName = "Player";
@@ -124,36 +122,4 @@ public abstract class BaseShot : ExtendedCustomMonoBehavior
                     wave, waveSpeed, waveRangeSize);
     }
 
-    protected void AutoReleaseBulletGameObject(GameObject goBullet)
-    {
-        if (useAutoRelease == false || autoReleaseTime < 0f)
-        {
-            return;
-        }
-        StartCoroutine(AutoReleaseBulletGameObjectCoroutine(goBullet));
-    }
-
-    IEnumerator AutoReleaseBulletGameObjectCoroutine(GameObject goBullet)
-    {
-        float countUpTime = 0f;
-
-        while (true)
-        {
-            if (goBullet == null || goBullet.activeInHierarchy == false)
-            {
-                yield break;
-            }
-
-            if (autoReleaseTime <= countUpTime)
-            {
-                break;
-            }
-
-            yield return 0;
-
-            countUpTime += GameTime.deltaTime;
-        }
-
-        ObjectPool.Instance.ReleaseGameObject(goBullet);
-    }
 }

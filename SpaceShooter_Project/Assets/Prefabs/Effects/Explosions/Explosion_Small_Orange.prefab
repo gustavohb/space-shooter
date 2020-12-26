@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 624479047453642233}
   - component: {fileID: 8822088947126587376}
-  - component: {fileID: 7765258572509658583}
   - component: {fileID: 171678958295524061}
+  - component: {fileID: -4653922770554597782}
   m_Layer: 0
   m_Name: Explosion_Small_Orange
   m_TagString: Untagged
@@ -50,26 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 0.5
-  _strength: 0.3
+  _strength: 0.4
   _vibrato: 20
   _randomness: 45
   _snapping: 0
   _fadeOut: 1
   _vibratesHandheld: 0
   _startDelay: 0
---- !u!114 &7765258572509658583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624479047453642232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55166e93ddc914d2f8c335b9c48db868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _removeAfter: 1
 --- !u!114 &171678958295524061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +70,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sfx: 4
+--- !u!114 &-4653922770554597782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624479047453642232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0d8398505c54163b3bfbfc944ce849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _releaseAfter: 1
 --- !u!1 &624479047502911253
 GameObject:
   m_ObjectHideFlags: 0

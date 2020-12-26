@@ -10,8 +10,8 @@ public static class BulletForParticles
     private static void Bullet_OnBulletHitObject(object sender, Bullet.OnBulletHitObjectEventArgs e)
     {
         Bullet bullet = sender as Bullet;
-        Transform shotHitEffectTransform;
-        Transform forceFieldShieldTransform;
+        GameObject shotHitEffectGO;
+        GameObject forceFieldShieldGO;
 
         // Fix bug when colliding with more than one collider at the same time
         if (bullet.transform.position == Vector3.zero)
@@ -26,20 +26,20 @@ public static class BulletForParticles
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
 
-            shotHitEffectTransform = Object.Instantiate(GameAssets.Instance.shieldHitEffectPrefab, bullet.transform.position, bullet.transform.rotation);
-            forceFieldShieldTransform = Object.Instantiate(GameAssets.Instance.shieldEffectPrefab, e.objectTransform.position, Quaternion.identity);
-            forceFieldShieldTransform.transform.parent = e.objectTransform;
-            forceFieldShieldTransform.eulerAngles = new Vector3(0, 0, angle);
-            forceFieldShieldTransform.localScale = new Vector3(e.shieldScaleFactor, e.shieldScaleFactor, e.shieldScaleFactor);
-            IShotEffect forceFieldShieldEffect = forceFieldShieldTransform.GetComponent<IShotEffect>();
+            shotHitEffectGO = ObjectPool.Instance.GetGameObject(GameAssets.Instance.shieldHitEffectPrefab, bullet.transform.position, bullet.transform.rotation); 
+            forceFieldShieldGO = ObjectPool.Instance.GetGameObject(GameAssets.Instance.shieldEffectPrefab, e.objectTransform.position, Quaternion.identity); 
+            forceFieldShieldGO.transform.parent = e.objectTransform;
+            forceFieldShieldGO.transform.eulerAngles = new Vector3(0, 0, angle);
+            forceFieldShieldGO.transform.localScale = new Vector3(e.shieldScaleFactor, e.shieldScaleFactor, e.shieldScaleFactor);
+            IShotEffect forceFieldShieldEffect = forceFieldShieldGO.GetComponent<IShotEffect>();
             forceFieldShieldEffect.Setup(e.shieldColor);
         }
         else
         {
-            shotHitEffectTransform = Object.Instantiate(GameAssets.Instance.shotHitEffectPrefab, bullet.transform.position, bullet.transform.rotation);
+            shotHitEffectGO = ObjectPool.Instance.GetGameObject(GameAssets.Instance.shotHitEffectPrefab, bullet.transform.position, bullet.transform.rotation);  
         }
 
-        IShotEffect shotHitEffect = shotHitEffectTransform.GetComponent<IShotEffect>();
+        IShotEffect shotHitEffect = shotHitEffectGO.GetComponent<IShotEffect>();
         shotHitEffect.Setup(e.bulletColor);
     }
 

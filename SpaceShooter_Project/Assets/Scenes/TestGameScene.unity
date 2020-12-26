@@ -843,11 +843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf0a4e0f5f4d43c48b5355af91b3dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotHitEffectPrefab: {fileID: 1156606666835066363, guid: 5be3346da0e0b47f7976c691aef4e32c,
+  shotHitEffectPrefab: {fileID: 1156606666835066362, guid: 5be3346da0e0b47f7976c691aef4e32c,
     type: 3}
-  shieldHitEffectPrefab: {fileID: 7105138687359679967, guid: 8eff362f8d52042d08233fee32a8a6a8,
+  shieldHitEffectPrefab: {fileID: 7105138687359679965, guid: 8eff362f8d52042d08233fee32a8a6a8,
     type: 3}
-  shieldEffectPrefab: {fileID: 7341806575460018586, guid: d23f0e72d3c324dc1a13106f5065845f,
+  shieldEffectPrefab: {fileID: 7341806575460018580, guid: d23f0e72d3c324dc1a13106f5065845f,
     type: 3}
 --- !u!4 &177994812
 Transform:
@@ -2224,8 +2224,8 @@ MonoBehaviour:
   _shieldScaleFactor: 1
   _explosionEffect: {fileID: 624479047453642232, guid: b9801cf95fb51435a9d3e1d5cb62fcb4,
     type: 3}
-  _shieldArmor: 1
-  _healthLevel: 0
+  _shieldArmor: 2
+  _healthLevel: 1
   _shieldColor: {r: 0, g: 0.7900574, b: 1, a: 1}
   _rechargeShieldDelay: 7
   _rechargeShieldSpeed: 3

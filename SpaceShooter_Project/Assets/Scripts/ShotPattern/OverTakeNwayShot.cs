@@ -95,8 +95,6 @@ public class OverTakeNwayShot : BaseShot
 
             ShotBullet(bullet, bulletSpeed, angle);
 
-            AutoReleaseBulletGameObject(bullet.gameObject);
-
             wayIndex++;
         }
 

@@ -5181,33 +5181,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3494907703062461376, guid: ce068455b222b4d3bb40bc8f217904e1,
         type: 3}
-      propertyPath: autoReleaseTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494907703062461376, guid: ce068455b222b4d3bb40bc8f217904e1,
-        type: 3}
-      propertyPath: bulletSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494907703062461376, guid: ce068455b222b4d3bb40bc8f217904e1,
-        type: 3}
-      propertyPath: DiffSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494907703062461376, guid: ce068455b222b4d3bb40bc8f217904e1,
-        type: 3}
-      propertyPath: WayNum
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494907703062461376, guid: ce068455b222b4d3bb40bc8f217904e1,
-        type: 3}
       propertyPath: bulletNum
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3494907703062461376, guid: ce068455b222b4d3bb40bc8f217904e1,
-        type: 3}
-      propertyPath: BetweenAngle
-      value: 6
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3494907703062461400, guid: ce068455b222b4d3bb40bc8f217904e1,
         type: 3}

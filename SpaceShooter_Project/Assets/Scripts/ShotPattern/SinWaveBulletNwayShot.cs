@@ -85,8 +85,6 @@ public class SinWaveBulletNwayShot : BaseShot
 
             ShotBullet(bullet, bulletSpeed, angle, false, null, 0f, true, waveSpeed, waveRangeSize);
 
-            AutoReleaseBulletGameObject(bullet.gameObject);
-
             wayIndex++;
         }
 
