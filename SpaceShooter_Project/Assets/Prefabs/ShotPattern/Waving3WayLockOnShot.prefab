@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &821138754889634961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821138754889634958}
+  - component: {fileID: 821138754889634959}
+  m_Layer: 0
+  m_Name: Waving3WayLockOnShot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821138754889634958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821138754889634961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &821138754889634959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821138754889634961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f06fe89b7b314e809cc769b05ccdccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 3536864383401804240, guid: eb3fc46fdc2874958b498a0707ab322b,
+    type: 3}
+  bulletNum: 25
+  bulletSpeed: 7.5
+  accelerationSpeed: 0
+  accelerationTurn: 0
+  initialPooling: 0
+  useAutoRelease: 0
+  autoReleaseTime: 10
+  setTargetFromTag: 1
+  targetTagName: Player
+  shotSFX: 1
+  targetTransform: {fileID: 0}
+  aiming: 1
+  bulletColor: {r: 1, g: 0.49574834, b: 0, a: 1}
+  wayNum: 5
+  waveCenterAngle: 180
+  waveRangeSize: 25
+  waveSpeed: 10
+  betweenAngle: 10
+  nextLineDelay: 0.1
