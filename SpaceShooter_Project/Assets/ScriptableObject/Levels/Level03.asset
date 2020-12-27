@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92591e97eb68045a88eacce79e510f14, type: 3}
-  m_Name: Wave09
+  m_Name: Level03
   m_EditorClassIdentifier: 
-  waveMessage: WAVE 6
+  waveMessage: LEVEL 3
   spawns:
-  - spawnObject: {fileID: 1338951880085234086, guid: 9b5f4c89cd5f44f1a89484fa4869ac47,
+  - spawnObject: {fileID: 8589986534183618154, guid: b0602a0e126ed4f21aa8f853adfd003c,
       type: 3}
     count: 15
     spawnTime: 5
-    enemiesRemainingToSpawn: 5
+    enemiesRemainingToSpawn: 0
     spawnDelay: 5
     spawnTimer: 0
     maxEnemiesAlive: 5
-    spawnDelayTimer: 2.90964
+    spawnDelayTimer: -0.016135445
   spawnTime: 20
   spawnInSequence: 0
   waveStartDelay: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92591e97eb68045a88eacce79e510f14, type: 3}
-  m_Name: Wave06
+  m_Name: Level07
   m_EditorClassIdentifier: 
-  waveMessage: WAVE 6
+  waveMessage: LEVEL 7
   spawns:
-  - spawnObject: {fileID: 1913609339706078836, guid: 9581a16058f8848bc8ee0f16c54c0083,
+  - spawnObject: {fileID: 8727956933680507420, guid: 537076033e4554072a87db9987535b59,
       type: 3}
     count: 15
     spawnTime: 5
