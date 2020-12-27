@@ -20,7 +20,6 @@ public class LinearShot : BaseShot
         if (_shot != null)
         {
             StopCoroutine(_shot);
-            //FinishedShot();
         }
 
         _shot = ShotCoroutine();
@@ -67,7 +66,7 @@ public class LinearShot : BaseShot
             }
             bullet.targetTag = targetTagName;
 
-
+            AudioManager.Instance.PlaySound(shotSFX, transform.position);
             ShotBullet(bullet, bulletSpeed, angle);
 
         }

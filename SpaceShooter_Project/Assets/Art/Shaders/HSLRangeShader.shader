@@ -155,21 +155,11 @@ Shader "Custom/HSLRangeShader"
                 float affectMult = step(_HSLRangeMin, hsl.r) * step(hsl.r, _HSLRangeMax);
                 float3 rgb = hsl2rgb(hsl + _HSLAAdjust.xyz * affectMult);
                 
-                //rgb = lerp(c.rgb, _FlashColor.rgb, _FlashAmount);
-                //rgb *= color.a;
-                
                 float4 c = float4(rgb, color.a + _HSLAAdjust.a);
 
-
-
-                //return float4(rgb, color.a + _HSLAAdjust.a);
-
-
                 c.rgb = lerp(c.rgb, _FlashColor.rgb, _FlashAmount);
-                //c.rgb *= c.a;
+
                 return c;
-
-
             }
 
             ENDCG

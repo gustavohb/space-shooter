@@ -4910,13 +4910,14 @@ GameObject:
   - component: {fileID: 4868256792148060567}
   - component: {fileID: 4868256792148060651}
   - component: {fileID: 4868256792148060650}
+  - component: {fileID: 4868256792148060571}
   - component: {fileID: 4868256792148060564}
   - component: {fileID: 4868256792148060560}
   - component: {fileID: 4868256792148060561}
   - component: {fileID: 4868256792148060562}
   - component: {fileID: 4868256792148060566}
   - component: {fileID: 4868256792148060565}
-  - component: {fileID: 4868256792148060571}
+  - component: {fileID: 6689448413323564026}
   m_Layer: 0
   m_Name: EnemyShip05_Purple
   m_TagString: Enemy
@@ -5015,6 +5016,25 @@ PolygonCollider2D:
       - {x: 0.2900715, y: -0.22299206}
       - {x: 0.54353714, y: 0.028015733}
       - {x: 0.6216111, y: 0.7491812}
+--- !u!95 &4868256792148060571
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868256792148060573}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e092405e71ef64bedab0803e32b5b912, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4868256792148060564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5027,11 +5047,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf76ce7640be43828afbd9f79efee1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHealth: 24
-  _maxHealth: 24
+  _startHealth: 27
+  _maxHealth: 27
   _collider: {fileID: 4868256792148060650}
-  _startShield: 12
-  _maxShield: 12
+  _startShield: 18
+  _maxShield: 18
   _shieldColor: {r: 0.7247448, g: 0, b: 1, a: 1}
   _lowHealthPct: 0.2
   _lowHealthEffect: {fileID: 3082642472357112535, guid: 290287698d4744272baa2a392ab6e16a,
@@ -5158,25 +5178,29 @@ MonoBehaviour:
   _attackDistanceThreshold: 2.5
   _timeBetweenAttacks: 1
   _attackSFX: 6
---- !u!95 &4868256792148060571
-Animator:
-  serializedVersion: 3
+--- !u!114 &6689448413323564026
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4868256792148060573}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e092405e71ef64bedab0803e32b5b912, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa7257f7bab94d0b8f18ef7cb23269a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDrops:
+  - item: {fileID: 1842589446096714160, guid: 4696faad8c2c34f14ad7ddc08a11f8e2, type: 3}
+    dropChance: 0.5
+    dropMin: 1
+    dropMax: 2
+    dropSpread: 3
+  - item: {fileID: 1834802981566890347, guid: dff1c8217078743849175fe996e6f855, type: 3}
+    dropChance: 0.5
+    dropMin: 1
+    dropMax: 1
+    dropSpread: 3
 --- !u!1001 &9146560958792281077
 PrefabInstance:
   m_ObjectHideFlags: 0

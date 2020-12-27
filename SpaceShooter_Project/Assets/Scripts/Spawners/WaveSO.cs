@@ -21,4 +21,12 @@ public class WaveSO : ScriptableObject
 
     public float waveStartDelay = 0.0f;
 
+
+    private void OnEnable()
+    {
+        foreach(var spawn in spawns)
+        {
+            spawn.spawnTimer = 0;
+        }
+    }
 }

@@ -17,6 +17,10 @@ public class SoundLibrary : MonoBehaviour
         WaveBannerDisappear,
         Victory,
         ClickButton01,
+        OrbPickup,
+        UIPickupOrb,
+        CoinPickup,
+        UIPickupCoin,
     };
 
     [System.Serializable]

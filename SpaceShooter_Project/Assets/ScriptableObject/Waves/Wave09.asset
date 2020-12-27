@@ -16,13 +16,13 @@ MonoBehaviour:
   spawns:
   - spawnObject: {fileID: 1338951880085234086, guid: 9b5f4c89cd5f44f1a89484fa4869ac47,
       type: 3}
-    count: 5
+    count: 15
     spawnTime: 5
     enemiesRemainingToSpawn: 5
     spawnDelay: 5
     spawnTimer: 0
     maxEnemiesAlive: 5
     spawnDelayTimer: 2.90964
-  spawnTime: 25
+  spawnTime: 20
   spawnInSequence: 0
   waveStartDelay: 0

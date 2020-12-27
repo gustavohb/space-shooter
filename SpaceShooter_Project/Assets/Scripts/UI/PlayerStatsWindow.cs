@@ -66,6 +66,10 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
     private float _lowHealthAlphaChange;
     private float _damageHealthFadeTimer;
 
+    [SerializeField] private Slider _hiddenHealthSlider;
+
+    
+
     private Slider _shield1Slider;
     private Slider _shield2Slider;
     private Slider _shield3Slider;
@@ -85,21 +89,23 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
     private CanvasGroup _damageShield3CanvasGroup;
     private CanvasGroup _damageShield4CanvasGroup;
 
+    [SerializeField] private Slider _hiddenShieldSlider;
+
     private CanvasGroup[] _damageShieldCanvasGroupArray;
 
     private float _damageShieldFadeTimer;
 
     [SerializeField] private Animator _healthIconAnimator;
 
-    private float[] damageHealthPreviousHealthAmountArray = new float[HEALTH_SEGMENT_COUNT];
+    private float[] _damageHealthPreviousHealthAmountArray = new float[HEALTH_SEGMENT_COUNT];
 
-    private float[] damageShieldPreviousShieldAmountArray = new float[SHIELD_SEGMENT_COUNT];
+    private float[] _damageShieldPreviousShieldAmountArray = new float[SHIELD_SEGMENT_COUNT];
 
     [SerializeField] private Animator _healthIconAnimated;
 
     private float _preChangeHealth;
 
-    private float preChangeShield;
+    private float _preChangeShield;
 
     [SerializeField]
     private float _updateSpeedSeconds = 0.3f;
@@ -386,19 +392,19 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             if (health < healthSegmentMin)
             {
                 // Health amount under minimum for this segment
-                damageHealthPreviousHealthAmountArray[i] = 0;
+                _damageHealthPreviousHealthAmountArray[i] = 0;
             }
             else
             {
                 if (health >= healthSegmentMax)
                 {
                     // Health amount above max
-                    damageHealthPreviousHealthAmountArray[i] = PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT;
+                    _damageHealthPreviousHealthAmountArray[i] = PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT;
                 }
                 else
                 {
                     // Health amount somewhere in between this segment
-                    damageHealthPreviousHealthAmountArray[i] = health - healthSegmentMin;
+                    _damageHealthPreviousHealthAmountArray[i] = health - healthSegmentMin;
                 }
             }
 
@@ -410,7 +416,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
         float shield = _playerHealthShield.GetShield();
 
-        preChangeShield = shield;
+        _preChangeShield = shield;
 
         for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
         {
@@ -420,19 +426,19 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             if (shield < shieldSegmentMin)
             {
                 // Health amount under minimum for this segment
-                damageShieldPreviousShieldAmountArray[i] = 0;
+                _damageShieldPreviousShieldAmountArray[i] = 0;
             }
             else
             {
                 if (shield >= shieldSegmentMax)
                 {
                     // Health amount above max
-                    damageShieldPreviousShieldAmountArray[i] = PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+                    _damageShieldPreviousShieldAmountArray[i] = PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
                 }
                 else
                 {
                     // Health amount somewhere in between this segment
-                    damageShieldPreviousShieldAmountArray[i] = shield - shieldSegmentMin;
+                    _damageShieldPreviousShieldAmountArray[i] = shield - shieldSegmentMin;
                 }
             }
 
@@ -465,7 +471,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             // Damage health bar not visible, set size 
             for (int i = 0; i < HEALTH_SEGMENT_COUNT; i++)
             {
-                _damageHealthSliderArray[i].value = (float)damageHealthPreviousHealthAmountArray[i] / PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT;
+                _damageHealthSliderArray[i].value = (float)_damageHealthPreviousHealthAmountArray[i] / PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT;
                 _damageHealthCanvasGroupArray[i].alpha = 1f;
             }
         }
@@ -479,7 +485,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         {
             for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
             {
-                _damageShieldSliderArray[i].value = (float)damageShieldPreviousShieldAmountArray[i] / PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
+                _damageShieldSliderArray[i].value = (float)_damageShieldPreviousShieldAmountArray[i] / PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
                 _damageShieldCanvasGroupArray[i].alpha = 1f;
             }
         }
@@ -536,7 +542,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         while (elapsed < _updateSpeedSeconds)
         {
             elapsed += GameTime.deltaTime;
-            float tempShield = Mathf.Lerp(preChangeShield, currentShield, elapsed / _updateSpeedSeconds);
+            float tempShield = Mathf.Lerp(_preChangeShield, currentShield, elapsed / _updateSpeedSeconds);
 
             for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
             {
@@ -564,6 +570,9 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
                 }
 
             }
+
+            if (_hiddenShieldSlider != null)
+                _hiddenShieldSlider.value = tempShield / (SHIELD_SEGMENT_COUNT * PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT);
 
             yield return null;
         }
@@ -611,6 +620,9 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
                 }
 
             }
+
+            if (_hiddenHealthSlider != null)
+                _hiddenHealthSlider.value = tempHealth / (HEALTH_SEGMENT_COUNT * PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT);
 
             yield return null;
         }

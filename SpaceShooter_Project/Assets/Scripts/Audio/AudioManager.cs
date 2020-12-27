@@ -257,6 +257,8 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
 
     public void PlaySound(SoundLibrary.Sound soundType, Vector3 position)
     {
+        if (soundType == SoundLibrary.Sound.None) return;
+
         AudioClip audioClip = GetAudioClip(soundType);
 
         AudioSource audioSource = GetAudioSource(position);
