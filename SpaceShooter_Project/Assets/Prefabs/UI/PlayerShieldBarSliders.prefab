@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8879986620345585162}
+  - component: {fileID: 7048058608262883547}
+  - component: {fileID: 2861830028981097453}
   m_Layer: 0
   m_Name: PlayerShieldBarSliders
   m_TagString: Untagged
@@ -37,6 +39,26 @@ RectTransform:
   m_AnchoredPosition: {x: -116.7, y: -3.5}
   m_SizeDelta: {x: 171.72156, y: 43.45903}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7048058608262883547
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879986620345585165}
+  m_CullTransparentMesh: 0
+--- !u!225 &2861830028981097453
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879986620345585165}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &3117705970852250072
 PrefabInstance:
   m_ObjectHideFlags: 0

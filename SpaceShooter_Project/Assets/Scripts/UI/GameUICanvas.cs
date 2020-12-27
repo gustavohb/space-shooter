@@ -8,10 +8,15 @@ public class GameUICanvas : ExtendedCustomMonoBehavior
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (_pauseScreen != null && !_pauseScreen.activeSelf)
-            {
-                _pauseScreen.SetActive(true);
-            }
+            OpenPauseScreen();
+        }
+    }
+
+    public void OpenPauseScreen()
+    {
+        if (_pauseScreen != null && !_pauseScreen.activeSelf)
+        {
+            _pauseScreen.SetActive(true);
         }
     }
 }

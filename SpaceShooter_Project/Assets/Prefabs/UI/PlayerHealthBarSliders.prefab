@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3085698310980469455}
+  - component: {fileID: 7730546177644257020}
   m_Layer: 0
   m_Name: PlayerHealthBarSliders
   m_TagString: Untagged
@@ -38,6 +39,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0.43029785, y: -47.99997}
   m_SizeDelta: {x: 203.22803, y: 100}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &7730546177644257020
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085698310980469448}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &278701286896719468
 PrefabInstance:
   m_ObjectHideFlags: 0
