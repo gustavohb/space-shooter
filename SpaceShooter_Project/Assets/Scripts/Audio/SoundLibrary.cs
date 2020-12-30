@@ -21,6 +21,8 @@ public class SoundLibrary : MonoBehaviour
         UIPickupOrb,
         CoinPickup,
         UIPickupCoin,
+        StarPickup,
+        UIStarPickup,
     };
 
     [System.Serializable]

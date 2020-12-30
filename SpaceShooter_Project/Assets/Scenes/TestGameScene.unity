@@ -1651,7 +1651,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -118, y: 0}
-  m_SizeDelta: {x: 73.14286, y: 73.14286}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450007969
 MonoBehaviour:
@@ -3156,6 +3156,12 @@ MonoBehaviour:
   - soundType: 15
     sounds:
     - {fileID: 8300000, guid: 2b80af2b23aac4d3b8ae1c292bd49138, type: 3}
+  - soundType: 16
+    sounds:
+    - {fileID: 8300000, guid: 2b80af2b23aac4d3b8ae1c292bd49138, type: 3}
+  - soundType: 17
+    sounds:
+    - {fileID: 8300000, guid: ab87c6b3c2bc9484ab0139fff24c2425, type: 3}
 --- !u!4 &943437141
 Transform:
   m_ObjectHideFlags: 0
@@ -8731,8 +8737,10 @@ MonoBehaviour:
     type: 3}
   coinEffectPrefab: {fileID: 8048363163293236295, guid: 883f355edc1ac48439a7283f3df7c051,
     type: 3}
-  starAnimatedPrefab: {fileID: 0}
-  starEffectPrefab: {fileID: 0}
+  starAnimatedPrefab: {fileID: 7407629918259690174, guid: a59f42f69a9f34032958d3db36724669,
+    type: 3}
+  starEffectPrefab: {fileID: 8048363163293236295, guid: b054785f2b0ce4616bc18a960b2dc980,
+    type: 3}
   healthAnimatedPrefab: {fileID: 8405515460847587813, guid: 196ea979a41c64d95bf7eb1c4a7e5ac7,
     type: 3}
   healthEffectPrefab: {fileID: 5578851302829829927, guid: 824040558e352492d97a6a5d8bab9218,
@@ -8743,7 +8751,7 @@ MonoBehaviour:
   useMouse: 1
   useTouch: 1
   animationMaxDuration: 0.6
-  animationMinDuration: 0.3
+  animationMinDuration: 0.4
   animationSpeedSeconds: 0.035
   animationEase: 6
 --- !u!4 &1135471380
@@ -15939,7 +15947,7 @@ RectTransform:
   m_GameObject: {fileID: 2077838949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7761767, y: 0.7761767, z: 0.7761767}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1107771116}
   m_RootOrder: 0
@@ -15947,7 +15955,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -128, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2077838951
 MonoBehaviour:
