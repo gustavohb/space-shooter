@@ -210,13 +210,15 @@ GameObject:
   - component: {fileID: 3258058633275858605}
   - component: {fileID: 3258058633275858604}
   - component: {fileID: 3258058633275858611}
+  - component: {fileID: 780337873}
+  - component: {fileID: 780337876}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3258058633275858606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -256,7 +258,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &3258058633275858604
 MonoBehaviour:
@@ -297,6 +299,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &780337873
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3258058633275858610}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &780337876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3258058633275858610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5477473a3824fda9127050979f525f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeDuration: 1
+  _startDelay: 0
 --- !u!1 &3258058633328519982
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadingScreen: {fileID: 3258058633275858610}
   _slider: {fileID: 3258058633165299154}
-  transitionTime: 1
+  _loadDelay: 0.5
   _startLoading: 1
   _crossFadeCanvasGroup: {fileID: 3258058634423999925}
   _fadeDuration: 1

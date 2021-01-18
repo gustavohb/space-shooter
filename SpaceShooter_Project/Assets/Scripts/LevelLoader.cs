@@ -11,7 +11,7 @@ public class LevelLoader : MonoBehaviour
 
     [SerializeField] private Slider _slider;
 
-    [SerializeField] private float transitionTime = 1f;
+    [SerializeField] private float _loadDelay = 0.5f;
 
     [SerializeField] private bool _startLoading = false;
 
@@ -71,7 +71,7 @@ public class LevelLoader : MonoBehaviour
 
         _loadingScreen.SetActive(true);
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(_loadDelay);
 
         StartCoroutine(LoadAsynchronously(sceneName));
 

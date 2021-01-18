@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class EnemyHealthShieldBars : MonoBehaviour
+public class EnemyHealthShieldBarsUI : MonoBehaviour
 {
     [SerializeField] private Image _shieldBarImage;
 

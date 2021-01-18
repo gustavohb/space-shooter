@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyHealthShieldBarsController : MonoBehaviour
 {
     [SerializeField]
-    private EnemyHealthShieldBars healthShieldBarsPrefab;
+    private EnemyHealthShieldBarsUI healthShieldBarsPrefab;
 
-    private Dictionary<EnemyHealthShield, EnemyHealthShieldBars> enemiesHealthShieldBars = new Dictionary<EnemyHealthShield, EnemyHealthShieldBars>();
+    private Dictionary<EnemyHealthShield, EnemyHealthShieldBarsUI> enemiesHealthShieldBars = new Dictionary<EnemyHealthShield, EnemyHealthShieldBarsUI>();
 
 
     private void Awake()
@@ -20,7 +20,7 @@ public class EnemyHealthShieldBarsController : MonoBehaviour
     {
         if (enemiesHealthShieldBars.ContainsKey(healthShield) == false)
         {
-            EnemyHealthShieldBars healthShieldBars = Instantiate(healthShieldBarsPrefab, transform);
+            EnemyHealthShieldBarsUI healthShieldBars = Instantiate(healthShieldBarsPrefab, transform);
             healthShieldBars.SetHealthShield(healthShield); 
             enemiesHealthShieldBars.Add(healthShield, healthShieldBars);
         }

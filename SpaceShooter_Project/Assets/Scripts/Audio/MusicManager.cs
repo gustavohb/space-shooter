@@ -61,4 +61,24 @@ public class MusicManager : SingletonMonoBehavior<MusicManager>
             AudioManager.Instance.PlayMusic(clipToPlay, _musicFadeDuration);
         }
     }
+
+    public void PlayMusic()
+    {
+        AudioClip clipToPlay = null;
+
+        if (_sceneName == "Start")
+        {
+            clipToPlay = menuTheme;
+        }
+        else if (_sceneName == "Arcade" || _sceneName == "Endless")
+        {
+            clipToPlay = mainTheme;
+        }
+
+        if (clipToPlay != null)
+        {
+            AudioManager.Instance.PlayMusic(clipToPlay, _musicFadeDuration);
+        }
+
+    }
 }
