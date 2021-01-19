@@ -54,6 +54,10 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(sceneName));
     }
 
+    public void LoadStart()
+    {
+        StartCoroutine(LoadLevel("Start"));
+    }
 
     public void LoadPreviousLevel()
     {

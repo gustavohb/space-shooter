@@ -141,6 +141,9 @@ MonoBehaviour:
   - soundType: 17
     sounds:
     - {fileID: 8300000, guid: ab87c6b3c2bc9484ab0139fff24c2425, type: 3}
+  - soundType: 18
+    sounds:
+    - {fileID: 8300000, guid: 8433a841221494bdb9fc3d7112e9a71b, type: 3}
 --- !u!114 &6392927833001190005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cec2fd6a25b4d8296632fb89b4e8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuTheme: {fileID: 0}
+  menuTheme: {fileID: 8300000, guid: 065686e6ea72e480e82809960a8f924d, type: 3}
   mainTheme: {fileID: 8300000, guid: d302b86dd788945fa9da239c30a44436, type: 3}
   bossTheme: {fileID: 0}
   _musicFadeDuration: 1
