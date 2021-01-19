@@ -4,11 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class EnemyHealthShieldBarsController : MonoBehaviour
 {
-    [SerializeField]
-    private EnemyHealthShieldBarsUI healthShieldBarsPrefab;
+    [SerializeField] private EnemyHealthShieldBarsUI _healthShieldBarsPrefab;
+
+    [SerializeField] private EnemyHealthShieldBarsUI _bossHealthShieldBarsPrefab;
 
     private Dictionary<EnemyHealthShield, EnemyHealthShieldBarsUI> enemiesHealthShieldBars = new Dictionary<EnemyHealthShield, EnemyHealthShieldBarsUI>();
-
 
     private void Awake()
     {
@@ -18,9 +18,15 @@ public class EnemyHealthShieldBarsController : MonoBehaviour
 
     private void AddHealthShieldBars(EnemyHealthShield healthShield)
     {
-        if (enemiesHealthShieldBars.ContainsKey(healthShield) == false)
+        if (healthShield.IsBoss)
         {
-            EnemyHealthShieldBarsUI healthShieldBars = Instantiate(healthShieldBarsPrefab, transform);
+            EnemyHealthShieldBarsUI healthShieldBars = Instantiate(_bossHealthShieldBarsPrefab, transform);
+            healthShieldBars.SetHealthShield(healthShield); 
+            enemiesHealthShieldBars.Add(healthShield, healthShieldBars);
+        }
+        else
+        {
+            EnemyHealthShieldBarsUI healthShieldBars = Instantiate(_healthShieldBarsPrefab, transform);
             healthShieldBars.SetHealthShield(healthShield); 
             enemiesHealthShieldBars.Add(healthShield, healthShieldBars);
         }

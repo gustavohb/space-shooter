@@ -7,6 +7,8 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 {
     public event EventHandler OnDamaged;
 
+    public bool IsBoss = false;
+
     [Header("Health")]
 
     [SerializeField] private int _startHealth = 100;
@@ -262,7 +264,7 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
         OnHealthShieldRemoved(this);
     }
 
-    private void Die()
+    public void Die()
     {
         if (isAlive)
         {

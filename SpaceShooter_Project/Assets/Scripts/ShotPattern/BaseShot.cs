@@ -6,7 +6,7 @@ public abstract class BaseShot : ExtendedCustomMonoBehavior
 {
     public GameObject bulletPrefab;
     public int bulletNum = 10;
-    public float bulletSpeed = 2f;
+    public float bulletSpeed = 8f;
     public float accelerationSpeed = 0f;
     public float accelerationTurn = 0f;
     public bool initialPooling = false;
