@@ -18,6 +18,7 @@ public class ItemDropper : ExtendedCustomMonoBehavior
     private void EnemyHealthShield_OnEnemyDie(object sender, System.EventArgs e)
     {
         DropItems();
+        _enemyHealthShield.OnDeath -= EnemyHealthShield_OnEnemyDie;
     }
 
     public void DropItems()
@@ -29,12 +30,20 @@ public class ItemDropper : ExtendedCustomMonoBehavior
                 int dropRate = Random.Range(itemDrop.dropMin, itemDrop.dropMax + 1);
                 for (int i = 0; i < dropRate; i++)
                 {
-                    GameObject newItem = Instantiate(itemDrop.item, transform.position, Quaternion.identity);
-                    Vector3 randomDir = Util.GetRandomDir();
-                    Vector3 newPosition = transform.position + randomDir * itemDrop.dropSpread;
-                    newItem.transform.DOMove(newPosition, 0.6f);
+                    if (itemDrop.item != null)
+                    {
+                        GameObject newItem = Instantiate(itemDrop.item, transform.position, Quaternion.identity);
+                        Vector3 randomDir = Util.GetRandomDir();
+                        Vector3 newPosition = transform.position + randomDir * itemDrop.dropSpread;
+                        newItem.transform.DOMove(newPosition, 0.6f);
+                    }
                 }
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        _enemyHealthShield.OnDeath -= EnemyHealthShield_OnEnemyDie;
     }
 }

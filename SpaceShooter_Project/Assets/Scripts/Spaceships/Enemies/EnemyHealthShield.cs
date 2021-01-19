@@ -17,7 +17,7 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
     public float maxHealth => _maxHealth;
 
-    public float currentHealth { get; private set; }
+    public float currentHealth; // { get; private set; }
 
     public bool isAlive { get; private set; }
 
@@ -239,14 +239,12 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
             _lowHealthEffect.gameObject.SetActive(GetHealthPct() <= _lowHealthPct);
         }
 
-
+        OnDamaged?.Invoke(this, EventArgs.Empty);
 
         if (currentHealth <= 0)
         {
             Die();
-        }
-
-        OnDamaged?.Invoke(this, EventArgs.Empty);
+        }   
     }
 
     public float GetHealthPct()
@@ -262,14 +260,6 @@ public class EnemyHealthShield : ExtendedCustomMonoBehavior, IDamageable
     private void OnDisable()
     {
         OnHealthShieldRemoved(this);
-    }
-
-    public void KillEnemy()
-    {
-        if (isAlive)
-        {
-            Die();
-        }
     }
 
     private void Die()

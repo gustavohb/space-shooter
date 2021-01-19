@@ -5113,6 +5113,7 @@ MonoBehaviour:
   _startHealth: 18
   _maxHealth: 18
   _collider: {fileID: 1941415568804092991}
+  currentHealth: 0
   _startShield: 0
   _maxShield: 0
   _shieldColor: {r: 0, g: 0.735849, b: 0.16736966, a: 1}
@@ -5204,11 +5205,6 @@ MonoBehaviour:
   _itemDrops:
   - item: {fileID: 1842589446096714160, guid: 4696faad8c2c34f14ad7ddc08a11f8e2, type: 3}
     dropChance: 0.5
-    dropMin: 1
-    dropMax: 1
-    dropSpread: 3
-  - item: {fileID: 1834802981566890347, guid: dff1c8217078743849175fe996e6f855, type: 3}
-    dropChance: 0.3
     dropMin: 1
     dropMax: 1
     dropSpread: 3
