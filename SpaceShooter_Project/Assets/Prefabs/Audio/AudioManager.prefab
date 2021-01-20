@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuTheme: {fileID: 8300000, guid: 065686e6ea72e480e82809960a8f924d, type: 3}
   mainTheme: {fileID: 8300000, guid: d302b86dd788945fa9da239c30a44436, type: 3}
-  bossTheme: {fileID: 0}
+  bossTheme: {fileID: 8300000, guid: 607c7a32e1ae049578d06efa9ec6fe88, type: 3}
   _musicFadeDuration: 1
 --- !u!1001 &2167266089759131355
 PrefabInstance:

@@ -125,6 +125,13 @@ public class EnemySpawner : MonoBehaviour
             damageable.OnDeath += EnemySpawner_OnDeath;
         }
 
+        BossBattle bossBattle = newEnemy.GetComponent<BossBattle>();
+
+        if (bossBattle != null)
+        {
+            bossBattle.OnBossDeath += EnemySpawner_OnDeath;
+        }
+
         Vector3 newEnemyPosition = newEnemy.transform.position;
 
         // Place it at a random position outside of the spawn area
