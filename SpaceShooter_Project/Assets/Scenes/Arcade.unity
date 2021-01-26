@@ -2449,6 +2449,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c2acbafc90e48949be878cbb632ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHealthShieldChangedEvent: {fileID: 11400000, guid: 02845241c5b544025b8ede586d69bbed,
+    type: 2}
+  _playerHealth: {fileID: 11400000, guid: ebbe641b30a83460b9451d1a8b5a7639, type: 2}
+  _playerShield: {fileID: 11400000, guid: 4a0da3c5c1a1343b5813fe26df728fb6, type: 2}
   tier1Color: {r: 0.14509805, g: 1, b: 0.9764706, a: 1}
   tier2Color: {r: 0.14509805, g: 1, b: 0.97647065, a: 1}
   tier3Color: {r: 0.14509805, g: 1, b: 0.97647065, a: 1}
@@ -3309,11 +3313,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff824c7be07b4057a6c7c17116f8535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthShieldChanged: {fileID: 11400000, guid: 02845241c5b544025b8ede586d69bbed,
+    type: 2}
+  OnRepair: {fileID: 11400000, guid: 011497493434b40fd8d133a19fd8a301, type: 2}
+  OnPlayerDie: {fileID: 11400000, guid: f638bc303eca94c9ea9f226672606f83, type: 2}
   _shieldScaleFactor: 1
   _explosionEffect: {fileID: 624479047453642232, guid: b9801cf95fb51435a9d3e1d5cb62fcb4,
     type: 3}
   _shieldArmor: 2
   _healthLevel: 1
+  _health: {fileID: 11400000, guid: ebbe641b30a83460b9451d1a8b5a7639, type: 2}
+  _shield: {fileID: 11400000, guid: 4a0da3c5c1a1343b5813fe26df728fb6, type: 2}
   _shieldColor: {r: 0, g: 0.7900574, b: 1, a: 1}
   _rechargeShieldDelay: 7
   _rechargeShieldSpeed: 3
@@ -8993,9 +9003,11 @@ MonoBehaviour:
   coinIcon: {fileID: 450007968}
   coinCounterTMPro: {fileID: 1895859063}
   coinDeviationTransform: {fileID: 1981026258}
+  _coins: {fileID: 11400000, guid: 38c09f9edf09042f6bdfe795452b84fc, type: 2}
   starIcon: {fileID: 2077838950}
   starCounterTMPro: {fileID: 1752855493}
   starDeviationTransform: {fileID: 1248732832}
+  _stars: {fileID: 11400000, guid: 518c6653383784fbc84f030dfdd5decc, type: 2}
   healthSliderPosition: {fileID: 541221005}
   healthDeviationTransform: {fileID: 460485377}
   shieldSliderPosition: {fileID: 0}

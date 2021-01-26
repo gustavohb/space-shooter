@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using ScriptableObjectArchitecture;
 
 public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 {
@@ -11,6 +12,11 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
     private const int SHIELD_SEGMENT_COUNT = 4;
 
     private PlayerHealthShield _playerHealthShield;
+
+    [SerializeField] private BoolGameEvent PlayerHealthShieldChangedEvent = default;
+
+    [SerializeField] private FloatVariable _playerHealth;
+    [SerializeField] private FloatVariable _playerShield;
 
     public Color tier1Color = new Color32(37, 255, 249, 255);
 
@@ -121,6 +127,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
     private void Start()
     {
+        
         _playerHealthShield = FindObjectOfType<PlayerHealthShield>();
         if (_playerHealthShield != null)
         {
@@ -128,6 +135,9 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             UpdateHealthSegment();
             UpdateShieldSegment();
         }
+        
+        UpdateHealthSegment();
+        UpdateShieldSegment();
     }
 
 
@@ -360,13 +370,10 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
     public void SetPlayerHealthShield(PlayerHealthShield playerHealthShield)
     {
-        _playerHealthShield = playerHealthShield;
-
         UpdateDamageHealthPreviousHealthAmounts();
         UpdateDamageShieldPreviousShieldAmounts();
 
-        _playerHealthShield.OnHealthShieldChanged += PlayerHealthShield_OnHealthShieldChanged;
-        _playerHealthShield.OnRepair += PlayerHealthShield_OnRepair;
+        PlayerHealthShieldChangedEvent.AddListener(PlayerHealthShield_OnHealthShieldChanged);
     }
 
     private void PlayerHealthShield_OnRepair(object sender, System.EventArgs e)
@@ -379,24 +386,21 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
     private void UpdateDamageHealthPreviousHealthAmounts()
     {
-
-        float health = _playerHealthShield.GetHealth();
-
-        _preChangeHealth = health;
+        _preChangeHealth = _playerHealth.Value;
 
         for (int i = 0; i < HEALTH_SEGMENT_COUNT; i++)
         {
             int healthSegmentMin = i * PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT;
             int healthSegmentMax = (i + 1) * PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT;
 
-            if (health < healthSegmentMin)
+            if (_playerHealth.Value < healthSegmentMin)
             {
                 // Health amount under minimum for this segment
                 _damageHealthPreviousHealthAmountArray[i] = 0;
             }
             else
             {
-                if (health >= healthSegmentMax)
+                if (_playerHealth.Value >= healthSegmentMax)
                 {
                     // Health amount above max
                     _damageHealthPreviousHealthAmountArray[i] = PlayerHealthShield.HEALTH_AMOUNT_PER_SEGMENT;
@@ -404,7 +408,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
                 else
                 {
                     // Health amount somewhere in between this segment
-                    _damageHealthPreviousHealthAmountArray[i] = health - healthSegmentMin;
+                    _damageHealthPreviousHealthAmountArray[i] = _playerHealth.Value - healthSegmentMin;
                 }
             }
 
@@ -413,24 +417,21 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
     private void UpdateDamageShieldPreviousShieldAmounts()
     {
-
-        float shield = _playerHealthShield.GetShield();
-
-        _preChangeShield = shield;
+        _preChangeShield = _playerShield.Value;
 
         for (int i = 0; i < SHIELD_SEGMENT_COUNT; i++)
         {
             int shieldSegmentMin = i * PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
             int shieldSegmentMax = (i + 1) * PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
 
-            if (shield < shieldSegmentMin)
+            if (_playerShield.Value < shieldSegmentMin)
             {
                 // Health amount under minimum for this segment
                 _damageShieldPreviousShieldAmountArray[i] = 0;
             }
             else
             {
-                if (shield >= shieldSegmentMax)
+                if (_playerShield.Value >= shieldSegmentMax)
                 {
                     // Health amount above max
                     _damageShieldPreviousShieldAmountArray[i] = PlayerHealthShield.SHIELD_AMOUNT_PER_SEGMENT;
@@ -438,7 +439,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
                 else
                 {
                     // Health amount somewhere in between this segment
-                    _damageShieldPreviousShieldAmountArray[i] = shield - shieldSegmentMin;
+                    _damageShieldPreviousShieldAmountArray[i] = _playerShield.Value - shieldSegmentMin;
                 }
             }
 
@@ -446,7 +447,8 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
     }
 
 
-    private void PlayerHealthShield_OnHealthShieldChanged(object sender, bool isDamage)
+    //private void PlayerHealthShield_OnHealthShieldChanged(object sender, bool isDamage)
+    private void PlayerHealthShield_OnHealthShieldChanged(bool isDamage)
     {
         if (_healthIconAnimator != null)
         {
@@ -502,9 +504,9 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         }
 
 
-        if (_playerHealthShield.GetHealth() <= LOW_HEALTH_INDICATOR)
+        if (_playerHealth.Value <= LOW_HEALTH_INDICATOR)
         {
-
+            
             _flashingHealth1CanvasGroup.gameObject.SetActive(true);
 
             _flashingHealth2CanvasGroup.gameObject.SetActive(_playerHealthShield.GetHealthLevel() == PlayerHealthShield.HealthLevel.Level_2
@@ -514,7 +516,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             _flashingHealth3CanvasGroup.gameObject.SetActive(_playerHealthShield.GetHealthLevel() == PlayerHealthShield.HealthLevel.Level_3
                                                         || _playerHealthShield.GetHealthLevel() == PlayerHealthShield.HealthLevel.Level_4);
             _flashingHealth4CanvasGroup.gameObject.SetActive(_playerHealthShield.GetHealthLevel() == PlayerHealthShield.HealthLevel.Level_4);
-
+            
 
         }
         else
@@ -536,7 +538,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
 
         // Update shield bars
-        float currentShield = _playerHealthShield.GetShield();
+        float currentShield = _playerShield.Value;
 
 
         while (elapsed < _updateSpeedSeconds)
@@ -577,16 +579,13 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             yield return null;
         }
 
-
         UpdateDamageShieldPreviousShieldAmounts();
 
 
         // Update health bars
-
         elapsed = 0;
 
-
-        float currentHealth = _playerHealthShield.GetHealth();
+        float currentHealth = _playerHealth.Value;
 
         while (elapsed < _updateSpeedSeconds)
         {
@@ -648,6 +647,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         healthBars.Find("Health03").gameObject.SetActive(false);
         healthBars.Find("Health04").gameObject.SetActive(false);
 
+        
         switch (healthLevel)
         {
             default:
@@ -665,8 +665,6 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
                 healthBars.Find("Health04").gameObject.SetActive(true);
                 break;
         }
-
-
     }
 
 
@@ -683,6 +681,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
         Color shieldArmorColor = Color.white;
 
+        
         switch (shieldArmor)
         {
             default:
@@ -719,5 +718,9 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         }
     }
 
+    private void OnDestroy()
+    {
+        PlayerHealthShieldChangedEvent.RemoveListener(PlayerHealthShield_OnHealthShieldChanged);
+    }
 
 }

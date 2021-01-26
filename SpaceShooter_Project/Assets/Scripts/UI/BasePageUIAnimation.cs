@@ -18,7 +18,6 @@ public class BasePageUIAnimation : MonoBehaviour
     [SerializeField] private float _closeButtonFadeDuration = 0.5f;
 
 
-
     private Vector3 _titleEndPos;
     private Vector3 _closeButtonEndPos;
 
@@ -65,6 +64,8 @@ public class BasePageUIAnimation : MonoBehaviour
         {
             Debug.Log("_titleRectTransform == null");
         }
+
+
 
         if (_closeButtonRectTransform != null)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
 {
@@ -26,9 +27,14 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     public const int HEALTH_AMOUNT_PER_SEGMENT = 25;
     public const int SHIELD_AMOUNT_PER_SEGMENT = 25;
 
-    public event EventHandler<bool> OnHealthShieldChanged;
-    public event EventHandler OnRepair;
-    public event EventHandler OnPlayerDie;
+    [SerializeField] private BoolGameEvent OnHealthShieldChanged;
+    [SerializeField] private GameEvent OnRepair;
+    [SerializeField] private GameEvent OnPlayerDie;
+    //[SerializeField] private GameEvent OnDeath;
+
+    //public event EventHandler<bool> OnHealthShieldChanged;
+    //public event EventHandler OnRepair;
+    //public event EventHandler OnPlayerDie;
     public event EventHandler OnDeath;
 
     [SerializeField] float _shieldScaleFactor = 0.0f;
@@ -36,8 +42,8 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     [SerializeField] private ShieldArmor _shieldArmor;
     [SerializeField] private HealthLevel _healthLevel;
 
-    private float _health;
-    private float _shield;
+    [SerializeField] private FloatVariable _health;
+    [SerializeField] private FloatVariable _shield;
 
     [SerializeField] protected Color _shieldColor = Color.magenta;
 
@@ -94,7 +100,8 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
         _rechargeShieldDelayCount = 0;
         SetHealthLevel(_healthLevel);
         SetEquippedShieldArmor(_shieldArmor);
-        OnHealthShieldChanged?.Invoke(this, false);
+        OnHealthShieldChanged.Raise(false);
+        //OnHealthShieldChanged?.Invoke(this, false);
     }
 
     private void Update()
@@ -118,7 +125,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     {
         if (isMeleeAttack)
         {
-            _health -= damageAmount;
+            _health.Value -= damageAmount;
 
             Flash();
 
@@ -129,7 +136,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
         {
             if (damageAmount < _shield)
             {
-                _shield -= damageAmount;
+                _shield.Value -= damageAmount;
             }
             else
             {
@@ -143,8 +150,8 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
                     _collider.enabled = true;
                 }
 
-                _health -= damageAmount - _shield;
-                _shield = 0;
+                _health.Value -= damageAmount - _shield;
+                _shield.Value = 0;
 
 
                 Flash();
@@ -156,9 +163,10 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
         // Reset the recharge delay for the shield
         _rechargeShieldDelayCount = 0;
 
-        _health = Mathf.Clamp(_health, 0, GetHealthMax());
+        _health.Value = Mathf.Clamp(_health, 0, GetHealthMax());
 
-        OnHealthShieldChanged?.Invoke(this, true);
+        //OnHealthShieldChanged?.Invoke(this, true);
+        OnHealthShieldChanged.Raise(true);
 
         if (_health <= 0 && !_isDead)
         {
@@ -192,9 +200,11 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             Instantiate(_explosionEffect, GetPosition(), Quaternion.identity);
         }
 
-        OnPlayerDie?.Invoke(this, EventArgs.Empty);
+        //OnPlayerDie?.Invoke(this, EventArgs.Empty);
+        OnPlayerDie.Raise();
 
         OnDeath?.Invoke(this, EventArgs.Empty);
+        //OnDeath.Raise();
 
         Destroy(gameObject);
     }
@@ -215,19 +225,19 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
         switch (shieldArmor)
         {
             case ShieldArmor.None:
-                _shield = 0;
+                _shield.Value = 0;
                 break;
             case ShieldArmor.Tier_1:
-                _shield = SHIELD_AMOUNT_PER_SEGMENT;
+                _shield.Value = SHIELD_AMOUNT_PER_SEGMENT;
                 break;
             case ShieldArmor.Tier_2:
-                _shield = SHIELD_AMOUNT_PER_SEGMENT * 2;
+                _shield.Value = SHIELD_AMOUNT_PER_SEGMENT * 2;
                 break;
             case ShieldArmor.Tier_3:
-                _shield = SHIELD_AMOUNT_PER_SEGMENT * 3;
+                _shield.Value = SHIELD_AMOUNT_PER_SEGMENT * 3;
                 break;
             case ShieldArmor.Tier_4:
-                _shield = SHIELD_AMOUNT_PER_SEGMENT * 4;
+                _shield.Value = SHIELD_AMOUNT_PER_SEGMENT * 4;
                 break;
         }
     }
@@ -239,16 +249,16 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
         switch (healthLevel)
         {
             case HealthLevel.Level_1:
-                _health = HEALTH_AMOUNT_PER_SEGMENT;
+                _health.Value = HEALTH_AMOUNT_PER_SEGMENT;
                 break;
             case HealthLevel.Level_2:
-                _health = HEALTH_AMOUNT_PER_SEGMENT * 2;
+                _health.Value = HEALTH_AMOUNT_PER_SEGMENT * 2;
                 break;
             case HealthLevel.Level_3:
-                _health = HEALTH_AMOUNT_PER_SEGMENT * 3;
+                _health.Value = HEALTH_AMOUNT_PER_SEGMENT * 3;
                 break;
             case HealthLevel.Level_4:
-                _health = HEALTH_AMOUNT_PER_SEGMENT * 4;
+                _health.Value = HEALTH_AMOUNT_PER_SEGMENT * 4;
                 break;
         }
     }
@@ -272,9 +282,10 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             return;
         }
 
-        _health += amount;
-        _health = Mathf.Clamp(_health, 0, GetHealthMax());
-        OnHealthShieldChanged?.Invoke(this, false);
+        _health.Value += amount;
+        _health.Value = Mathf.Clamp(_health, 0, GetHealthMax());
+        //OnHealthShieldChanged?.Invoke(this, false);
+        OnHealthShieldChanged.Raise(false);
     }
 
 
@@ -298,8 +309,8 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             return;
         }
 
-        _shield += amount;
-        _shield = Mathf.Clamp(_shield, 0, GetShieldhMax());
+        _shield.Value += amount;
+        _shield.Value = Mathf.Clamp(_shield, 0, GetShieldhMax());
 
 
         if (_shieldCollier != null)
@@ -312,7 +323,8 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             _collider.enabled = false;
         }
 
-        OnHealthShieldChanged?.Invoke(this, false);
+        //OnHealthShieldChanged?.Invoke(this, false);
+        OnHealthShieldChanged.Raise();
     }
 
 
@@ -413,6 +425,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     {
         HealHealth(GetHealthMax());
         HealShield(GetShieldhMax());
-        OnRepair?.Invoke(this, EventArgs.Empty);
+        //OnRepair?.Invoke(this, EventArgs.Empty);
+        OnRepair.Raise();
     }
 }

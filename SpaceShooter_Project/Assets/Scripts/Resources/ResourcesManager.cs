@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
 {
@@ -23,6 +24,8 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     public TextMeshProUGUI coinCounterTMPro; //reference to the coin counter (show how many coins the player has)
     public Transform coinDeviationTransform;
 
+    [SerializeField] private IntVariable _coins = default; //variable for coins
+    
     [HideInInspector]
     public int collectedCoins { get; private set; }
 
@@ -30,6 +33,7 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     public RectTransform starIcon; //reference to the star icon (where the animated coin flies to)
     public TextMeshProUGUI starCounterTMPro; //reference to the star counter (show how many stars the player has)
     public Transform starDeviationTransform;
+    [SerializeField] private IntVariable _stars = default; //variable for stars
 
     [Space(5)]
     public RectTransform healthSliderPosition;
@@ -63,9 +67,7 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     public float animationSpeedSeconds = 0.035f;
     public Ease animationEase = Ease.OutCirc;
 
-    private int _coins; //variable for coins
-    private int _stars; //variable for stars
-
+    
     private GameResource _gameResource;
 
     private void Start()
@@ -98,8 +100,8 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
             Debug.Log("Because detection mode is set to '" + detectionMode + "', the camera's projection should be set to 'Orthographic'", gameObject);
         }
 
-        _coins = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_COINS, 0); //get the coins value from the PlayerPrefs
-        _stars = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_STARS, 0); //get the stars value from the PlayerPrefs
+        _coins.Value = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_COINS, 0); //get the coins value from the PlayerPrefs
+        _stars.Value = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_STARS, 0); //get the stars value from the PlayerPrefs
 
         UpdateResourceCounter(ResourceType.Coin);
         UpdateResourceCounter(ResourceType.Star);
@@ -108,9 +110,6 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     private void Update()
     {
         DetectInput(); //detects mouse and/or touch
-
-
-
     }
 
     private void LateUpdate()
@@ -141,8 +140,8 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
 
     private void SaveResourcesToPlayerPrefs()
     {
-        PlayerPrefs.SetInt(PLAYER_PREFS_KEY_COINS, _coins);
-        PlayerPrefs.SetInt(PLAYER_PREFS_KEY_STARS, _stars);
+        PlayerPrefs.SetInt(PLAYER_PREFS_KEY_COINS, _coins.Value);
+        PlayerPrefs.SetInt(PLAYER_PREFS_KEY_STARS, _stars.Value);
         PlayerPrefs.Save();
     }
 
@@ -281,8 +280,8 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     {
         switch (resourceType)
         {
-            case ResourceType.Coin: _coins += value; collectedCoins += value; break; //update the coins with the set value
-            case ResourceType.Star: _stars += value; break; //update the stars with the set value
+            case ResourceType.Coin: _coins.Value += value; collectedCoins += value; break; //update the coins with the set value
+            case ResourceType.Star: _stars.Value += value; break; //update the stars with the set value
             case ResourceType.Health: player?.HealHealth(value); break; //update the player's health with the set value
             case ResourceType.Shield: player?.HealShield(value); break; //update the player's health with the set value
         }
