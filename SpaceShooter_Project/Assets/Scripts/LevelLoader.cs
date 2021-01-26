@@ -59,6 +59,11 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel("Start"));
     }
 
+    public void LoadArcade()
+    {
+        StartCoroutine(LoadLevel("Arcade"));
+    }
+
     public void LoadPreviousLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
