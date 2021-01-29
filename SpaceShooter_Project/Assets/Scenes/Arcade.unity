@@ -3316,8 +3316,8 @@ MonoBehaviour:
   _health: {fileID: 11400000, guid: ebbe641b30a83460b9451d1a8b5a7639, type: 2}
   _shield: {fileID: 11400000, guid: 4a0da3c5c1a1343b5813fe26df728fb6, type: 2}
   _shieldColor: {r: 0, g: 0.7900574, b: 1, a: 1}
-  _rechargeShieldDelay: 7
-  _rechargeShieldSpeed: 3
+  _rechargeShieldDelay: 5
+  _rechargeShieldSpeed: 4
   _hitShakeDuration: 0.15
   _hitShakeIntensity: 0.1
   spriteRenderer: {fileID: 35138826}
