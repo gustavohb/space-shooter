@@ -275,8 +275,11 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
     private IEnumerator ReleaseAudioSource(AudioSource audioSource, float releaseTime)
     {
         yield return new WaitForSeconds(releaseTime + 0.1f);
-
-        ObjectPool.Instance.ReleaseGameObject(audioSource.gameObject);
+        if (audioSource != null)
+        {
+            ObjectPool.Instance.ReleaseGameObject(audioSource.gameObject);
+        }
+        
     }
 
     public AudioClip GetAudioClip(SoundLibrary.Sound soundType)
