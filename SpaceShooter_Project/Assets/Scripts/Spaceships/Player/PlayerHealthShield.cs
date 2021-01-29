@@ -30,17 +30,13 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     [SerializeField] private BoolGameEvent OnHealthShieldChanged;
     [SerializeField] private GameEvent OnRepair;
     [SerializeField] private GameEvent OnPlayerDie;
-    //[SerializeField] private GameEvent OnDeath;
 
-    //public event EventHandler<bool> OnHealthShieldChanged;
-    //public event EventHandler OnRepair;
-    //public event EventHandler OnPlayerDie;
     public event EventHandler OnDeath;
 
     [SerializeField] float _shieldScaleFactor = 0.0f;
     [SerializeField] private GameObject _explosionEffect;
-    [SerializeField] private ShieldArmor _shieldArmor;
-    [SerializeField] private HealthLevel _healthLevel;
+    private ShieldArmor _shieldArmor;
+    private HealthLevel _healthLevel;
 
     [SerializeField] private FloatVariable _health;
     [SerializeField] private FloatVariable _shield;
@@ -92,16 +88,18 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             _collider.enabled = GetShield() <= 0;
         }
 
-
+        _healthLevel = GameDataController.GetPlayerHealthLevel();
+        _shieldArmor = GameDataController.GetPlayerShieldArmor();
+        SetHealthLevel(_healthLevel);
+        SetEquippedShieldArmor(_shieldArmor);
+        
     }
 
     private void Start()
     {
         _rechargeShieldDelayCount = 0;
-        SetHealthLevel(_healthLevel);
-        SetEquippedShieldArmor(_shieldArmor);
+
         OnHealthShieldChanged.Raise(false);
-        //OnHealthShieldChanged?.Invoke(this, false);
     }
 
     private void Update()
@@ -165,7 +163,6 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
         _health.Value = Mathf.Clamp(_health, 0, GetHealthMax());
 
-        //OnHealthShieldChanged?.Invoke(this, true);
         OnHealthShieldChanged.Raise(true);
 
         if (_health <= 0 && !_isDead)
@@ -200,11 +197,9 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             Instantiate(_explosionEffect, GetPosition(), Quaternion.identity);
         }
 
-        //OnPlayerDie?.Invoke(this, EventArgs.Empty);
         OnPlayerDie.Raise();
 
         OnDeath?.Invoke(this, EventArgs.Empty);
-        //OnDeath.Raise();
 
         Destroy(gameObject);
     }
@@ -284,7 +279,6 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
 
         _health.Value += amount;
         _health.Value = Mathf.Clamp(_health, 0, GetHealthMax());
-        //OnHealthShieldChanged?.Invoke(this, false);
         OnHealthShieldChanged.Raise(false);
     }
 
@@ -323,7 +317,6 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             _collider.enabled = false;
         }
 
-        //OnHealthShieldChanged?.Invoke(this, false);
         OnHealthShieldChanged.Raise();
     }
 
@@ -425,7 +418,6 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
     {
         HealHealth(GetHealthMax());
         HealShield(GetShieldhMax());
-        //OnRepair?.Invoke(this, EventArgs.Empty);
         OnRepair.Raise();
     }
 }
