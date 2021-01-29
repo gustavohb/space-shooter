@@ -110,4 +110,14 @@ public class PlayerShooting : ExtendedCustomMonoBehavior
             SetWeapon(_weaponIndex);
         }
     }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawLine(new Vector3(_findTargetArea.x, _findTargetArea.y, 0), new Vector3(_findTargetArea.width, _findTargetArea.y, 0));
+        Gizmos.DrawLine(new Vector3(_findTargetArea.x, _findTargetArea.height, 0), new Vector3(_findTargetArea.width, _findTargetArea.height, 0));
+        Gizmos.DrawLine(new Vector3(_findTargetArea.x, _findTargetArea.y, 0), new Vector3(_findTargetArea.x, _findTargetArea.height, 0));
+        Gizmos.DrawLine(new Vector3(_findTargetArea.width, _findTargetArea.y, 0), new Vector3(_findTargetArea.width, _findTargetArea.height, 0));
+    }
 }
