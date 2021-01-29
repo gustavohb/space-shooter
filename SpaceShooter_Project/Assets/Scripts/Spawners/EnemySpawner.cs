@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private GameObject _victoryScreen;
 
-    private Transform _playerTransform;
+    [SerializeField] private IntVariable _levelToLoad = default;
 
-    private int _currentWaveNumber = -1;
+    private Transform _playerTransform;
 
     private string _currentWaveName;
 
@@ -28,9 +29,14 @@ public class EnemySpawner : MonoBehaviour
     private int _currentEnemiesAlive;
 
     private bool _waveIsCleared = false;
-   
+
+    private int _lastLevelReached;
+        
+
     IEnumerator Start()
     {
+        _lastLevelReached = PlayerPrefs.GetInt("levelReached", 0);
+
         GameObject playerGameObject = GameObject.FindGameObjectWithTag(_playerTag);
 
         if (playerGameObject)
@@ -38,12 +44,12 @@ public class EnemySpawner : MonoBehaviour
             _playerTransform = playerGameObject.transform;
         }
 
-        _currentWaveNumber = -1;
-
-        _waves[_currentWaveNumber + 1].waveStartDelay = 0;
+        _waves[_levelToLoad.Value].waveStartDelay = 0;
 
         yield return new WaitForSeconds(_startDelay);
 
+        //To fix:
+        _levelToLoad.Value -= 1;
         WaveCleared();
 
     }
@@ -51,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void NextWave()
     {
-        foreach (Spawn spawn in _waves[_currentWaveNumber].spawns)
+        foreach (Spawn spawn in _waves[_levelToLoad.Value].spawns)
         {
             _enemiesRemainingAlive += spawn.count;
         }
@@ -72,10 +78,10 @@ public class EnemySpawner : MonoBehaviour
 #endif
         if (!_waveIsCleared)
         {
-            if (_currentWaveNumber >= 0 && _currentWaveNumber < _waves.Length)
+            if (_levelToLoad.Value >= 0 && _levelToLoad.Value < _waves.Length)
             {
                 // Go through all the spawn objects in a wave, and count their spawn time
-                foreach (Spawn spawn in _waves[_currentWaveNumber].spawns)
+                foreach (Spawn spawn in _waves[_levelToLoad.Value].spawns)
                 {
                     if (spawn.spawnDelayTimer > 0)
                     {
@@ -108,7 +114,7 @@ public class EnemySpawner : MonoBehaviour
                 }
 
                 // Count down the total spawn time
-                _waves[_currentWaveNumber].spawnTimeTemp -= GameTime.deltaTime;
+                _waves[_levelToLoad.Value].spawnTimeTemp -= GameTime.deltaTime;
             }
         }
     }
@@ -179,9 +185,17 @@ public class EnemySpawner : MonoBehaviour
     {
         _waveIsCleared = true;
 
-        _currentWaveNumber++;
+        _levelToLoad.Value++;
 
-        if (_currentWaveNumber < _waves.Length)
+        if (_lastLevelReached < _levelToLoad.Value)
+        {
+            _lastLevelReached = _levelToLoad.Value;
+            PlayerPrefs.SetInt("levelReached", _lastLevelReached);
+            PlayerPrefs.Save();
+
+        }
+
+        if (_levelToLoad.Value < _waves.Length)
         {
             StartCoroutine(StartWave());
         }
@@ -194,33 +208,33 @@ public class EnemySpawner : MonoBehaviour
     /// Starts a new wave, displaying a message, and calculating the time for each enemy to spawn
     public IEnumerator StartWave()
     {
-        yield return new WaitForSeconds(_waves[_currentWaveNumber].waveStartDelay);
+        yield return new WaitForSeconds(_waves[_levelToLoad.Value].waveStartDelay);
 
-        _currentWaveName = _waves[_currentWaveNumber].waveMessage;
+        _currentWaveName = _waves[_levelToLoad.Value].waveMessage;
 
         OnNewWave?.Invoke(_currentWaveName);
 
-        if (_waves[_currentWaveNumber].spawnInSequence == true)
+        if (_waves[_levelToLoad.Value].spawnInSequence == true)
         {
-            _waves[_currentWaveNumber].spawnTimeTemp = 0;
+            _waves[_levelToLoad.Value].spawnTimeTemp = 0;
 
-            foreach (Spawn spawn in _waves[_currentWaveNumber].spawns)
+            foreach (Spawn spawn in _waves[_levelToLoad.Value].spawns)
             {
-                spawn.spawnDelay = _waves[_currentWaveNumber].spawnTimeTemp;
+                spawn.spawnDelay = _waves[_levelToLoad.Value].spawnTimeTemp;
 
-                _waves[_currentWaveNumber].spawnTimeTemp += spawn.spawnTime * spawn.count;
+                _waves[_levelToLoad.Value].spawnTimeTemp += spawn.spawnTime * spawn.count;
 
                 spawn.enemiesRemainingToSpawn = spawn.count;
             }
         }
         else
         {
-            _waves[_currentWaveNumber].spawnTimeTemp = _waves[_currentWaveNumber].spawnTime;
+            _waves[_levelToLoad.Value].spawnTimeTemp = _waves[_levelToLoad.Value].spawnTime;
 
-            foreach (Spawn spawn in _waves[_currentWaveNumber].spawns)
+            foreach (Spawn spawn in _waves[_levelToLoad.Value].spawns)
             {
                 spawn.spawnDelayTimer = spawn.spawnDelay;
-                spawn.spawnTime = _waves[_currentWaveNumber].spawnTime / spawn.count;
+                spawn.spawnTime = _waves[_levelToLoad.Value].spawnTime / spawn.count;
 
                 spawn.enemiesRemainingToSpawn = spawn.count;
             }
@@ -228,11 +242,6 @@ public class EnemySpawner : MonoBehaviour
             NextWave();
         }
         _waveIsCleared = false;
-    }
-
-    public IEnumerator WaitASec(float time)
-    {
-        yield return new WaitForSeconds(time);
     }
 
     private IEnumerator Victory()
