@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8424531263408617809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8424531263408617815}
+  - component: {fileID: 8424531263408617808}
+  m_Layer: 0
+  m_Name: GameAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8424531263408617815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424531263408617809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8424531263408617808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424531263408617809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf0a4e0f5f4d43c48b5355af91b3dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombItemShopSprite: {fileID: 21300000, guid: c7a7499e80dc74ca685913f3a8374eee, type: 3}
+  voidItemShopSprite: {fileID: 21300000, guid: c393f8d02a5c749a1992377814679497, type: 3}
+  slowmoItemShopSprite: {fileID: 21300000, guid: 5b6eb7c6ce9d349c0aa6703f8f66000f,
+    type: 3}
+  repairItemShopSprite: {fileID: 21300000, guid: dcfdd7fe14dca41ad81ff40cb31e5060,
+    type: 3}
+  shot1ItemShopSprite: {fileID: 21300000, guid: 3135d3ab3c9e94b50adf2070ac998df3,
+    type: 3}
+  shot2ItemShopSprite: {fileID: 21300000, guid: 3135d3ab3c9e94b50adf2070ac998df3,
+    type: 3}
+  shot3ItemShopSprite: {fileID: 21300000, guid: 3135d3ab3c9e94b50adf2070ac998df3,
+    type: 3}
+  speed1ItemShopSprite: {fileID: 21300000, guid: a060f16d5793b4e2d8fc5200bd3b9e8b,
+    type: 3}
+  speed2ItemShopSprite: {fileID: 21300000, guid: a060f16d5793b4e2d8fc5200bd3b9e8b,
+    type: 3}
+  speed3ItemShopSprite: {fileID: 21300000, guid: a060f16d5793b4e2d8fc5200bd3b9e8b,
+    type: 3}
+  health1ItemShopSprite: {fileID: 21300000, guid: 237de21201b4048c99e668e9d359f176,
+    type: 3}
+  health2ItemShopSprite: {fileID: 21300000, guid: 237de21201b4048c99e668e9d359f176,
+    type: 3}
+  health3ItemShopSprite: {fileID: 21300000, guid: 237de21201b4048c99e668e9d359f176,
+    type: 3}
+  health4ItemShopSprite: {fileID: 21300000, guid: 237de21201b4048c99e668e9d359f176,
+    type: 3}
+  shield1ItemShopSprite: {fileID: 21300000, guid: 8c43ad8d5137b46fa9fb3061eb25b4eb,
+    type: 3}
+  shield2ItemShopSprite: {fileID: 21300000, guid: 8c43ad8d5137b46fa9fb3061eb25b4eb,
+    type: 3}
+  shield3ItemShopSprite: {fileID: 21300000, guid: 8c43ad8d5137b46fa9fb3061eb25b4eb,
+    type: 3}
+  shield4ItemShopSprite: {fileID: 21300000, guid: 8c43ad8d5137b46fa9fb3061eb25b4eb,
+    type: 3}
+  shotHitEffectPrefab: {fileID: 1156606666835066362, guid: 5be3346da0e0b47f7976c691aef4e32c,
+    type: 3}
+  shieldHitEffectPrefab: {fileID: 7105138687359679965, guid: 8eff362f8d52042d08233fee32a8a6a8,
+    type: 3}
+  shieldEffectPrefab: {fileID: 7341806575460018580, guid: d23f0e72d3c324dc1a13106f5065845f,
+    type: 3}
+  itemVoid: {fileID: 0}
+  itemTime: {fileID: 0}
+  voidEffectPrefab: {fileID: 0}

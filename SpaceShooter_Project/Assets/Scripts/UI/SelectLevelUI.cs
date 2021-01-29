@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ScriptableObjectArchitecture;
 
 public class SelectLevelUI : ExtendedCustomMonoBehavior
 {
@@ -12,9 +13,16 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
 
     [SerializeField] private GameObject _levelSelectPricePopup;
 
+    [SerializeField] private IntVariable _levelToLoad;
+
+    private PageController _pageController;
+
+
     private void Awake()
     {
         Refresh();
+
+        _pageController = FindObjectOfType<PageController>();
     }
 
     private void GameDataController_OnSaveDataChanged(object sender, System.EventArgs e)
@@ -48,12 +56,18 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
                 _levelButtons[i].onClick.RemoveAllListeners();
                 _levelButtons[i].onClick.AddListener(() =>
                 {
-                    PlayerPrefs.SetInt("levelToLoad", level);
-                    PlayerPrefs.Save();
+                    //PlayerPrefs.SetInt("levelToLoad", level);
+                    //PlayerPrefs.Save();
+
+                    _levelToLoad.Value = level;
 
                     if (level == 0)
                     {
-                        _levelLoader.LoadArcade();
+                        if (_pageController != null)
+                        {
+                            _pageController.CloseOpenPage();
+                        }
+                        _levelLoader.LoadArcade(0.5f);
 
                         if (_levelSelectWindow != null)
                         {
@@ -62,6 +76,7 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
                     }
                     else
                     {
+                        _levelSelectPricePopup.transform.localPosition = Vector3.zero;
                         _levelSelectPricePopup.SetActive(true);
                     }
                 });

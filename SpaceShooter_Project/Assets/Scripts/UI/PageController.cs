@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 public class PageController : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class PageController : MonoBehaviour
     private void Start()
     {
         _gameModePage.gameObject.SetActive(false);
-        //_selectLevelPage.gameObject.SetActive(false);
+        _selectLevelPage.gameObject.SetActive(false);
         _settingsPage.gameObject.SetActive(false);
         _shopPage.gameObject.SetActive(false);
         _creditsPage.gameObject.SetActive(false);
@@ -67,6 +68,17 @@ public class PageController : MonoBehaviour
         _currentOpenPage.gameObject.SetActive(false);
         _currentOpenPage = null;
         _windowBackgroundAnimator.SetBool("open", false);
+    }
+
+    public void CloseOpenPage(float delay)
+    {
+        StartCoroutine(CloseRoutine(delay));
+    }
+
+    private IEnumerator CloseRoutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        CloseOpenPage();
     }
 
     private void OpenPage(RectTransform page)

@@ -31,9 +31,9 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator Start()
     {
+        _crossFadeCanvasGroup.alpha = 1;
         yield return new WaitForSeconds(1);
 
-        _crossFadeCanvasGroup.alpha = 1;
         FadeOut();
         yield return new WaitForSeconds(_fadeDuration);
 
@@ -50,18 +50,21 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator LoadLevel(string sceneName, float delay)
     {
-        yield return new WaitForSeconds(delay);
+        if (delay > 0.0f)
+        {
+            yield return new WaitForSeconds(delay);
+        }
         StartCoroutine(LoadLevel(sceneName));
     }
 
-    public void LoadStart()
+    public void LoadStart(float delay = 0.0f)
     {
-        StartCoroutine(LoadLevel("Start"));
+        StartCoroutine(LoadLevel("Start", delay));
     }
 
-    public void LoadArcade()
+    public void LoadArcade(float delay = 0.0f)
     {
-        StartCoroutine(LoadLevel("Arcade"));
+        StartCoroutine(LoadLevel("Arcade", delay));
     }
 
     public void LoadPreviousLevel()
