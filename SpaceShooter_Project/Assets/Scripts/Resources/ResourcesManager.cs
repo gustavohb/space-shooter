@@ -100,8 +100,8 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
             Debug.Log("Because detection mode is set to '" + detectionMode + "', the camera's projection should be set to 'Orthographic'", gameObject);
         }
 
-        _coins.Value = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_COINS, 0); //get the coins value from the PlayerPrefs
-        _stars.Value = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_STARS, 0); //get the stars value from the PlayerPrefs
+        //_coins.Value = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_COINS, 0); //get the coins value from the PlayerPrefs
+        //_stars.Value = PlayerPrefs.GetInt(PLAYER_PREFS_KEY_STARS, 0); //get the stars value from the PlayerPrefs
 
         UpdateResourceCounter(ResourceType.Coin);
         UpdateResourceCounter(ResourceType.Star);
