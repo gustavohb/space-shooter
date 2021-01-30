@@ -205,8 +205,10 @@ public class GameDataController : MonoBehaviour
 
     public static void EreaseSaveData()
     {
-
         PlayerPrefs.SetInt("levelToLoad", 0);
+
+        s_coinAmount.Value = 0;
+        s_starAmount.Value = 0;
 
         saveData = new SaveData();
         SaveGame();
