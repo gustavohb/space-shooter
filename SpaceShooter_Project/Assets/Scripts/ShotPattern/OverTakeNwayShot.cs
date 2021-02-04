@@ -57,6 +57,8 @@ public class OverTakeNwayShot : BaseShot
 
         float shiftAngle = 0f;
 
+        float myBulletSpeed = bulletSpeed;
+
         for (int i = 0; i < bulletNum; i++)
         {
             while (GameTime.isPaused)
@@ -74,7 +76,7 @@ public class OverTakeNwayShot : BaseShot
                     yield return new WaitForSeconds(nextLineDelay);
                 }
 
-                bulletSpeed += diffSpeed;
+                myBulletSpeed += diffSpeed;
                 shiftAngle += this.shiftAngle;
             }
 
@@ -93,7 +95,7 @@ public class OverTakeNwayShot : BaseShot
                 yield return null;
             }
 
-            ShotBullet(bullet, bulletSpeed, angle);
+            ShotBullet(bullet, myBulletSpeed, angle);
 
             wayIndex++;
         }

@@ -42,15 +42,7 @@ public class Bullet : ExtendedCustomMonoBehavior
         }
     }
 
-    void OnDisable()
-    {
-        StopAllCoroutines();
-        transform.ResetPosition();
-        transform.ResetRotation();
-        shooting = false;
-    }
 
-    
 
     private void Awake()
     {
@@ -159,5 +151,12 @@ public class Bullet : ExtendedCustomMonoBehavior
         this.targetTag = targetTag;
     }
 
+    void OnDisable()
+    {
+        StopAllCoroutines();
+        transform.ResetPosition();
+        transform.ResetRotation();
+        shooting = false;
+    }
 
 }

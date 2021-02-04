@@ -19,7 +19,7 @@ public class SpreadNwayShot : BaseShot
 	public float DiffSpeed = 0.5f;
 
 
-	private IEnumerator m_Shot;
+	private IEnumerator _shot;
 
 	protected override void Awake()
 	{
@@ -28,23 +28,23 @@ public class SpreadNwayShot : BaseShot
 
 	public override void Shot()
 	{
-		if (m_Shot != null)
+		if (_shot != null)
 		{
-			StopCoroutine(m_Shot);
+			StopCoroutine(_shot);
 		}
 
-		m_Shot = ShotCoroutine();
+		_shot = ShotCoroutine();
 
-		StartCoroutine(m_Shot);
+		StartCoroutine(_shot);
 	}
 
 	public override void StopShot()
 	{
-		if (m_Shot != null)
+		if (_shot != null)
 		{
-			StopCoroutine(m_Shot);
+			StopCoroutine(_shot);
 
-			m_Shot = null;
+			_shot = null;
 		}
 
 		FinishedShot();
@@ -65,6 +65,8 @@ public class SpreadNwayShot : BaseShot
 
 		int wayIndex = 0;
 
+		float myBulletSpeed = bulletSpeed;
+
 		AudioManager.Instance.PlaySound(shotSFX, transform.position);
 
 		for (int i = 0; i < bulletNum; i++)
@@ -73,10 +75,10 @@ public class SpreadNwayShot : BaseShot
 			{
 				wayIndex = 0;
 
-				bulletSpeed -= DiffSpeed;
-				while (bulletSpeed <= 0)
+				myBulletSpeed -= DiffSpeed;
+				while (myBulletSpeed <= 0)
 				{
-					bulletSpeed += Mathf.Abs(DiffSpeed);
+					myBulletSpeed += Mathf.Abs(DiffSpeed);
 				}
 			}
 
@@ -96,7 +98,7 @@ public class SpreadNwayShot : BaseShot
 			}
 
 
-			ShotBullet(bullet, bulletSpeed, angle);
+			ShotBullet(bullet, myBulletSpeed, angle);
 
 			wayIndex++;
 		}
