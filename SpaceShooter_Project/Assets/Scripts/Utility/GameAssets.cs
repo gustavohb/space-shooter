@@ -35,12 +35,8 @@ public class GameAssets : SingletonMonoBehavior<GameAssets>
     public GameObject shieldHitEffectPrefab;
     public GameObject shieldEffectPrefab;
 
-    [Header("Others")]
-
-    public GameObject itemVoid;
-    public GameObject itemTime;
+    [Header("Other Effects")]
     public GameObject voidEffectPrefab;
-
 
 
 }

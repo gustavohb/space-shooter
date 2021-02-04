@@ -7,31 +7,26 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
 
     public enum AudioChannel { Sfx, Music };
 
-    private SoundLibrary _library;
+    public bool musicOn { get; private set; }
+    public bool sfxOn { get; private set; }
 
     public float musicVolumePercent { get; private set; }
-
     public float sfxVolumePercent { get; private set; }
 
     [SerializeField] private float _lowPitchRange = 0.95f;
-
     [SerializeField] private float _highPitchRange = 1.05f;
+    [SerializeField] private GameObject _audioSourcePrefab;
+    [SerializeField] private float _slowTimePitch = 3.0f;
 
-    public bool musicOn { get; private set; }
-    public bool sfxOn { get; private set; }
+    private SoundLibrary _library;
 
     private AudioSource _sfx2DSource;
     private AudioSource[] _musicSources;
     private int _activeMusicSourceIndex;
-
     private Transform _audioListenerTransform;
-
     private Transform _playerTransform;
-
-    [SerializeField]
-    private GameObject _audioSourcePrefab;
-
     public int currentTrack = 0;
+    public bool slowTime = false;
 
     protected override void Awake()
     {
@@ -244,8 +239,15 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
 
     public void RandomizeSfx(Vector3 position, params AudioClip[] clips)
     {
-        float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
-        _sfx2DSource.pitch = randomPitch;
+        if (slowTime)
+        {
+            _sfx2DSource.pitch = _slowTimePitch;
+        }
+        else
+        {
+            float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
+            _sfx2DSource.pitch = randomPitch;
+        }
 
         int randomIndex = Random.Range(0, clips.Length);
 
@@ -263,8 +265,15 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>
 
         AudioSource audioSource = GetAudioSource(position);
 
-        float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
-        audioSource.pitch = randomPitch;
+        if (slowTime)
+        {
+            audioSource.pitch = _slowTimePitch;
+        }
+        else
+        {
+            float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
+            audioSource.pitch = randomPitch;
+        }
 
         audioSource.PlayOneShot(audioClip, sfxVolumePercent);
 

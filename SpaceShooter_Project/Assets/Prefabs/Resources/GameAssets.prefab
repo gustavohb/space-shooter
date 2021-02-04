@@ -83,6 +83,5 @@ MonoBehaviour:
     type: 3}
   shieldEffectPrefab: {fileID: 7341806575460018580, guid: d23f0e72d3c324dc1a13106f5065845f,
     type: 3}
-  itemVoid: {fileID: 0}
-  itemTime: {fileID: 0}
-  voidEffectPrefab: {fileID: 0}
+  voidEffectPrefab: {fileID: 8069046872341018673, guid: ef0b1b136e67d4c38ae7285a762c6ee5,
+    type: 3}
