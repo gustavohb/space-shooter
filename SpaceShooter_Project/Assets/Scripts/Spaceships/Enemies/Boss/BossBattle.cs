@@ -85,8 +85,6 @@ public class BossBattle : ExtendedCustomMonoBehavior
 
     private void StartBattle()
     {
-        Debug.Log("StartBattle");
-
         MusicManager.Instance.PlayMusic(MusicManager.MusicTheme.Boss);
         SpawnBoss();
 
@@ -194,8 +192,6 @@ public class BossBattle : ExtendedCustomMonoBehavior
                 maxEnemiesAlive = _maxEnemiesAlineStage4;
                 break;
         }
-        Debug.Log("Starting next stage: " + _currentStage);
-
         OnStageChanged?.Invoke(this, _currentStage);
     }
 
