@@ -14,6 +14,8 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
     private PlayerHealthShield _playerHealthShield;
 
     [SerializeField] private BoolGameEvent PlayerHealthShieldChangedEvent = default;
+    [SerializeField] private GameEvent PlayerHealthShildRepairEvent = default;
+
 
     [SerializeField] private FloatVariable _playerHealth;
     [SerializeField] private FloatVariable _playerShield;
@@ -374,9 +376,12 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
         UpdateDamageShieldPreviousShieldAmounts();
 
         PlayerHealthShieldChangedEvent.AddListener(PlayerHealthShield_OnHealthShieldChanged);
+        PlayerHealthShildRepairEvent.AddListener(PlayerHealthShield_OnRepair);
+       
+
     }
 
-    private void PlayerHealthShield_OnRepair(object sender, System.EventArgs e)
+    private void PlayerHealthShield_OnRepair()
     {
         if (_healthIconAnimated != null)
         {
@@ -447,7 +452,6 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
     }
 
 
-    //private void PlayerHealthShield_OnHealthShieldChanged(object sender, bool isDamage)
     private void PlayerHealthShield_OnHealthShieldChanged(bool isDamage)
     {
         if (_healthIconAnimator != null)
@@ -721,6 +725,7 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
     private void OnDestroy()
     {
         PlayerHealthShieldChangedEvent.RemoveListener(PlayerHealthShield_OnHealthShieldChanged);
+        PlayerHealthShildRepairEvent.RemoveListener(PlayerHealthShield_OnRepair);
     }
 
 }

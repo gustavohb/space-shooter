@@ -317,7 +317,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             _collider.enabled = false;
         }
 
-        OnHealthShieldChanged.Raise();
+        OnHealthShieldChanged.Raise(false);
     }
 
 
