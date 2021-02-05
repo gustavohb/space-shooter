@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 7040250755502508644}
   - component: {fileID: 7040250755502508645}
   m_Layer: 0
-  m_Name: BossBattle01
+  m_Name: BossBattle02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,29 +199,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d47f8a71b2854186a0420f370c3c8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyStage1Prefab: {fileID: 1941415568804092968, guid: e1a8586ef85bc4a7d8e5234ffdc7671a,
+  _enemyStage1Prefab: {fileID: 8727956933680507420, guid: 537076033e4554072a87db9987535b59,
     type: 3}
   _maxEnemiesAlineStage1: 3
-  _enemyStage2Prefab: {fileID: 7232941099748797391, guid: 8134fdbac87c141168eebd92f3341794,
+  _enemyStage2Prefab: {fileID: 4868256792148060573, guid: 88df2a08d22724ac29fd973a5249d81e,
     type: 3}
   _maxEnemiesAlineStage2: 3
-  _enemyStage3Prefab: {fileID: 8589986534183618154, guid: b0602a0e126ed4f21aa8f853adfd003c,
+  _enemyStage3Prefab: {fileID: 3492955420189355923, guid: 89e958da768714919a0fb375c6a30747,
     type: 3}
-  _maxEnemiesAlineStage3: 3
-  _enemyStage4Prefab: {fileID: 6030336531927486018, guid: 0ac81a257845d4bdab06c59e3ac866a6,
+  _maxEnemiesAlineStage3: 2
+  _enemyStage4Prefab: {fileID: 1913609339706078836, guid: 9581a16058f8848bc8ee0f16c54c0083,
     type: 3}
-  _spawnEnemyTime: 10
-  _maxEnemiesAlineStage4: 2
+  _spawnEnemyTime: 8
+  _maxEnemiesAlineStage4: 3
   _healthPickupPrefab: {fileID: 1842589446096714161, guid: 4696faad8c2c34f14ad7ddc08a11f8e2,
     type: 3}
-  _healthPickupSpawnTime: 6
+  _healthPickupSpawnTime: 5
   _spawnArea:
     serializedVersion: 2
     x: -21
     y: -12
     width: 21
     height: 12
-  _bossPrefab: {fileID: 1338951880085234086, guid: 9bd0b209e63ba4d41be179aa70b11f50,
+  _bossPrefab: {fileID: 482839842648930442, guid: df45827b477254c31bb888674cbf16fd,
     type: 3}
   _spawnHealthPickupArea:
     serializedVersion: 2
@@ -229,7 +229,7 @@ MonoBehaviour:
     y: -9
     width: 18
     height: 8
-  m_IsFinalBoss: 0
+  m_IsFinalBoss: 1
 --- !u!1 &9039979696829551575
 GameObject:
   m_ObjectHideFlags: 0
