@@ -9,30 +9,13 @@ public class StarField : MonoBehaviour
 
     private Transform _playerTransform;
 
-    private Camera _mainCamera;
-
     private void Start()
     {
         GameObject playerGameObject = GameObject.FindGameObjectWithTag(_playerTag);
 
-        _mainCamera = Camera.main;
-
         if (playerGameObject)
         {
             _playerTransform = playerGameObject.transform;
-        }
-        // Resize starfield according to the screen size
-        for (int i = 0; i < _parallaxObjects.Length; i++)
-        {
-            SpriteRenderer spriteRenderer = _parallaxObjects[i].GetComponent<SpriteRenderer>();
-            if (spriteRenderer == null) continue;
-            float width = spriteRenderer.sprite.bounds.size.x;
-            float height = spriteRenderer.sprite.bounds.size.y;
-
-            float worldScreenHeight = _mainCamera.orthographicSize * 2.0f;
-            float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
-
-            _parallaxObjects[i].localScale = new Vector2(worldScreenWidth / width, worldScreenHeight / height);
         }
     }
 
