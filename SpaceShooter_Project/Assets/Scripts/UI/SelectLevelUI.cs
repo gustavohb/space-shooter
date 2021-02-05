@@ -7,11 +7,11 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
 {
     [SerializeField] private Button[] _levelButtons;
 
-    [SerializeField] private LevelLoader _levelLoader;
-
     [SerializeField] private GameObject _levelSelectWindow;
 
     [SerializeField] private GameObject _levelSelectPricePopup;
+
+    [SerializeField] private FloatGameEvent _loadArcadeEvent = default;
 
     [SerializeField] private IntVariable _levelToLoad;
 
@@ -32,12 +32,6 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
 
     public void Refresh()
     {
-        if (_levelLoader == null)
-        {
-            _levelLoader = FindObjectOfType<LevelLoader>();
-        }
-
-
         int levelReached = PlayerPrefs.GetInt("levelReached", 0);
 
         for (int i = 0; i < _levelButtons.Length; i++)
@@ -75,7 +69,7 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
                         {
                             _pageController.CloseOpenPage();
                         }
-                        _levelLoader.LoadArcade(0.5f);
+                        _loadArcadeEvent?.Raise(0.5f);
 
                         if (_levelSelectWindow != null)
                         {

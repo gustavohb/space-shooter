@@ -361,16 +361,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3258058633275858610, guid: b0b8985dcfe064053ba6a31f2882b68d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258058633735242644, guid: b0b8985dcfe064053ba6a31f2882b68d,
-        type: 3}
-      propertyPath: _startLoading
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3258058633735242645, guid: b0b8985dcfe064053ba6a31f2882b68d,
         type: 3}
       propertyPath: m_RootOrder
@@ -430,11 +420,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[LevelLoader]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258058634174298912, guid: b0b8985dcfe064053ba6a31f2882b68d,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0b8985dcfe064053ba6a31f2882b68d, type: 3}
@@ -2191,6 +2176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
+  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2198,6 +2184,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &519420029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e188ee899633d0b49870a5ae38b7359d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ratio: {x: 16, y: 9}
+  forceRatioOnAwake: 1
+  listenForWindowChanges: 1
+  createCameraForLetterBoxRendering: 1
+  findCamerasAutomatically: 1
+  letterBoxCameraColor: {r: 0, g: 0, b: 0, a: 1}
+  cameras: []
+  letterBoxCamera: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -4070,6 +4076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f5ea894c6f94e3cb6fb703bafa69b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadStartEvent: {fileID: 11400000, guid: 2c5174799d95344e495ff34203f29d1e, type: 2}
 --- !u!114 &1020353382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16756,7 +16763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 116, y: -166.40729}
+  m_AnchoredPosition: {x: 116, y: -166.4082}
   m_SizeDelta: {x: 743.961, y: 163.04291}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1971748748
@@ -17253,7 +17260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 556.63, y: 99.79999}
+  m_AnchoredPosition: {x: 556.6289, y: 99.79883}
   m_SizeDelta: {x: 1113.24, y: 199.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2037461628

@@ -22,6 +22,8 @@ public class LevelLoader : MonoBehaviour
 
     [SerializeField] private FloatGameEvent _loadArcadeEvent = default;
 
+    [SerializeField] private FloatGameEvent _loadStartEvent = default;
+
     private AsyncOperation _asyncOperation;
 
     private void Awake()
@@ -35,6 +37,8 @@ public class LevelLoader : MonoBehaviour
     private IEnumerator Start()
     {
         _loadArcadeEvent?.AddListener(LoadArcade);
+        _loadStartEvent?.AddListener(LoadStart);
+
 
         _crossFadeCanvasGroup.alpha = 1;
         yield return new WaitForSeconds(1);
@@ -190,5 +194,6 @@ public class LevelLoader : MonoBehaviour
     private void OnDestroy()
     {
         _loadArcadeEvent?.RemoveListener(LoadArcade);
+        _loadStartEvent?.RemoveListener(LoadStart);
     }
 }

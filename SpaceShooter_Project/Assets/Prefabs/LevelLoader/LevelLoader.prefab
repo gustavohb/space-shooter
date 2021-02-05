@@ -456,6 +456,7 @@ MonoBehaviour:
   _crossFadeCanvasGroup: {fileID: 3258058634423999925}
   _fadeDuration: 1
   _loadArcadeEvent: {fileID: 11400000, guid: 0f50adab50ddd4fd3af7cbdf29a3c784, type: 2}
+  _loadStartEvent: {fileID: 11400000, guid: 2c5174799d95344e495ff34203f29d1e, type: 2}
 --- !u!1 &3258058634174298919
 GameObject:
   m_ObjectHideFlags: 0
