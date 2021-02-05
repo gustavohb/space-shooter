@@ -9740,7 +9740,7 @@ MonoBehaviour:
   _colliderEnableDelay: 0.5
   _attractionDisableTime: 4.5
   _lifeTime: 5.5
-  _sfx: 0
+  _sfx: 24
 --- !u!114 &3316068788630906712
 MonoBehaviour:
   m_ObjectHideFlags: 0

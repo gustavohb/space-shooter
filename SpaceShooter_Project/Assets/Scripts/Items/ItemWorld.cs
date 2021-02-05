@@ -53,7 +53,7 @@ public class ItemWorld : MonoBehaviour
 
     private void Start()
     {
-        //AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemAppear);
+        AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemAppear);
     }
 
     private void Update()
@@ -63,7 +63,7 @@ public class ItemWorld : MonoBehaviour
         if (_lifeTime <= 0 && !isRemoving)
         {
             isRemoving = true;
-            //AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemDisappear);
+            AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemDisappear);
             _animator.SetTrigger("Pickup");
         }
 
@@ -105,7 +105,7 @@ public class ItemWorld : MonoBehaviour
         {
             _inventory?.AddItem(GetItem());
 
-            //AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemPickup);
+            AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemPickup);
 
             if (_animator != null)
             {
@@ -129,7 +129,7 @@ public class ItemWorld : MonoBehaviour
                 isPickingUp = true;
                 _inventory?.AddItem(GetItem());
 
-                //AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemPickup);
+                AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemPickup);
 
                 if (_animator != null)
                 {

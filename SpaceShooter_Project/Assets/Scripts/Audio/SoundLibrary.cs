@@ -24,6 +24,13 @@ public class SoundLibrary : MonoBehaviour
         StarPickup,
         UIStarPickup,
         ClickButton02,
+        ItemPickup,
+        ItemAppear,
+        ItemDisappear,
+        ItemUseDefaultSfx,
+        Repair,
+        Void,
+        UseInventoryItem,
     };
 
     [System.Serializable]

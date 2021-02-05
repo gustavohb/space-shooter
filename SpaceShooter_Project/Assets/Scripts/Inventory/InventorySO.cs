@@ -81,19 +81,19 @@ public class InventorySO : ScriptableObject
                 {
                     RemoveItem(new Item { itemType = Item.ItemType.Repair, amount = 1 });
                     playerHealthShield.Repair();
-                    //AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.Repair);
+                    AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.Repair);
                 }
                 break;
             case Item.ItemType.Void:
                 Transform playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
                 RemoveItem(new Item { itemType = Item.ItemType.Void, amount = 1 });
                 Instantiate(GameAssets.Instance.voidEffectPrefab, playerTransform.position, Quaternion.identity);
-                //AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemUseDefaultSfx);
+                AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemUseDefaultSfx);
                 break;
             case Item.ItemType.Slowmo:
                 TimeManager.Instance.DoSlowmotion();
                 RemoveItem(new Item { itemType = Item.ItemType.Slowmo, amount = 1 });
-                //AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemUseDefaultSfx);
+                AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ItemUseDefaultSfx);
                 break;
         }
     }
