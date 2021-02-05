@@ -9,9 +9,6 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
 
     public enum DetectionMode { Detect2D, Detect3D } //detection mode
 
-    public const string PLAYER_PREFS_KEY_COINS = "COINS"; //string key used to load/save the coins value from/to PlayerPrefs
-    public const string PLAYER_PREFS_KEY_STARS = "STARS"; //string key used to load/save the stars value from/to PlayerPrefs
-
     public Camera targetCamera;
 
     public PlayerHealthShield player;
@@ -131,18 +128,6 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
             Vector3 newSize = new Vector3(0.6f, 0.6f, 1.0f);
             coinIcon.localScale = newSize;
         }
-    }
-
-    private void OnDisable()
-    {
-        SaveResourcesToPlayerPrefs(); //save the resources values to the PlayerPrefs
-    }
-
-    private void SaveResourcesToPlayerPrefs()
-    {
-        PlayerPrefs.SetInt(PLAYER_PREFS_KEY_COINS, _coins.Value);
-        PlayerPrefs.SetInt(PLAYER_PREFS_KEY_STARS, _stars.Value);
-        PlayerPrefs.Save();
     }
 
     private bool MouseDetected()
@@ -269,7 +254,6 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
 
                 UpdateResourceValueBy(gameResource.resourceType, gameResource.value);
                 UpdateResourceCounter(gameResource.resourceType);
-                SaveResourcesToPlayerPrefs(); //save the resources to player prefs
             })
             .Play();
 
@@ -292,7 +276,7 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
         switch (resourceType)
         {
             case ResourceType.Coin:
-                coinCounterTMPro.text = _coins.ToString(); //update the coin counter text
+                coinCounterTMPro.text = _coins.Value.ToString(); //update the coin counter text
                 if (coinCounterTMPro.rectTransform.localScale.x < 1.5f && coinCounterTMPro.rectTransform.localScale.y < 1.5f)
                 {
                     coinCounterTMPro.rectTransform.DOPunchScale(new Vector3(0.05f, 0.05f, 0.0f), 0.8f)
