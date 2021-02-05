@@ -400,7 +400,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1764070167}
   m_HandleRect: {fileID: 1764070166}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 71514170}
   m_HandleRect: {fileID: 71514169}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2180,7 +2180,6 @@ MonoBehaviour:
   _buyButton: {fileID: 1720585688}
   _watchAdButton: {fileID: 1507401651}
   _priceText: {fileID: 1392574304}
-  _levelLoader: {fileID: 629899290}
   _priceTextNoFundMaterial: {fileID: -3168447758704705423, guid: 5bd099b3fdf6a4c83bec1b870623919c,
     type: 2}
   _priceTextMaterial: {fileID: -3168447758704705423, guid: 2801d336c12f24635920e9f8388be13a,
@@ -2192,6 +2191,9 @@ MonoBehaviour:
   _openAndCloseDuration: 0.35
   _coinsAmount: {fileID: 11400000, guid: 38c09f9edf09042f6bdfe795452b84fc, type: 2}
   _levelToLoad: {fileID: 11400000, guid: 5f413cdd4e9814dc89dbe3dcf06d6932, type: 2}
+  _closeWindowEvent: {fileID: 11400000, guid: 766b92fc00c8149238367378e8b89cc2, type: 2}
+  _loadArcadeEvent: {fileID: 11400000, guid: 0f50adab50ddd4fd3af7cbdf29a3c784, type: 2}
+  _loadArcadeDelay: 0.8
 --- !u!1 &364361495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,16 +3531,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3258058633275858610, guid: b0b8985dcfe064053ba6a31f2882b68d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258058633735242644, guid: b0b8985dcfe064053ba6a31f2882b68d,
-        type: 3}
-      propertyPath: _startLoading
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3258058633735242645, guid: b0b8985dcfe064053ba6a31f2882b68d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3598,16 +3590,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258058633735242651, guid: b0b8985dcfe064053ba6a31f2882b68d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258058634174298912, guid: b0b8985dcfe064053ba6a31f2882b68d,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0b8985dcfe064053ba6a31f2882b68d, type: 3}
@@ -7359,6 +7341,8 @@ MonoBehaviour:
   _windowBackgroundAnimator: {fileID: 1944033404}
   _windowAppearFadeDuration: 1
   _windowBackground: {fileID: 1944033400}
+  _closeWindowDelay: 0.7
+  _closeWindowEvent: {fileID: 11400000, guid: 766b92fc00c8149238367378e8b89cc2, type: 2}
   ease: 27
 --- !u!1 &1340699576
 GameObject:
@@ -8424,7 +8408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1452635158
@@ -8479,6 +8463,7 @@ GameObject:
   - component: {fileID: 1507401653}
   - component: {fileID: 1507401652}
   - component: {fileID: 1507401651}
+  - component: {fileID: 1507401655}
   - component: {fileID: 1507401654}
   m_Layer: 5
   m_Name: WachAdButton
@@ -8601,8 +8586,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b504109e87ab4df2bdadbda132f8e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelLoader: {fileID: 629899290}
-  _animator: {fileID: 0}
+  _animator: {fileID: 1507401655}
+  _animatorParameterName: IsEnabled
+  _closeWindowEvent: {fileID: 11400000, guid: 766b92fc00c8149238367378e8b89cc2, type: 2}
+  _loadArcadeEvent: {fileID: 11400000, guid: 0f50adab50ddd4fd3af7cbdf29a3c784, type: 2}
+  _loadArcadeDelay: 0.7
+--- !u!95 &1507401655
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507401649}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c27ebad4a80c4bc18fcc67a28645323, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1507523602
 GameObject:
   m_ObjectHideFlags: 0
@@ -9108,10 +9115,10 @@ RectTransform:
   m_Father: {fileID: 1401081466}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588468131
 MonoBehaviour:
@@ -9204,7 +9211,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96

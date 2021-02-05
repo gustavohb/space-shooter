@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using ScriptableObjectArchitecture;
 
 [RequireComponent(typeof(Button))]
 public class LevelSelectRewardedAdsButton : MonoBehaviour, IUnityAdsListener
@@ -10,9 +11,15 @@ public class LevelSelectRewardedAdsButton : MonoBehaviour, IUnityAdsListener
 
     private bool _adsAlreadyShowed = false;
 
-    [SerializeField] private LevelLoader _levelLoader;
-
     [SerializeField] private Animator _animator;
+
+    [SerializeField] private string _animatorParameterName = "IsEnabled";
+
+    [SerializeField] private GameEvent _closeWindowEvent = default;
+
+    [SerializeField] private FloatGameEvent _loadArcadeEvent = default;
+
+    [SerializeField] private float _loadArcadeDelay = 0.7f;
 
     private void OnEnable()
     {
@@ -20,12 +27,6 @@ public class LevelSelectRewardedAdsButton : MonoBehaviour, IUnityAdsListener
         {
             _button = GetComponent<Button>();
         }
-
-        if (_levelLoader == null)
-        {
-            _levelLoader = FindObjectOfType<LevelLoader>();
-        }
-
 
         bool adsIsReady = Advertisement.IsReady(AdsManager.Instance.rewardedVideoPlacementID);
 
@@ -39,7 +40,7 @@ public class LevelSelectRewardedAdsButton : MonoBehaviour, IUnityAdsListener
 
         if (_animator != null)
         {
-            _animator.SetBool("IsEnable", adsIsReady);
+            _animator.SetBool(_animatorParameterName, adsIsReady);
         }
 
 
@@ -66,7 +67,7 @@ public class LevelSelectRewardedAdsButton : MonoBehaviour, IUnityAdsListener
             _button.interactable = true;
             if (_animator != null)
             {
-                _animator.SetBool("IsEnable", true);
+                _animator.SetBool(_animatorParameterName, true);
             }
         }
     }
@@ -82,7 +83,7 @@ public class LevelSelectRewardedAdsButton : MonoBehaviour, IUnityAdsListener
 
             if (_animator != null)
             {
-                _animator.SetBool("IsEnable", false);
+                _animator.SetBool(_animatorParameterName, false);
             }
 
             StartCoroutine(CloseWindowsAndLoadArcadeScene());
@@ -100,8 +101,10 @@ public class LevelSelectRewardedAdsButton : MonoBehaviour, IUnityAdsListener
     private IEnumerator CloseWindowsAndLoadArcadeScene()
     {
         //TODO: Close open windows
-        yield return new WaitForSeconds(0.5f);
-        _levelLoader.LoadArcade(.7f);
+        _closeWindowEvent.Raise();
+        yield return null;
+
+        _loadArcadeEvent.Raise(_loadArcadeDelay);
     }
 
 

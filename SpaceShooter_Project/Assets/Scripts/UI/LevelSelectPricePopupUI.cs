@@ -14,8 +14,6 @@ public class LevelSelectPricePopupUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _priceText;
 
-    [SerializeField] private LevelLoader _levelLoader;
-
     [SerializeField] private Material _priceTextNoFundMaterial;
 
     [SerializeField] private Material _priceTextMaterial;
@@ -34,18 +32,26 @@ public class LevelSelectPricePopupUI : MonoBehaviour
 
     [SerializeField] private IntVariable _levelToLoad = default;
 
+    [SerializeField] private GameEvent _closeWindowEvent = default;
+
+    [SerializeField] private FloatGameEvent _loadArcadeEvent = default;
+
+    [SerializeField] private float _loadArcadeDelay = 0.8f;
+
     //Remove:
     private const string PLAYER_PREFS_KEY_COINS = "COINS"; //string key used to load/save the coins value from/to PlayerPrefs
 
     private Vector3 _startPosition;
 
-    private PageController _pageController;
-
     private void Awake()
     {
         _startPosition = transform.localPosition;
-        _pageController = FindObjectOfType<PageController>();
         gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        _closeWindowEvent?.AddListener(Close);
     }
 
     private void OnEnable()
@@ -66,12 +72,6 @@ public class LevelSelectPricePopupUI : MonoBehaviour
 
         switch (_levelToLoad.Value)
         {
-            /*
-            case 0:
-                _levelLoader.LoadArcade();
-                gameObject.SetActive(false);
-                break;
-            */
             case 4:
                 _levelText.text = "FAST TRAVEL TO BOSS 1";
                 break;
@@ -102,12 +102,9 @@ public class LevelSelectPricePopupUI : MonoBehaviour
 
                 PlayerPrefs.SetInt(PLAYER_PREFS_KEY_COINS, _coinsAmount.Value);
 
-                _levelLoader.LoadArcade(0.8f);
+                _loadArcadeEvent.Raise(_loadArcadeDelay);
                 Close();
-                if (_pageController != null)
-                {
-                    _pageController.CloseOpenPage(0.5f);
-                }
+                _closeWindowEvent?.Raise();
             });
         }
 
@@ -172,5 +169,10 @@ public class LevelSelectPricePopupUI : MonoBehaviour
             default:
                 return 250;
         }
+    }
+
+    private void OnDestroy()
+    {
+        _closeWindowEvent?.RemoveListener(Close);
     }
 }

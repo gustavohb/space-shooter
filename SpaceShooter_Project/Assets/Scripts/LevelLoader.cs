@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using ScriptableObjectArchitecture;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class LevelLoader : MonoBehaviour
 
     [SerializeField] private float _fadeDuration = 1f;
 
+    [SerializeField] private FloatGameEvent _loadArcadeEvent = default;
+
     private AsyncOperation _asyncOperation;
 
     private void Awake()
@@ -31,6 +34,8 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator Start()
     {
+        _loadArcadeEvent?.AddListener(LoadArcade);
+
         _crossFadeCanvasGroup.alpha = 1;
         yield return new WaitForSeconds(1);
 
@@ -180,5 +185,10 @@ public class LevelLoader : MonoBehaviour
         _crossFadeCanvasGroup.DOFade(0, _fadeDuration).OnComplete(() => {
             _crossFadeCanvasGroup.blocksRaycasts = false;
         });
+    }
+
+    private void OnDestroy()
+    {
+        _loadArcadeEvent?.RemoveListener(LoadArcade);
     }
 }

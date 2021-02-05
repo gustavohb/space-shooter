@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using ScriptableObjectArchitecture;
 
 public class PageController : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class PageController : MonoBehaviour
 
     [SerializeField] private RectTransform _windowBackground;
 
+    [SerializeField] private float _closeWindowDelay = 0.7f;
+
+    [SerializeField] private GameEvent _closeWindowEvent = default;
+
     private RectTransform _currentOpenPage;
 
     private Vector3 _startPosition;
@@ -34,6 +39,9 @@ public class PageController : MonoBehaviour
         _settingsPage.gameObject.SetActive(false);
         _shopPage.gameObject.SetActive(false);
         _creditsPage.gameObject.SetActive(false);
+
+        _closeWindowEvent.AddListener(CloseWindow);
+
     }
 
     public void OpenSelectModePage()
@@ -70,6 +78,11 @@ public class PageController : MonoBehaviour
         _windowBackgroundAnimator.SetBool("open", false);
     }
 
+    private void CloseWindow()
+    {
+        CloseOpenPage(_closeWindowDelay);
+    }
+
     public void CloseOpenPage(float delay)
     {
         StartCoroutine(CloseRoutine(delay));
@@ -78,6 +91,7 @@ public class PageController : MonoBehaviour
     private IEnumerator CloseRoutine(float delay)
     {
         yield return new WaitForSeconds(delay);
+        AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ClickButton01);
         CloseOpenPage();
     }
 
@@ -99,6 +113,11 @@ public class PageController : MonoBehaviour
 
         _startPosition = page.localPosition;
         _currentOpenPage.localPosition = _windowBackground.localPosition;
+    }
+
+    private void OnDestroy()
+    {
+        _closeWindowEvent.RemoveListener(CloseWindow);
     }
 }
 
