@@ -71,11 +71,10 @@ public class LevelSelectPricePopupUI : MonoBehaviour
                 _levelLoader.LoadArcade();
                 gameObject.SetActive(false);
                 break;
-            
+            */
             case 4:
                 _levelText.text = "FAST TRAVEL TO BOSS 1";
                 break;
-            */
             case 9:
                 _levelText.text = "FAST TRAVEL TO BOSS 2";
                 break;

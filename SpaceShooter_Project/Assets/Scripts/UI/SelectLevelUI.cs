@@ -52,13 +52,21 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
             else
             {
                 int level = i;
-                text.text = (i + 1).ToString();
+                if (i + 1 == 5)
+                {
+                    text.text = "BOSS 1";
+                }
+                else if (i + 1 == 10)
+                {
+                    text.text = "BOSS 2";
+                }
+                else
+                {
+                    text.text = (i + 1).ToString();
+                }
                 _levelButtons[i].onClick.RemoveAllListeners();
                 _levelButtons[i].onClick.AddListener(() =>
                 {
-                    //PlayerPrefs.SetInt("levelToLoad", level);
-                    //PlayerPrefs.Save();
-
                     _levelToLoad.Value = level;
 
                     if (level == 0)
