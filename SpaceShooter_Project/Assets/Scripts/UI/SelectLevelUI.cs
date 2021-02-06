@@ -7,8 +7,6 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
 {
     [SerializeField] private Button[] _levelButtons;
 
-    [SerializeField] private GameObject _levelSelectWindow;
-
     [SerializeField] private GameObject _levelSelectPricePopup;
 
     [SerializeField] private FloatGameEvent _loadArcadeEvent = default;
@@ -73,17 +71,15 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
                             _pageController.CloseOpenPage();
                         }
                         _loadArcadeEvent?.Raise(0.5f);
-
-                        if (_levelSelectWindow != null)
-                        {
-                            _levelSelectWindow.SetActive(false);
-                        }
                     }
                     else
                     {
                         _levelSelectPricePopup.transform.localPosition = Vector3.zero;
                         _levelSelectPricePopup.SetActive(true);
                     }
+
+                    AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ClickButton01);
+
                 });
 
             }
