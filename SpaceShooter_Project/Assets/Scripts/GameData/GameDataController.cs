@@ -207,6 +207,8 @@ public class GameDataController : MonoBehaviour
     {
         PlayerPrefs.SetInt("levelToLoad", 0);
 
+        PlayerPrefs.SetInt("levelReached", 0);
+
         s_coinAmount.Value = 0;
         s_starAmount.Value = 0;
 

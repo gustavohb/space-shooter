@@ -20,9 +20,12 @@ public class SelectLevelUI : ExtendedCustomMonoBehavior
 
     private void Awake()
     {
-        Refresh();
-
         _pageController = FindObjectOfType<PageController>();
+    }
+
+    private void OnEnable()
+    {
+        Refresh();
     }
 
     private void GameDataController_OnSaveDataChanged(object sender, System.EventArgs e)
