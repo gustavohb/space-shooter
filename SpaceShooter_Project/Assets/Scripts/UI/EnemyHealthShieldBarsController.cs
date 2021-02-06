@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class EnemyHealthShieldBarsController : MonoBehaviour
@@ -8,12 +9,22 @@ public class EnemyHealthShieldBarsController : MonoBehaviour
 
     [SerializeField] private EnemyHealthShieldBarsUI _bossHealthShieldBarsPrefab;
 
+    [SerializeField] private GameEvent _playerDeathEvent = default;
+
     private Dictionary<EnemyHealthShield, EnemyHealthShieldBarsUI> enemiesHealthShieldBars = new Dictionary<EnemyHealthShield, EnemyHealthShieldBarsUI>();
+
+    private CanvasGroup _canvasGroup;
+
+
 
     private void Awake()
     {
         EnemyHealthShield.OnHealthShieldAdded += AddHealthShieldBars;
         EnemyHealthShield.OnHealthShieldRemoved += RemoveHealthShieldBars;
+        _canvasGroup = GetComponent<CanvasGroup>();
+
+        _playerDeathEvent.AddListener(HideHealthBars);
+
     }
 
     private void AddHealthShieldBars(EnemyHealthShield healthShield)
@@ -32,12 +43,6 @@ public class EnemyHealthShieldBarsController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        EnemyHealthShield.OnHealthShieldAdded -= AddHealthShieldBars;
-        EnemyHealthShield.OnHealthShieldRemoved -= RemoveHealthShieldBars;
-    }
-
     private void RemoveHealthShieldBars(EnemyHealthShield healthShield)
     {
         if (enemiesHealthShieldBars.ContainsKey(healthShield))
@@ -48,5 +53,18 @@ public class EnemyHealthShieldBarsController : MonoBehaviour
             }
             enemiesHealthShieldBars.Remove(healthShield);
         }
+    }
+
+    private void HideHealthBars()
+    {
+        _canvasGroup.alpha = 0.0f;
+    }
+
+    private void OnDestroy()
+    {
+        EnemyHealthShield.OnHealthShieldAdded -= AddHealthShieldBars;
+        EnemyHealthShield.OnHealthShieldRemoved -= RemoveHealthShieldBars;
+
+        _playerDeathEvent.RemoveListener(HideHealthBars);
     }
 }

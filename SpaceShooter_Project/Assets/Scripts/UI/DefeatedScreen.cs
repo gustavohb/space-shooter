@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using DG.Tweening;
 using ScriptableObjectArchitecture;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class VictoryScreen : ExtendedCustomMonoBehavior
+public class DefeatedScreen : ExtendedCustomMonoBehavior
 {
 
     [SerializeField] private float _panelFadeDuration = 2.0f;
@@ -23,10 +23,10 @@ public class VictoryScreen : ExtendedCustomMonoBehavior
         _panelCanvasGroup.DOFade(1.0f, _panelFadeDuration);
     }
 
-    private void PlayVictorySound()
+    private void PlayDefeatedSound()
     {
         AudioManager.Instance.StopMusic();
-        AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.Victory);
+        AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.Defeated);
 
     }
 

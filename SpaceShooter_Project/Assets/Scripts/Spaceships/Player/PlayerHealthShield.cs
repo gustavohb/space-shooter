@@ -197,7 +197,7 @@ public class PlayerHealthShield : ExtendedCustomMonoBehavior, IDamageable
             Instantiate(_explosionEffect, GetPosition(), Quaternion.identity);
         }
 
-        OnPlayerDie.Raise();
+        OnPlayerDie?.Raise();
 
         OnDeath?.Invoke(this, EventArgs.Empty);
 

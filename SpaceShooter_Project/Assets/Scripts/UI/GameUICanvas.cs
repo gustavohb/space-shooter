@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class GameUICanvas : ExtendedCustomMonoBehavior
 {
@@ -6,12 +7,18 @@ public class GameUICanvas : ExtendedCustomMonoBehavior
 
     [SerializeField] private GameObject _enemyHealthShieldUICanvas;
 
+    [SerializeField] private GameEvent _playerDeathEvent = default;
+
+    [SerializeField] private GameObject _defeatedScreen;
+
     private void Start()
     {
         if (_enemyHealthShieldUICanvas == null)
         {
             _enemyHealthShieldUICanvas = FindObjectOfType<EnemyHealthShieldBarsController>()?.gameObject;
         }
+
+        _playerDeathEvent?.AddListener(ShowDefeatedScreen);
     }
 
     private void Update()
@@ -37,5 +44,10 @@ public class GameUICanvas : ExtendedCustomMonoBehavior
         {
             _pauseScreen.SetActive(true);
         }
+    }
+
+    private void ShowDefeatedScreen()
+    {
+        _defeatedScreen?.SetActive(true);
     }
 }

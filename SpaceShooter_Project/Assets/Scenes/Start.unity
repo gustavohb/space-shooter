@@ -805,7 +805,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 71514169}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999943
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1528,16 +1528,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6392927833001190002, guid: a3b27e0b2346c4a68aac167dc62e72df,
-        type: 3}
-      propertyPath: soundGroups.Array.data[5].sounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6392927833001190002, guid: a3b27e0b2346c4a68aac167dc62e72df,
-        type: 3}
-      propertyPath: soundGroups.Array.data[5].sounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0c249dcd9fcce42f090c1b73af3e28cd, type: 3}
     - target: {fileID: 6392927833001190003, guid: a3b27e0b2346c4a68aac167dc62e72df,
         type: 3}
       propertyPath: m_RootOrder

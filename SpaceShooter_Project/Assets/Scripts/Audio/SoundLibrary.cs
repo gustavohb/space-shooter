@@ -31,6 +31,7 @@ public class SoundLibrary : MonoBehaviour
         Repair,
         Void,
         UseInventoryItem,
+        Defeated,
     };
 
     [System.Serializable]
