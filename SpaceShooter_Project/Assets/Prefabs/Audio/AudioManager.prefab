@@ -104,7 +104,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 5b34c16e01e7e48f2a6b8e3587c76523, type: 3}
     - {fileID: 8300000, guid: 6e8cc09f780714284a13f6c118696228, type: 3}
   - soundType: 5
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 0c249dcd9fcce42f090c1b73af3e28cd, type: 3}
   - soundType: 6
     sounds:
     - {fileID: 8300000, guid: 1aa9b4f2274654c7d96d46c306a13096, type: 3}
