@@ -72,6 +72,11 @@ public class SpiralMultiShot : BaseShot
 
         for (int i = 0; i < bulletNum; i++)
         {
+            while (GameTime.isPaused)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
             if (spiralWayNum <= spiralWayIndex)
             {
                 spiralWayIndex = 0;
@@ -89,11 +94,6 @@ public class SpiralMultiShot : BaseShot
             }
 
             float angle = startAngle + (spiralWayShiftAngle * spiralWayIndex) + (shiftAngle * Mathf.Floor(i / spiralWayNum));
-
-            while (GameTime.isPaused)
-            {
-                yield return null;
-            }
 
             ShotBullet(bullet, bulletSpeed, angle);
 

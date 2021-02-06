@@ -63,7 +63,7 @@ public class OverTakeNwayShot : BaseShot
         {
             while (GameTime.isPaused)
             {
-                yield return null;
+                yield return new WaitForEndOfFrame();
             }
 
             if (wayNum <= wayIndex)

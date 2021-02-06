@@ -52,6 +52,11 @@ public class LinearShot : BaseShot
 
         for (int i = 0; i < bulletNum; i++)
         {
+            while (GameTime.isPaused)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
             if (0 < i && 0f < betweenDelay)
             {
                 yield return new WaitForSeconds(betweenDelay);

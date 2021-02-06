@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     private void Start()
     {
-        BulletForParticles.Init();        
+        BulletForParticles.Init();
+        GameTime.isPaused = false;
     }
 }

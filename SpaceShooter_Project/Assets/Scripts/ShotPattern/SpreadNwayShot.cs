@@ -71,6 +71,13 @@ public class SpreadNwayShot : BaseShot
 
 		for (int i = 0; i < bulletNum; i++)
 		{
+
+			while (GameTime.isPaused)
+			{
+				yield return new WaitForEndOfFrame();
+			}
+
+
 			if (WayNum <= wayIndex)
 			{
 				wayIndex = 0;
@@ -91,11 +98,6 @@ public class SpreadNwayShot : BaseShot
 			float baseAngle = WayNum % 2 == 0 ? CenterAngle - (BetweenAngle / 2f) : CenterAngle;
 
 			float angle = Util.GetShiftedAngle(wayIndex, baseAngle, BetweenAngle);
-
-			while (GameTime.isPaused)
-			{
-				yield return null;
-			}
 
 
 			ShotBullet(bullet, myBulletSpeed, angle);

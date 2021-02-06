@@ -79,6 +79,11 @@ public class PaintShot : BaseShot
 
         for (int lineCnt = 0; lineCnt < paintData.Count; lineCnt++)
         {
+            while (GameTime.isPaused)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
             var line = paintData[lineCnt];
             if (0 < lineCnt && 0 < nextLineDelay)
             {

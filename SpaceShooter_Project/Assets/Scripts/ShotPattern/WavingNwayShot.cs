@@ -70,6 +70,13 @@ public class WavingNwayShot : BaseShot
 
         for (int i = 0; i < bulletNum; i++)
         {
+
+            while (GameTime.isPaused)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+
             if (wayNum <= wayIndex)
             {
                 wayIndex = 0;
@@ -90,11 +97,6 @@ public class WavingNwayShot : BaseShot
             float baseAngle = wayNum % 2 == 0 ? centerAngle - (betweenAngle / 2f) : centerAngle;
 
             float angle = Util.GetShiftedAngle(wayIndex, baseAngle, betweenAngle);
-
-            while (GameTime.isPaused)
-            {
-                yield return null;
-            }
 
             ShotBullet(bullet, bulletSpeed, angle);
 

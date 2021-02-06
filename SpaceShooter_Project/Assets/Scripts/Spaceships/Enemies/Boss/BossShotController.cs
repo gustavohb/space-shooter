@@ -8,33 +8,22 @@ public class BossShotController : ExtendedCustomMonoBehavior
     [SerializeField]
     private ShotController[] _shotControllers;
 
-    private Transform _target;
-
-    private float _rotationTarget;
-
-    private bool _isShooting = false;
-
-    private bool _enableShotController = false;
-
     private int _shotControllerIndex = 0;
 
     private ShotController _currentShotController;
 
-    private Vector3 _startPosition;
-
-    BossBattle m_BossBattle;
+    private BossBattle _bossBattle;
 
     private void Start()
     {
-        _target = GameObject.FindGameObjectWithTag("Player").transform;
         _currentShotController = _shotControllers[0];
     }
 
     
     public void SetBossBattle(BossBattle bossBattle)
     {
-        m_BossBattle = bossBattle;
-        m_BossBattle.OnStageChanged += BossController_OnStageChanged;
+        _bossBattle = bossBattle;
+        _bossBattle.OnStageChanged += BossController_OnStageChanged;
     }
 
     private void BossController_OnStageChanged(object sender, BossBattle.Stage e)
@@ -76,7 +65,6 @@ public class BossShotController : ExtendedCustomMonoBehavior
             {
                 shotController.StopShotRoutine();
             }
-            _isShooting = false;
         }
     }
 }

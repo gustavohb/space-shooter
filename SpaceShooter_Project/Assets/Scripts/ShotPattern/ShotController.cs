@@ -132,6 +132,8 @@ public class ShotController : ExtendedCustomMonoBehavior
 
         while (true)
         {
+            if (GameTime.isPaused) yield return new WaitForEndOfFrame();
+
             if (atRandom)
             {
                 _nowIndex = UnityEngine.Random.Range(0, _tmpShotInfoList.Count);
