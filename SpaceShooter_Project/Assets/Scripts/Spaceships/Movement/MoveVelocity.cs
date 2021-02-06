@@ -32,7 +32,7 @@ public class MoveVelocity : ExtendedCustomMonoBehavior, IMoveVelocity
 
     private void FixedUpdate()
     {
-        if(_isMovementEnable)
+        if(_isMovementEnable && !GameTime.isPaused)
         {
             rigidbody2D.velocity = _velocityVector * _moveSpeed;
         }

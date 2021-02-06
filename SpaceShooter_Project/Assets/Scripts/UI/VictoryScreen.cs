@@ -10,6 +10,8 @@ public class VictoryScreen : ExtendedCustomMonoBehavior
 
     [SerializeField] private FloatGameEvent _loadStartEvent = default;
 
+    [SerializeField] private GameObject _doubleCollectedCoinsScreen;
+
     private CanvasGroup _panelCanvasGroup;
 
     private void Awake()
@@ -21,6 +23,7 @@ public class VictoryScreen : ExtendedCustomMonoBehavior
     {
         _panelCanvasGroup.alpha = 0.0f;
         _panelCanvasGroup.DOFade(1.0f, _panelFadeDuration);
+        GameTime.isPaused = true;
     }
 
     private void PlayVictorySound()
@@ -30,9 +33,8 @@ public class VictoryScreen : ExtendedCustomMonoBehavior
 
     }
 
-    //Temporary
-    public void LoadStart()
+    public void OpenDoubleCollectCoinsScreen()
     {
-        _loadStartEvent?.Raise(0.0f);
+        _doubleCollectedCoinsScreen?.SetActive(true);
     }
 }

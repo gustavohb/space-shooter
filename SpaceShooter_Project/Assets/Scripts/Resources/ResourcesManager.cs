@@ -22,9 +22,8 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     public Transform coinDeviationTransform;
 
     [SerializeField] private IntVariable _coins = default; //variable for coins
-    
-    [HideInInspector]
-    public int collectedCoins { get; private set; }
+
+    [SerializeField] private IntVariable _collectedCoins = default;
 
     [Space(5)]
     public RectTransform starIcon; //reference to the star icon (where the animated coin flies to)
@@ -64,14 +63,17 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     public float animationSpeedSeconds = 0.035f;
     public Ease animationEase = Ease.OutCirc;
 
-    
+
+    [Header("Events")]
+    [SerializeField] private GameEvent _doubleCollectedCoinsEvent = default;
+
     private GameResource _gameResource;
 
     private void Start()
     {
         player = FindObjectOfType<PlayerHealthShield>();
 
-        collectedCoins = 0;
+        _collectedCoins.Value = 0;
 
         if (targetCamera == null) //is any camera referenced?
         {
@@ -102,6 +104,9 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
 
         UpdateResourceCounter(ResourceType.Coin);
         UpdateResourceCounter(ResourceType.Star);
+
+        _doubleCollectedCoinsEvent?.AddListener(DoubleCollectedCoins);
+
     }
 
     private void Update()
@@ -187,6 +192,11 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
         }
     }
 
+    private void DoubleCollectedCoins()
+    {
+        _coins.Value += _collectedCoins.Value;
+    }
+
     public void CollectResource(GameResource gameResource)
     {
         switch (gameResource.resourceType)
@@ -264,7 +274,7 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
     {
         switch (resourceType)
         {
-            case ResourceType.Coin: _coins.Value += value; collectedCoins += value; break; //update the coins with the set value
+            case ResourceType.Coin: _coins.Value += value; _collectedCoins.Value += value; break; //update the coins with the set value
             case ResourceType.Star: _stars.Value += value; break; //update the stars with the set value
             case ResourceType.Health: player?.HealHealth(value); break; //update the player's health with the set value
             case ResourceType.Shield: player?.HealShield(value); break; //update the player's health with the set value
@@ -299,5 +309,10 @@ public class ResourcesManager : SingletonMonoBehavior<ResourcesManager>
             default:
                 break;
         }
+    }
+
+    private void OnDestroy()
+    {
+        _doubleCollectedCoinsEvent?.RemoveListener(DoubleCollectedCoins);
     }
 }

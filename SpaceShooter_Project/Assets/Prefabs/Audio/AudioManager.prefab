@@ -166,6 +166,9 @@ MonoBehaviour:
   - soundType: 23
     sounds:
     - {fileID: 8300000, guid: 862f5051bdd1e4f3eab9bea73ab110cd, type: 3}
+  - soundType: 26
+    sounds:
+    - {fileID: 8300000, guid: 4c24cf15a1e5342d1901d06974b3f9a3, type: 3}
 --- !u!114 &6392927833001190005
 MonoBehaviour:
   m_ObjectHideFlags: 0
