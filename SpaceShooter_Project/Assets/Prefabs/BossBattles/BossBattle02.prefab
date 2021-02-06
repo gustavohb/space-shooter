@@ -217,10 +217,10 @@ MonoBehaviour:
   _healthPickupSpawnTime: 5
   _spawnArea:
     serializedVersion: 2
-    x: -21
-    y: -12
-    width: 21
-    height: 12
+    x: -26
+    y: -15
+    width: 26
+    height: 15
   _bossPrefab: {fileID: 482839842648930442, guid: df45827b477254c31bb888674cbf16fd,
     type: 3}
   _spawnHealthPickupArea:
