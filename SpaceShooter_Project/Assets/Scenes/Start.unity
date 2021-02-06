@@ -516,6 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 80143943}
   - component: {fileID: 80143944}
+  - component: {fileID: 80143945}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -551,6 +552,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80143942}
   m_CullTransparentMesh: 1
+--- !u!225 &80143945
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80143942}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &106191441
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,8 +817,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 71514170}
   m_HandleRect: {fileID: 71514169}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9643659
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1601,6 +1614,7 @@ GameObject:
   - component: {fileID: 236509678}
   - component: {fileID: 236509680}
   - component: {fileID: 236509679}
+  - component: {fileID: 236509681}
   m_Layer: 5
   m_Name: CoinIcon
   m_TagString: Untagged
@@ -1665,6 +1679,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236509677}
   m_CullTransparentMesh: 1
+--- !u!225 &236509681
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236509677}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &255174695
 GameObject:
   m_ObjectHideFlags: 0
@@ -5448,6 +5474,7 @@ GameObject:
   - component: {fileID: 1054949441}
   - component: {fileID: 1054949443}
   - component: {fileID: 1054949442}
+  - component: {fileID: 1054949444}
   m_Layer: 5
   m_Name: StarIcon
   m_TagString: Untagged
@@ -5512,6 +5539,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054949440}
   m_CullTransparentMesh: 1
+--- !u!225 &1054949444
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054949440}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1077738466
 GameObject:
   m_ObjectHideFlags: 0
@@ -8633,7 +8672,6 @@ MonoBehaviour:
   - {fileID: 2135265087}
   - {fileID: 1876647153}
   - {fileID: 1777773712}
-  _levelSelectWindow: {fileID: 0}
   _levelSelectPricePopup: {fileID: 355354912}
   _loadArcadeEvent: {fileID: 11400000, guid: 0f50adab50ddd4fd3af7cbdf29a3c784, type: 2}
   _levelToLoad: {fileID: 11400000, guid: 5f413cdd4e9814dc89dbe3dcf06d6932, type: 2}
@@ -10971,6 +11009,7 @@ GameObject:
   - component: {fileID: 1832629178}
   - component: {fileID: 1832629180}
   - component: {fileID: 1832629179}
+  - component: {fileID: 1832629181}
   m_Layer: 5
   m_Name: StarAmountDisplayText
   m_TagString: Untagged
@@ -11095,6 +11134,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832629177}
   m_CullTransparentMesh: 1
+--- !u!225 &1832629181
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832629177}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1846239073
 GameObject:
   m_ObjectHideFlags: 0
@@ -11105,6 +11156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846239074}
   - component: {fileID: 1846239075}
+  - component: {fileID: 1846239079}
   - component: {fileID: 1846239076}
   - component: {fileID: 1846239077}
   - component: {fileID: 1846239078}
@@ -11214,6 +11266,25 @@ MonoBehaviour:
     type: 3}
   _textMaterialRed: {fileID: -3168447758704705423, guid: 5bd099b3fdf6a4c83bec1b870623919c,
     type: 2}
+--- !u!95 &1846239079
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846239073}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32d20a963af554444a16baf08e1d65e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1871054114
 GameObject:
   m_ObjectHideFlags: 0
@@ -11798,6 +11869,7 @@ GameObject:
   - component: {fileID: 1923720245}
   - component: {fileID: 1923720247}
   - component: {fileID: 1923720246}
+  - component: {fileID: 1923720248}
   m_Layer: 5
   m_Name: CoinAmountDisplayText
   m_TagString: Untagged
@@ -11922,6 +11994,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923720244}
   m_CullTransparentMesh: 1
+--- !u!225 &1923720248
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923720244}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1944033399
 GameObject:
   m_ObjectHideFlags: 0
