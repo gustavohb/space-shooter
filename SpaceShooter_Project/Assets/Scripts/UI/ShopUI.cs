@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using ScriptableObjectArchitecture;
@@ -19,6 +17,8 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField] private Button _add100CoinsButton;
 
+    [SerializeField] private Button _add1StarButton;
+
     [SerializeField] private GameEvent _changeDataGameEvent = default;
 
     [SerializeField] private Transform _shopItemTemplate;
@@ -29,8 +29,10 @@ public class ShopUI : MonoBehaviour
     {
 #if UNITY_EDITOR
         _add100CoinsButton.gameObject.SetActive(true);
+        _add1StarButton.gameObject.SetActive(true);
 #else
         _add100CoinsButton.gameObject.SetActive(false);
+        _add1StarButton.gameObject.SetActive(false);
 #endif
     }
 
@@ -48,6 +50,12 @@ public class ShopUI : MonoBehaviour
     public void Add100Coins()
     {
         _coins.Value += 100;
+        RefreshUI();
+    }
+
+    public void Add1Star()
+    {
+        _stars.Value += 1;
         RefreshUI();
     }
 
