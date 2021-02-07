@@ -6,8 +6,6 @@ public class PlayerShooting : ExtendedCustomMonoBehavior
 
     [SerializeField] private int _weaponIndex = 0;
 
-    public int WeaponIndex => _weaponIndex;
-
     private PlayerWeapon _currentWeapon;
 
     private Transform _currentTarget;
@@ -21,6 +19,7 @@ public class PlayerShooting : ExtendedCustomMonoBehavior
 
     private void Awake()
     {
+        _weaponIndex = GameDataController.GetShotLevel();
         SetWeapon(_weaponIndex);
     }
 
