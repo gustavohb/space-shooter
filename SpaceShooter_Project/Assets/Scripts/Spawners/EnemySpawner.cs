@@ -44,16 +44,12 @@ public class EnemySpawner : MonoBehaviour
             _playerTransform = playerGameObject.transform;
         }
 
-        //To fix:
-        if (_levelToLoad.Value >= _waves.Length)
-        {
-            _levelToLoad.Value = _waves.Length - 1;
-        }
-        _levelToLoad.Value -= 1;
         _waves[_levelToLoad.Value].waveStartDelay = 0;
 
         yield return new WaitForSeconds(_startDelay);
 
+        //To fix:
+        _levelToLoad.Value -= 1;
         WaveCleared();
 
     }

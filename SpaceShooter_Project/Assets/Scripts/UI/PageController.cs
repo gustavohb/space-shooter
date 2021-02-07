@@ -26,6 +26,8 @@ public class PageController : MonoBehaviour
 
     [SerializeField] private GameEvent _closeWindowEvent = default;
 
+    [SerializeField] private PopupQuitWindowUI _popupQuitWindow; 
+
     private RectTransform _currentOpenPage;
 
     private Vector3 _startPosition;
@@ -42,6 +44,29 @@ public class PageController : MonoBehaviour
 
         _closeWindowEvent.AddListener(CloseWindow);
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_popupQuitWindow.gameObject.activeSelf)
+            {
+                AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ClickButton01);
+                _popupQuitWindow.CloseWindow();
+
+            }
+            else if (_currentOpenPage != null)
+            {
+                AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ClickButton01);
+                CloseOpenPage();
+            }
+            else
+            {
+                AudioManager.Instance.PlaySound2D(SoundLibrary.Sound.ClickButton02);
+                _popupQuitWindow.OpenWindow();
+            }
+        }
     }
 
     public void OpenSelectModePage()
