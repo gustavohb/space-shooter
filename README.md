@@ -7,11 +7,11 @@ Collect coins to upgrade your spaceship, unlock new weapons and abilities.
 
 [![google-play-badge](https://user-images.githubusercontent.com/3193712/107149278-7fe81a00-6936-11eb-8596-9ff8d1572d29.png)](https://play.google.com/store/apps/developer?id=Gustavo+Barrionuevo)
 
-![Screenshot01](https://user-images.githubusercontent.com/3193712/107149339-d6555880-6936-11eb-9b94-39b02ccd4f1f.png)
+![Screenshot01](https://user-images.githubusercontent.com/3193712/107149685-be7ed400-6938-11eb-8214-d23b04b00de7.png)
 
-![Screenshot02](https://user-images.githubusercontent.com/3193712/107149341-d9e8df80-6936-11eb-92d1-cde46f7ad41b.png)
+![Screenshot02](https://user-images.githubusercontent.com/3193712/107149690-c3438800-6938-11eb-90cf-e16ad9598f9e.png)
 
-![Screenshot03](https://user-images.githubusercontent.com/3193712/107149343-dc4b3980-6936-11eb-8457-12b23d8213d5.png)
+![Screenshot03](https://user-images.githubusercontent.com/3193712/107149694-c5a5e200-6938-11eb-9b2e-c9e10b3750ef.png)
 
 ## License
 
