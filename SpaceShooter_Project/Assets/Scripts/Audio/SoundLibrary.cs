@@ -32,6 +32,7 @@ public class SoundLibrary : MonoBehaviour
         Void,
         UseInventoryItem,
         Defeated,
+        BombReady,
     };
 
     [System.Serializable]

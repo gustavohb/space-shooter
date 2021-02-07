@@ -127,15 +127,13 @@ public class ShopUI : MonoBehaviour
                 CreateItemButton(ShopItem.ShopItemType.Shot_2, ShopItem.GetSprite(ShopItem.ShopItemType.Shot_2), "SHOT [LEVEL 3]", "Increases player's shot by 1.", ShopItem.GetCost(ShopItem.ShopItemType.Shot_2));
                 break;
         }
-
-        /*
+      
 #if UNITY_ANDROID
         if (!GameDataController.IsBombAbilityEnable())
         {
             CreateItemButton(ShopItem.ShopItemType.Bomb, ShopItem.GetSprite(ShopItem.ShopItemType.Bomb), "BOMB", "Gives player ability to spawn a bomb to damage close enemies.", ShopItem.GetCost(ShopItem.ShopItemType.Bomb));
         }
 #endif
-        */
 
         if (!GameDataController.IsTimePickupEnable())
         {
