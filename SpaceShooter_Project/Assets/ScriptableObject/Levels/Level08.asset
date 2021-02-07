@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveMessage: LEVEL 8
   spawns:
-  - spawnObject: {fileID: 8221053375180234094, guid: 1dc4cd000068d4716b6593804098104c,
+  - spawnObject: {fileID: 1338951880085234086, guid: 9b5f4c89cd5f44f1a89484fa4869ac47,
       type: 3}
     count: 15
     spawnTime: 5

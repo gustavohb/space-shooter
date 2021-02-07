@@ -115,8 +115,9 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
 
     private float _preChangeShield;
 
-    [SerializeField]
-    private float _updateSpeedSeconds = 0.3f;
+    [SerializeField] private float _updateSpeedSeconds = 0.3f;
+
+    [SerializeField] private GameObject _lowHealthIndicatorScreen;
 
     private void Awake()
     {
@@ -520,7 +521,8 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             _flashingHealth3CanvasGroup.gameObject.SetActive(_playerHealthShield.GetHealthLevel() == PlayerHealthShield.HealthLevel.Level_3
                                                         || _playerHealthShield.GetHealthLevel() == PlayerHealthShield.HealthLevel.Level_4);
             _flashingHealth4CanvasGroup.gameObject.SetActive(_playerHealthShield.GetHealthLevel() == PlayerHealthShield.HealthLevel.Level_4);
-            
+
+            _lowHealthIndicatorScreen?.SetActive(true);
 
         }
         else
@@ -529,6 +531,8 @@ public class PlayerStatsWindow : ExtendedCustomMonoBehavior
             {
                 _flashingHealthCanvasGroupArray[i].gameObject.SetActive(false);
             }
+
+            _lowHealthIndicatorScreen?.SetActive(false);
         }
 
 
