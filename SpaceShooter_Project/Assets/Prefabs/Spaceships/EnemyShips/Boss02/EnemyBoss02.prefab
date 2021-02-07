@@ -215,12 +215,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBoss: 1
-  _startHealth: 100
-  _maxHealth: 100
+  _startHealth: 1200
+  _maxHealth: 1200
   _collider: {fileID: 482839842648930557}
   currentHealth: 0
-  _startShield: 100
-  _maxShield: 100
+  _startShield: 1200
+  _maxShield: 1200
   _shieldColor: {r: 0.66868114, g: 0, b: 0.8117647, a: 1}
   _lowHealthPct: 0.15
   _lowHealthEffect: {fileID: 3082642472357112535, guid: 5e68ef5c7cf4d405787d6f5133e28d9c,

@@ -10698,8 +10698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260ff1f71fdc4e75bfd4ca4d9a6f48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnMaxTime: 30
-  _spawnMinTime: 15
+  _spawnMaxTime: 300
+  _spawnMinTime: 50
   _spawnArea:
     serializedVersion: 2
     x: -22
@@ -11140,8 +11140,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279248473}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: -8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 17, y: -7, z: 0}
+  m_LocalScale: {x: 1.317264, y: 1.317264, z: 1.317264}
   m_Children:
   - {fileID: 1278686048}
   - {fileID: 2144855210}
@@ -18451,8 +18451,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897435867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: -8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 17, y: -7, z: 0}
+  m_LocalScale: {x: 1.317264, y: 1.317264, z: 1.317264}
   m_Children:
   - {fileID: 1570770541}
   - {fileID: 142747836}
