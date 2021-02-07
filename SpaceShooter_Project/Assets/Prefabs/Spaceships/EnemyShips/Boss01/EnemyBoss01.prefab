@@ -272,6 +272,11 @@ MonoBehaviour:
     dropMin: 1
     dropMax: 2
     dropSpread: 3
+  - item: {fileID: 6954701148804190667, guid: 1aa0ec0ecf8e346d18525f2fdfd1a1b0, type: 3}
+    dropChance: 1
+    dropMin: 1
+    dropMax: 1
+    dropSpread: 0
 --- !u!114 &6358689321053437309
 MonoBehaviour:
   m_ObjectHideFlags: 0

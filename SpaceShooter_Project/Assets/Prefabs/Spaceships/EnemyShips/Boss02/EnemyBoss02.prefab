@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482839841164800975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 482839842185051050}
@@ -161,7 +161,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.04}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -336,6 +336,11 @@ MonoBehaviour:
     dropMin: 1
     dropMax: 2
     dropSpread: 3
+  - item: {fileID: 6954701148804190667, guid: 1aa0ec0ecf8e346d18525f2fdfd1a1b0, type: 3}
+    dropChance: 1
+    dropMin: 1
+    dropMax: 1
+    dropSpread: 0
 --- !u!114 &5483440255998190673
 MonoBehaviour:
   m_ObjectHideFlags: 0
