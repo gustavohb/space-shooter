@@ -32,67 +32,34 @@ public class ShopItem
 
     public static ItemCost GetCost(ShopItemType itemType)
     {
-#if PLATFORM_WEBGL
         switch (itemType)
         {
             default:
             case ShopItemType.None: return new ItemCost { coins = 0, stars = 0 };
 
             // Pickups
-            case ShopItemType.Bomb: return new ItemCost { coins = 100, stars = 1 };
-            case ShopItemType.Time: return new ItemCost { coins = 50, stars = 0 };
-            case ShopItemType.Repair: return new ItemCost { coins = 125, stars = 0 };
-            case ShopItemType.Void: return new ItemCost { coins = 70, stars = 0 };
+            case ShopItemType.Bomb: return new ItemCost { coins = 300, stars = 1 };
+            case ShopItemType.Time: return new ItemCost { coins = 100, stars = 0 };
+            case ShopItemType.Repair: return new ItemCost { coins = 350, stars = 0 };
+            case ShopItemType.Void: return new ItemCost { coins = 250, stars = 0 };
             // Shot
-            case ShopItemType.Shot_1: return new ItemCost { coins = 50, stars = 1 };
-            case ShopItemType.Shot_2: return new ItemCost { coins = 100, stars = 1 };
-            case ShopItemType.Shot_3: return new ItemCost { coins = 150, stars = 1 };
+            case ShopItemType.Shot_1: return new ItemCost { coins = 200, stars = 1 };
+            case ShopItemType.Shot_2: return new ItemCost { coins = 400, stars = 1 };
+            case ShopItemType.Shot_3: return new ItemCost { coins = 600, stars = 2 };
             // Speed
-            case ShopItemType.Speed_1: return new ItemCost { coins = 50, stars = 0 };
-            case ShopItemType.Speed_2: return new ItemCost { coins = 100, stars = 0 };
-            case ShopItemType.Speed_3: return new ItemCost { coins = 150, stars = 0 };
-            // Health
-            case ShopItemType.Health_1: return new ItemCost { coins = 50, stars = 0 };
-            case ShopItemType.Health_2: return new ItemCost { coins = 100, stars = 0 };
-            case ShopItemType.Health_3: return new ItemCost { coins = 150, stars = 0 };
-            case ShopItemType.Health_4: return new ItemCost { coins = 200, stars = 0 };
-            // Shield
-            case ShopItemType.Shield_1: return new ItemCost { coins = 50, stars = 0 };
-            case ShopItemType.Shield_2: return new ItemCost { coins = 100, stars = 0 };
-            case ShopItemType.Shield_3: return new ItemCost { coins = 150, stars = 0 };
-            case ShopItemType.Shield_4: return new ItemCost { coins = 200, stars = 0 };
-        }
-
-#endif 
-
-        switch (itemType)
-        {
-            default:
-            case ShopItemType.None: return new ItemCost { coins = 0, stars = 0 };
-
-            // Pickups
-            case ShopItemType.Bomb: return new ItemCost { coins = 400, stars = 1 };
-            case ShopItemType.Time: return new ItemCost { coins = 250, stars = 0 };
-            case ShopItemType.Repair: return new ItemCost { coins = 500, stars = 0 };
-            case ShopItemType.Void: return new ItemCost { coins = 350, stars = 0 };
-            // Shot
-            case ShopItemType.Shot_1: return new ItemCost { coins = 400, stars = 1 };
-            case ShopItemType.Shot_2: return new ItemCost { coins = 800, stars = 1 };
-            case ShopItemType.Shot_3: return new ItemCost { coins = 1200, stars = 2 };
-            // Speed
-            case ShopItemType.Speed_1: return new ItemCost { coins = 250, stars = 0 };
-            case ShopItemType.Speed_2: return new ItemCost { coins = 450, stars = 0 };
-            case ShopItemType.Speed_3: return new ItemCost { coins = 650, stars = 0 };
+            case ShopItemType.Speed_1: return new ItemCost { coins = 100, stars = 0 };
+            case ShopItemType.Speed_2: return new ItemCost { coins = 150, stars = 0 };
+            case ShopItemType.Speed_3: return new ItemCost { coins = 200, stars = 0 };
             // Health
             case ShopItemType.Health_1: return new ItemCost { coins = 0, stars = 0 };
-            case ShopItemType.Health_2: return new ItemCost { coins = 350, stars = 0 };
-            case ShopItemType.Health_3: return new ItemCost { coins = 650, stars = 0 };
-            case ShopItemType.Health_4: return new ItemCost { coins = 950, stars = 0 };
+            case ShopItemType.Health_2: return new ItemCost { coins = 250, stars = 0 };
+            case ShopItemType.Health_3: return new ItemCost { coins = 500, stars = 0 };
+            case ShopItemType.Health_4: return new ItemCost { coins = 750, stars = 0 };
             // Shield
-            case ShopItemType.Shield_1: return new ItemCost { coins = 300, stars = 0 };
-            case ShopItemType.Shield_2: return new ItemCost { coins = 600, stars = 0 };
-            case ShopItemType.Shield_3: return new ItemCost { coins = 900, stars = 0 };
-            case ShopItemType.Shield_4: return new ItemCost { coins = 1200, stars = 0 };
+            case ShopItemType.Shield_1: return new ItemCost { coins = 200, stars = 0 };
+            case ShopItemType.Shield_2: return new ItemCost { coins = 400, stars = 0 };
+            case ShopItemType.Shield_3: return new ItemCost { coins = 600, stars = 0 };
+            case ShopItemType.Shield_4: return new ItemCost { coins = 800, stars = 0 };
         }
     }
 
