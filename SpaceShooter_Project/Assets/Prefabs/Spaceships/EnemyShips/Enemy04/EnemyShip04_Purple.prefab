@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBoss: 0
-  _startHealth: 27
-  _maxHealth: 27
+  _startHealth: 30
+  _maxHealth: 30
   _collider: {fileID: 3492955420189356004}
   currentHealth: 0
   _startShield: 18

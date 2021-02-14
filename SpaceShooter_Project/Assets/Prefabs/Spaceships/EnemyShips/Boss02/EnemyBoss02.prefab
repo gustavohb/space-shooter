@@ -328,14 +328,19 @@ MonoBehaviour:
   _itemDrops:
   - item: {fileID: 1842589446096714160, guid: 4696faad8c2c34f14ad7ddc08a11f8e2, type: 3}
     dropChance: 0.5
-    dropMin: 1
-    dropMax: 2
+    dropMin: 4
+    dropMax: 8
     dropSpread: 3
   - item: {fileID: 1834802981566890347, guid: 16318f6d015944e3aad870a848620d39, type: 3}
-    dropChance: 0.5
-    dropMin: 1
-    dropMax: 2
-    dropSpread: 3
+    dropChance: 1
+    dropMin: 20
+    dropMax: 30
+    dropSpread: 4
+  - item: {fileID: 1834802981566890347, guid: 16318f6d015944e3aad870a848620d39, type: 3}
+    dropChance: 1
+    dropMin: 20
+    dropMax: 30
+    dropSpread: 4
   - item: {fileID: 6954701148804190667, guid: 1aa0ec0ecf8e346d18525f2fdfd1a1b0, type: 3}
     dropChance: 1
     dropMin: 1
@@ -15331,7 +15336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3536864383401804240, guid: eb3fc46fdc2874958b498a0707ab322b,
     type: 3}
-  bulletNum: 300
+  bulletNum: 200
   bulletSpeed: 8
   accelerationSpeed: 0
   accelerationTurn: 0
@@ -15347,7 +15352,7 @@ MonoBehaviour:
   waveRangeSize: 70
   waveSpeed: 7.5
   betweenAngle: 72
-  nextLineDelay: 0.06
+  nextLineDelay: 0.08
 --- !u!1 &8836422843891298385
 GameObject:
   m_ObjectHideFlags: 0

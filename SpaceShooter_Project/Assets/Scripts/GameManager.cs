@@ -6,5 +6,7 @@ public class GameManager : MonoBehaviour
     {
         BulletForParticles.Init();
         GameTime.isPaused = false;
+        // Disable screen dimming
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 }

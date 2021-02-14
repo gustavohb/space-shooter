@@ -34,7 +34,7 @@ public class ItemDropper : ExtendedCustomMonoBehavior
                     {
                         GameObject newItem = Instantiate(itemDrop.item, transform.position, Quaternion.identity);
                         Vector3 randomDir = Util.GetRandomDir();
-                        Vector3 newPosition = transform.position + randomDir * itemDrop.dropSpread;
+                        Vector3 newPosition = transform.position + randomDir * Random.Range(0.0f, itemDrop.dropSpread);
                         newItem.transform.DOMove(newPosition, 0.6f);
                     }
                 }
