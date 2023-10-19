@@ -5,7 +5,7 @@
 
 Collect coins to upgrade your spaceship, unlock new weapons and abilities.
 
-[![google-play-badge](https://user-images.githubusercontent.com/3193712/107149278-7fe81a00-6936-11eb-8596-9ff8d1572d29.png)](https://play.google.com/store/apps/developer?id=Gustavo+Barrionuevo)
+You can play the game directly in your web-browser by going [here](https://gustavohb.github.io/space-shooter/).
 
 ![Screenshot01](https://user-images.githubusercontent.com/3193712/107149685-be7ed400-6938-11eb-8214-d23b04b00de7.png)
 
