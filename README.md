@@ -5,7 +5,7 @@
 
 Collect coins to upgrade your spaceship, unlock new weapons and abilities.
 
-You can play the game directly in your web-browser by going ![here]([https://gustavohb.github.io/space-shooter/](https://gustavohb.github.io/space-shooter-webgl/)).
+You can play the game directly in your web-browser by going [here](https://gustavohb.github.io/space-shooter-webgl/).
 
 ![Screenshot01](https://user-images.githubusercontent.com/3193712/107149685-be7ed400-6938-11eb-8214-d23b04b00de7.png)
 
